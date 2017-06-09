@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 75cd7481929b0174e8f7d74ce370630d
+timeCreated: 1496574531
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hard Sports
+  fontNames:
+  - Hard Sports
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
