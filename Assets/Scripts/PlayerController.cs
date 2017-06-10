@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     public GameColor currentColor;
 
     private bool isReady = false;
-    private bool isGoingRight = false;   //in the right side the values are positive
+    private bool isGoingLeft = false;
+    private bool isGoingRight = true;   //in the right side the values are positive
     private bool succes = false;
 
     private void Start()
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
         //if game is started and isn't over then count the score
         if (isReady && !succes)
         {
-            score = Time.time / 8;
+            score = Time.time / 6;
             scoreText.text = Mathf.Round(score).ToString();
         }
 
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isReady)
         {
             isReady = true;
+            CameraController.isReady = true;
         }
 
         //If the player goes on the left too much then he spawn to other side
@@ -85,12 +87,20 @@ public class PlayerController : MonoBehaviour
         }
 
         //Move the object to the left by adding speed to player
-        if (Input.GetMouseButtonDown(0) && isReady && !isGoingRight)
+        if (Input.GetMouseButtonDown(0) && isReady && isGoingLeft)
+        {
+            //if is going left then change the direction to right
             isGoingRight = true;
+            isGoingLeft = false;
+        }
 
         //Move the object to the right by adding speed to player
         else if (Input.GetMouseButtonDown(0) && isReady && isGoingRight)
+        {
+            //if is going right then change the direction to left
             isGoingRight = false;
+            isGoingLeft = true;
+        }
 
 
         //is moving to right ? then set the direction to right and don't stop
@@ -98,7 +108,7 @@ public class PlayerController : MonoBehaviour
             rigid.velocity = new Vector2(speed, rigid.velocity.y);
 
         //is moving to left ? then set the direction to left and don't stop
-        if (!isGoingRight && isReady)
+        if (isGoingLeft && isReady)
             rigid.velocity = new Vector2(-speed, rigid.velocity.y);
     }
 
@@ -112,6 +122,9 @@ public class PlayerController : MonoBehaviour
             isReady = false;
             succes = true;
             CameraController.cameraMovingSpeed = 0f;
+            CameraController.isReady = false;
+            isGoingLeft = false;
+            isGoingRight = false;
             print("Game over by final");
         }
         if (col.gameObject.tag == "Enemy")
@@ -120,6 +133,9 @@ public class PlayerController : MonoBehaviour
             isReady = false;
             succes = true;
             CameraController.cameraMovingSpeed = 0f;
+            CameraController.isReady = false;
+            isGoingLeft = false;
+            isGoingRight = false;
             print("Game over by Spikes");
         }
     }
