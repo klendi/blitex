@@ -13,7 +13,6 @@ public class ScaleEffects : MonoBehaviour
     public float speed;
     public float range;
     float timecounter = 0;
-
     public ScaleType scaleType = ScaleType.Side;
 
     private void Update()

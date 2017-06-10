@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool isReady = false;
     private bool isGoingLeft = false;    //This make system more stable
     private bool isGoingRight = true;   //in the right side the values are positive
-    private bool succes = false;
+    private bool gameOver = false;
 
     private void Start()
     {
@@ -57,9 +57,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //if game is started and isn't over then count the score
-        if (isReady && !succes)
+        if (isReady && !gameOver)
         {
-            score = Time.time / 6;
             scoreText.text = Mathf.Round(score).ToString();
         }
 
@@ -112,26 +111,44 @@ public class PlayerController : MonoBehaviour
             rigid.velocity = new Vector2(-speed, rigid.velocity.y);
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.tag == "Diamond")
+        {
+            score += 10f;
+            print("Its a diamond");
+            col.gameObject.SetActive(false);
+        }
+        if(col.tag == "Coin")
+        {
+            score++;
+            print("Its a Coin");
+            col.gameObject.SetActive(false);
+        }
+    }
+
     //Detect our final platform
     private void OnCollisionEnter2D(Collision2D col)
     {
         //If the last collider is the one as we set as final then succes
         if (col.gameObject.tag == "Final")
         {
-            //Succes , end the game
             isReady = false;
-            succes = true;
+            gameOver = true;
             CameraController.cameraMovingSpeed = 0f;
             CameraController.isReady = false;
             isGoingLeft = false;
             isGoingRight = false;
+            Time.timeScale = 0.2f;
+            print("Game over by Spikes");
             print("Game over by final");
         }
         if (col.gameObject.tag == "Enemy")
         {
             //Succes , end the game
             isReady = false;
-            succes = true;
+            gameOver = true;
+            Time.timeScale = 0.2f;
             CameraController.cameraMovingSpeed = 0f;
             CameraController.isReady = false;
             isGoingLeft = false;
