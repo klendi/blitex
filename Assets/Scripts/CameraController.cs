@@ -6,9 +6,11 @@ public class CameraController : MonoBehaviour
 {
     public static float cameraMovingSpeed = 0.2f;
     public GameObject player;
+    public static bool isReady = false;
 
     private void Update()
     {
-        transform.position += new Vector3(0, -cameraMovingSpeed / 16);
+        if (isReady)
+            transform.position += new Vector3(0, -cameraMovingSpeed / 16);
     }
 }
