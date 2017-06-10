@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameColor currentColor;
 
     private bool isReady = false;
-    private bool isGoingLeft = false;
+    private bool isGoingLeft = false;    //This make system more stable
     private bool isGoingRight = true;   //in the right side the values are positive
     private bool succes = false;
 
