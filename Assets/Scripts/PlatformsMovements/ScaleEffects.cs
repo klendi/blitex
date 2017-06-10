@@ -15,23 +15,11 @@ public class ScaleEffects : MonoBehaviour
     float timecounter = 0;
 
     public ScaleType scaleType = ScaleType.Side;
-    BoxCollider2D objCol;
-
-    private void Start()
-    {
-        objCol = GetComponent<BoxCollider2D>();
-    }
 
     private void Update()
     {
         timecounter += Time.deltaTime * speed;
-
-        if (transform.localScale.x == 0.2f && transform.localScale.y == 0.2f)
-            objCol.gameObject.SetActive(false);
-        else
-            objCol.gameObject.SetActive(true);
-
-
+        
         if (scaleType == ScaleType.Up)
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Cos(timecounter) * range);
 
