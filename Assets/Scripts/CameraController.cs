@@ -6,11 +6,20 @@ public class CameraController : MonoBehaviour
 {
     public static float cameraMovingSpeed = 0.2f;
     public GameObject player;
-    public static bool isReady = false;
+    public static bool isReady;
 
     private void Update()
     {
         if (isReady)
             transform.position += new Vector3(0, -cameraMovingSpeed / 16);
+    }
+
+    public static void Stop()
+    {
+        isReady = false;
+    }
+    public static void Play()
+    {
+        isReady = true;
     }
 }
