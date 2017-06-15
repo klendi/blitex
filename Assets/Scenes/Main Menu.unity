@@ -631,7 +631,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.18382353, g: 0.18112023, b: 0.18112023, a: 0}
+  m_BackGroundColor: {r: 0.036980975, g: 0.09756234, b: 0.1397059, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 1248734063}
   - component: {fileID: 1248734062}
   - component: {fileID: 1248734061}
+  - component: {fileID: 1248734064}
   m_Layer: 5
   m_Name: BlitexHeader
   m_TagString: Untagged
@@ -739,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6544118, b: 0.6544118, a: 1}
+  m_Color: {r: 0, g: 0.5019608, b: 0.5019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -759,13 +760,29 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: blitexw
+  m_Text: 'blitex
+
+'
 --- !u!222 &1248734063
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1248734059}
+--- !u!114 &1248734064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248734059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 1, b: 0.9897959, a: 0.978}
+  m_EffectDistance: {x: 3.09, y: -1.24}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1469937811
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public Text coinsText;
     public GameObject pauseTab;
     public Button pauseButton;
-    public Text diamondText;
     public GameObject startTab;
     public GameObject startTabExit;
     public Button startGameButton;
@@ -24,8 +23,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     private bool isReady = false;
-    private bool isGoingLeft = false;
-    private bool isGoingRight = true;   //in the right side the values are positive
+    private bool isGoingLeft = true;
+    private bool isGoingRight = false;   //in the right side the values are positive
     private bool gameOver = false;
     private bool paused = false;
 
@@ -47,7 +46,6 @@ public class PlayerController : MonoBehaviour
         if (isReady && !gameOver && !paused)
         {
             coinsText.text = Mathf.Round(coins).ToString();
-            diamondText.text = Mathf.Round(diamonds).ToString();
         }
 
         //If the player goes on the left too much then he spawn to other side
@@ -101,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnGameInit()
     {
-        print("Game Inited");
+        print("Game Started");
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;
         isReady = true;
