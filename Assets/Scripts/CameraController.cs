@@ -4,30 +4,48 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static float cameraMovingSpeed = 0.2f;
+    public static CameraController Instance { get; set; }
+    public float cameraMovingSpeed = 0.2f;
     public GameObject player;
-    public bool DownWards = true;
-    public static bool isReady;
+    public bool downWards = true;
+    public bool isReady;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Update()
     {
-        if (isReady && DownWards)
+        if (isReady && downWards)
             transform.position += new Vector3(0, -cameraMovingSpeed / 16);
-        else if (isReady && !DownWards)
-            transform.position += new Vector3(-cameraMovingSpeed / 16, 0);
+        else if (isReady && !downWards)
+            transform.position += new Vector3(0f, cameraMovingSpeed / 16);
     }
 
-    public static void Stop()
+    public void Stop()
     {
         isReady = false;
     }
-    public static void Play()
+    public void Play()
     {
         isReady = true;
     }
-    public static void Play(float cameraSpeed)
+    public void Play(float cameraSpeed, bool down)
     {
         cameraMovingSpeed = cameraSpeed;
         isReady = true;
+        if (down)
+            downWards = true;
+        else if (!down)
+            downWards = false;
+    }
+    public void Play(bool down)
+    {
+        isReady = true;
+
+        if (down)
+            downWards = true;
+        else if (!down)
+            downWards = false;
     }
 }

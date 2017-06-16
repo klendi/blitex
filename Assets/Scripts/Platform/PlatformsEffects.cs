@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PlatformsEffects : MonoBehaviour
 {
-    /// <summary
-    /// This class is all in one
-    /// That mean that you can do all the kind of animations if you drag
-    /// and drop the gameobject in the array
-    /// but you have three kinds of scripts (int this folder) that do that seperately
-    /// and you have to attach to a object
-    /// </summary>
-
-
     public GameObject[] leftRightMovement;   //plaforms that will move left right
     public GameObject[] scaleRightLeft;      //platforms that will move right left
     public GameObject[] upDownMovement;     //platforms that will move up down

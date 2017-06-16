@@ -3,38 +3,49 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Variables")]
     public float speed;
     public float coins, diamonds;
+    public float cameraStartingSpeed = 0.2f;
     float screenHalfInWorldUnits;
+    int currentSceneIndex = 1;
 
     [Header("Attachments")]
     public Text coinsText;
     public GameObject pauseTab;
     public Button pauseButton;
+    public Button soundButton;
+    public Text highScoreCoins;
+    public Text highScoreDiamonds;
+    public GameObject succesTab;
     public GameObject startTab;
+    public GameObject uiTab;
     public GameObject startTabExit;
     public Button startGameButton;
+    public GameObject totalCoins, totalDiamonds;
+    public Sprite[] soundSprites;
 
     private Rigidbody2D rigid;
-    private Animator animator;
 
     private bool isReady = false;
     private bool isGoingLeft = true;
     private bool isGoingRight = false;   //in the right side the values are positive
     private bool gameOver = false;
     private bool paused = false;
+    private bool soundOn = true;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        animator = startGameButton.GetComponent<Animator>();
         StartCoroutine(Load(0.2f, true));
 
         pauseTab.SetActive(false);
+        succesTab.SetActive(false);
+        uiTab.SetActive(true);
         pauseButton.enabled = false;
 
         float halfPlayerWidth = transform.localScale.x / 2f;
@@ -82,6 +93,7 @@ public class PlayerController : MonoBehaviour
             rigid.velocity = new Vector2(-speed, rigid.velocity.y);
     }
 
+    //time to wait when we load the play button at start
     private IEnumerator Load(float seconds, bool entering)
     {
         if (entering)
@@ -103,7 +115,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;
         isReady = true;
-        CameraController.Play();
+        CameraController.Instance.Play(cameraStartingSpeed, true);
     }
     public void OnPauseClicked()
     {
@@ -111,7 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             paused = true;
             pauseTab.SetActive(true);
-            CameraController.Stop();
+            CameraController.Instance.Stop();
             Time.timeScale = 0;
         }
     }
@@ -121,9 +133,39 @@ public class PlayerController : MonoBehaviour
         {
             paused = false;
             pauseTab.SetActive(false);
-            CameraController.Play();
+            CameraController.Instance.Play();
             Time.timeScale = 1;
+            isGoingLeft = !isGoingLeft;
+            isGoingRight = !isGoingRight;
         }
+    }
+    public void OnHomeClicked()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void OnSoundClicked()
+    {
+        soundOn = !soundOn;
+        AudioListener.pause = soundOn;
+
+        if (soundOn)
+        {
+            soundButton.GetComponent<Image>().sprite = soundSprites[1];
+        }
+        if (!soundOn)
+        {
+            soundButton.GetComponent<Image>().sprite = soundSprites[0];
+        }
+    }
+    public void OnNextClicked()
+    {
+        Manager.Instance.sceneIndex++;
+        SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());
+    }
+    public void OnReplayClicked()
+    {
+        //load the current scene which is 1
+        SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -131,29 +173,38 @@ public class PlayerController : MonoBehaviour
         if (col.tag == "Diamond")
         {
             diamonds++;
-            print("Its a diamond");
+            col.gameObject.GetComponent<AudioSource>().Play();
             col.gameObject.SetActive(false);
         }
         if (col.tag == "Coin")
         {
             coins++;
-            print("Its a Coin");
+            col.gameObject.GetComponent<AudioSource>().Play();
             col.gameObject.SetActive(false);
         }
         if (col.tag == "Final")
         {
-            gameOver = true;
-            CameraController.Stop();
-            print("Succes");
-            gameObject.SetActive(false);
+            OnGameSucces();
         }
+    }
+    private void OnGameSucces()
+    {
+        uiTab.SetActive(false);
+        gameOver = true;
+        highScoreCoins.text = string.Format("{0}/{1}", coins, totalCoins.transform.childCount);
+        highScoreDiamonds.text = string.Format("{0} / {1}", diamonds, totalDiamonds.transform.childCount);
+        CameraController.Instance.Play(0.08f, false);
+        succesTab.SetActive(true);
+        gameObject.SetActive(false);
+        Manager.Instance.coins = (int)coins;
+        Manager.Instance.diamonds = (int)diamonds;
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
         {
             gameOver = true;
-            CameraController.Stop();
+            CameraController.Instance.Stop();
             rigid.constraints = RigidbodyConstraints2D.FreezeAll;
             print("Game over by Spikes");
         }
@@ -164,7 +215,7 @@ public class PlayerController : MonoBehaviour
         {
             print("Game over");
             gameOver = true;
-            CameraController.Stop();
+            CameraController.Instance.Stop();
             gameObject.SetActive(false);
         }
     }
