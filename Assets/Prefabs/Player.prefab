@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4696795119336048}
   - component: {fileID: 212197526391410036}
+  - component: {fileID: 50401371424255946}
   - component: {fileID: 58948642296496048}
-  - component: {fileID: 50909506649787062}
   - component: {fileID: 114863192935312204}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Cyan
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50909506649787062
+--- !u!50 &50401371424255946
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -53,15 +53,15 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.11299547
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: 9a8903185c9736c4ba739675ccb1332a, type: 2}
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &58948642296496048
 CircleCollider2D:
@@ -91,18 +91,24 @@ MonoBehaviour:
   speed: 3
   coins: 0
   diamonds: 0
-  coinsText: {fileID: 0}
-  pauseTab: {fileID: 0}
   pauseButton: {fileID: 0}
   soundButton: {fileID: 0}
-  highScoreCoins: {fileID: 0}
-  highScoreDiamonds: {fileID: 0}
-  succesTab: {fileID: 0}
-  startTab: {fileID: 0}
-  startTabExit: {fileID: 0}
   startGameButton: {fileID: 0}
+  highScoreCoins: {fileID: 0}
+  coinsText: {fileID: 0}
+  highScoreDiamonds: {fileID: 0}
+  pauseTab: {fileID: 0}
+  succesTab: {fileID: 0}
+  soundManager: {fileID: 0}
+  uiTab: {fileID: 0}
+  startTab: {fileID: 0}
+  gameOverTab: {fileID: 0}
+  startTabExit: {fileID: 0}
   totalCoins: {fileID: 0}
   totalDiamonds: {fileID: 0}
+  sounds:
+  - {fileID: 8300000, guid: 375b5ebf53aba7b48b91878919eb4994, type: 3}
+  - {fileID: 8300000, guid: 375b5ebf53aba7b48b91878919eb4994, type: 3}
   soundSprites:
   - {fileID: 21300000, guid: acab06e64192bf04e83531263cf97e72, type: 3}
   - {fileID: 21300000, guid: 836eae1c850eb9a4cac1358a8fa50235, type: 3}

@@ -10,41 +10,45 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     public float speed;
     public float coins, diamonds;
-    public float cameraStartingSpeed = 0.2f;
     float screenHalfInWorldUnits;
-    int currentSceneIndex = 1;
 
     [Header("Attachments")]
-    public Text coinsText;
-    public GameObject pauseTab;
     public Button pauseButton;
     public Button soundButton;
-    public Text highScoreCoins;
-    public Text highScoreDiamonds;
-    public GameObject succesTab;
-    public GameObject startTab;
-    public GameObject uiTab;
-    public GameObject startTabExit;
     public Button startGameButton;
+    public Text highScoreCoins;
+    public Text coinsText;
+    public Text highScoreDiamonds;
+    public GameObject pauseTab;
+    public GameObject succesTab;
+    public GameObject soundManager;
+    public GameObject uiTab;
+    public GameObject startTab;
+    public GameObject gameOverTab;
+    public GameObject startTabExit;
     public GameObject totalCoins, totalDiamonds;
+    public AudioClip[] sounds; //first one is coins sound then diamonds
     public Sprite[] soundSprites;
 
     private Rigidbody2D rigid;
+    private AudioSource gameAudio;
 
     private bool isReady = false;
     private bool isGoingLeft = true;
     private bool isGoingRight = false;   //in the right side the values are positive
     private bool gameOver = false;
     private bool paused = false;
-    private bool soundOn = true;
+    private bool soundOn = false;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         StartCoroutine(Load(0.2f, true));
-
+        gameAudio = soundManager.GetComponent<AudioSource>();
+        gameAudio.Play();
         pauseTab.SetActive(false);
         succesTab.SetActive(false);
+        gameOverTab.SetActive(false);
         uiTab.SetActive(true);
         pauseButton.enabled = false;
 
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+
         //if game is started and isn't over then count the score
         if (isReady && !gameOver && !paused)
         {
@@ -87,12 +92,20 @@ public class PlayerController : MonoBehaviour
         //is moving to right ? then set the direction to right and don't stop
         if (isGoingRight && isReady && !paused)
             rigid.velocity = new Vector2(speed, rigid.velocity.y);
+            //transform.Translate(Vector2.right * speed * Time.deltaTime);
+
 
         //is moving to left ? then set the direction to left and don't stop
         else if (isGoingLeft && isReady && !paused)
             rigid.velocity = new Vector2(-speed, rigid.velocity.y);
+            //transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
+    private void PlaySound(AudioClip clip)
+    {
+        soundManager.GetComponent<AudioSource>().clip = clip;
+        soundManager.GetComponent<AudioSource>().Play();
+    }
     //time to wait when we load the play button at start
     private IEnumerator Load(float seconds, bool entering)
     {
@@ -115,7 +128,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;
         isReady = true;
-        CameraController.Instance.Play(cameraStartingSpeed, true);
+        CameraController.Instance.Play(CameraController.Instance.cameraMovingSpeed, true);
     }
     public void OnPauseClicked()
     {
@@ -150,11 +163,11 @@ public class PlayerController : MonoBehaviour
 
         if (soundOn)
         {
-            soundButton.GetComponent<Image>().sprite = soundSprites[1];
+            soundButton.GetComponent<Image>().sprite = soundSprites[0];
         }
         if (!soundOn)
         {
-            soundButton.GetComponent<Image>().sprite = soundSprites[0];
+            soundButton.GetComponent<Image>().sprite = soundSprites[1];
         }
     }
     public void OnNextClicked()
@@ -173,50 +186,55 @@ public class PlayerController : MonoBehaviour
         if (col.tag == "Diamond")
         {
             diamonds++;
-            col.gameObject.GetComponent<AudioSource>().Play();
+            PlaySound(sounds[1]);
             col.gameObject.SetActive(false);
         }
         if (col.tag == "Coin")
         {
             coins++;
-            col.gameObject.GetComponent<AudioSource>().Play();
+            PlaySound(sounds[0]);
             col.gameObject.SetActive(false);
         }
         if (col.tag == "Final")
         {
             OnGameSucces();
+            gameOver = true;
         }
     }
     private void OnGameSucces()
     {
-        uiTab.SetActive(false);
         gameOver = true;
+        succesTab.SetActive(true);
+        uiTab.SetActive(false);
+        gameObject.SetActive(false);
+        rigid.constraints = RigidbodyConstraints2D.FreezeAll;
         highScoreCoins.text = string.Format("{0}/{1}", coins, totalCoins.transform.childCount);
         highScoreDiamonds.text = string.Format("{0} / {1}", diamonds, totalDiamonds.transform.childCount);
-        CameraController.Instance.Play(0.08f, false);
-        succesTab.SetActive(true);
+        Manager.Instance.coins += (int)coins;
+        Manager.Instance.diamonds += (int)diamonds;
+        CameraController.Instance.Play(.5f,false);
+    }
+    private void OnGameOver()
+    {
+        gameOver = true;
+        uiTab.SetActive(false);
+        gameOverTab.SetActive(true);
+        CameraController.Instance.Stop();
+        //play the blowing particles
         gameObject.SetActive(false);
-        Manager.Instance.coins = (int)coins;
-        Manager.Instance.diamonds = (int)diamonds;
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            gameOver = true;
-            CameraController.Instance.Stop();
-            rigid.constraints = RigidbodyConstraints2D.FreezeAll;
-            print("Game over by Spikes");
+            OnGameOver();
         }
     }
     private void OnBecameInvisible()
     {
-        if (!gameOver)
+        if (gameOver == false)
         {
-            print("Game over");
-            gameOver = true;
-            CameraController.Instance.Stop();
-            gameObject.SetActive(false);
+            OnGameOver();
         }
     }
 }

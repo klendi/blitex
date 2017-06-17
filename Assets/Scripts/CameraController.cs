@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public static CameraController Instance { get; set; }
-    public float cameraMovingSpeed = 0.2f;
-    public GameObject player;
+    public float cameraMovingSpeed = 2f;
+    public float camerSpeedGameOver = .5f;
     public bool downWards = true;
     public bool isReady;
 
@@ -17,9 +17,13 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         if (isReady && downWards)
-            transform.position += new Vector3(0, -cameraMovingSpeed / 16);
+        {
+            transform.Translate(Vector2.down * cameraMovingSpeed * Time.deltaTime);
+        }
         else if (isReady && !downWards)
-            transform.position += new Vector3(0f, cameraMovingSpeed / 16);
+        {
+            transform.Translate(Vector2.up * cameraMovingSpeed * Time.deltaTime);
+        }
     }
 
     public void Stop()
