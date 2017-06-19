@@ -1,21 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LevelIcon : MonoBehaviour
 {
     private void OnMouseDown()
     {
         string levelName = gameObject.name;
+        Manager.Instance.sceneIndex = int.Parse(levelName);
 
         try
         {
             print("Loading scene " + levelName);
             SceneManager.LoadScene(levelName);
         }
-        catch(UnityException)
+        catch(Exception)
         {
             Debug.Log("Scene don't exist yet");
         }

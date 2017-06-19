@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
         }
         else if (isReady && !downWards)
         {
-            transform.Translate(Vector2.up * cameraMovingSpeed * Time.deltaTime);
+            transform.Translate(Vector2.down * cameraMovingSpeed * Time.deltaTime);
         }
     }
 
@@ -41,7 +41,10 @@ public class CameraController : MonoBehaviour
         if (down)
             downWards = true;
         else if (!down)
+        {
             downWards = false;
+            cameraMovingSpeed = -cameraSpeed;
+        }
     }
     public void Play(bool down)
     {
