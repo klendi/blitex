@@ -8,7 +8,6 @@ public class LevelManager : MonoBehaviour
 {
     public int diamonds = 0;
 
-
     [Header("Attachments")]
     PlayerController player;
     CameraController cameraController;
@@ -40,8 +39,8 @@ public class LevelManager : MonoBehaviour
     {
         cameraController = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerController>();
-        StartCoroutine(Load(0.2f, true));    //load the big play button when the level loads, play that after 0.2 seconds
         gameAudio = soundManager.GetComponent<AudioSource>();
+        StartCoroutine(Load(0.2f, true));    //load the big play button when the level loads, play that after 0.2 seconds
         gameAudio.Play();                    //play the soundtrack
         pauseTab.SetActive(false);           //set the pause tab false
         succesTab.SetActive(false);         //set the succes tab false
@@ -148,8 +147,9 @@ public class LevelManager : MonoBehaviour
     }
     public void OnReplayClicked()
     {
+        //reload the current scene
         SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());
-        //load the current scene
+        Time.timeScale = 1;
     }
     public void OnGameSucces()
     {
@@ -164,8 +164,10 @@ public class LevelManager : MonoBehaviour
     public void OnGameOver()
     {
         gameOver = true;
-        uiTab.SetActive(false);
-        gameOverTab.SetActive(true);
+        if (uiTab != null)
+            uiTab.SetActive(false);
+        if (!gameOverTab.activeInHierarchy)
+            gameOverTab.SetActive(true);
         cameraController.Stop();
         //play the blowing particles
         player.gameObject.SetActive(false);

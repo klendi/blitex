@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     public float speed;
     float screenHalfInWorldUnits;
+    float visibleHeightThreshold;
 
     [HideInInspector]
     public Rigidbody2D rigid;
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             col.gameObject.SetActive(false);
             level.diamonds++;
-            level.PlaySound(level.sounds[1]);
+            level.PlaySound(level.sounds[0]);
         }
         if (col.tag == "Final")
         {
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemy")
         {
+            gameOver = true;
             level.OnGameOver();
         }
     }

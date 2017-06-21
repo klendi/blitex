@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance { get; set; }
+
 
     public GameObject[] playersPrefab;
     public Text coins, diamonds;

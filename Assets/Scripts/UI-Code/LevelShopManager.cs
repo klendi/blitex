@@ -7,6 +7,11 @@ public class LevelShopManager : MonoBehaviour
 {
     public GameObject infoLabel;
 
+    public void Start()
+    {
+        infoLabel.SetActive(false);
+    }
+
     public void OnShopClicked()
     {
         //we load the shop level
@@ -21,6 +26,10 @@ public class LevelShopManager : MonoBehaviour
 
     public void OnInfoClicked()
     {
-        print("Info button clicked");
+        infoLabel.SetActive(true);
+    }
+    public void OnInfoExitClicked()
+    {
+        infoLabel.SetActive(false);
     }
 }
