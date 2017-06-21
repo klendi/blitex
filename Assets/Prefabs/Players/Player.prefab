@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4235565762824260}
   - component: {fileID: 212247976739697142}
-  - component: {fileID: 50664380451774820}
   - component: {fileID: 58492402522981406}
+  - component: {fileID: 50664380451774820}
   - component: {fileID: 114112307068662846}
   m_Layer: 0
   m_Name: Player
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1561551071471250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.35, z: 0}
-  m_LocalScale: {x: -0.011557045, y: -0.01155705, z: -0.01155705}
+  m_LocalScale: {x: -0.15642436, y: -0.15642425, z: -0.15642425}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.11299547
+  m_Mass: 0.12594432
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
@@ -76,7 +76,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 16.41
+  m_Radius: 1.28
 --- !u!114 &114112307068662846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5286b34839940ca42b0bb5c762d14a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   rigid: {fileID: 0}
   isGoingLeft: 1
   isGoingRight: 0
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1de846cdc4a5e3409736a72bb9f7769, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8c995506fc2f06d428345834a0283636, type: 3}
+  m_Color: {r: 0.121568635, g: 0.93725497, b: 0.9725491, a: 1}
   m_FlipX: 0
   m_FlipY: 0

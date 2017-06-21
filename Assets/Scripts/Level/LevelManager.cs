@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance { get; set; }
-
     public int diamonds = 0;
 
+
     [Header("Attachments")]
+    PlayerController player;
+    CameraController cameraController;
     public Button pauseButton;
     public Button soundButton;
     public Button startGameButton;
@@ -31,19 +32,14 @@ public class LevelManager : MonoBehaviour
 
     private bool soundOn = false;   //dont change this , there is a reason i left this that way
     private bool isReady = false;
-    [HideInInspector]
-    public bool paused = false;
-    [HideInInspector]
-    public bool gameOver = false;
 
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    [HideInInspector]
+    public bool paused = false, gameOver = false;
 
     private void Start()
     {
+        cameraController = FindObjectOfType<CameraController>();
+        player = FindObjectOfType<PlayerController>();
         StartCoroutine(Load(0.2f, true));    //load the big play button when the level loads, play that after 0.2 seconds
         gameAudio = soundManager.GetComponent<AudioSource>();
         gameAudio.Play();                    //play the soundtrack
@@ -80,9 +76,8 @@ public class LevelManager : MonoBehaviour
     private IEnumerator WaitThenDestroy(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        PlayerController.Instance.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
-        PlayerController.Instance.gameObject.SetActive(false);
-
+        player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+        player.gameObject.SetActive(false);
     }
 
 
@@ -93,8 +88,8 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;    //enable the pause button
         isReady = true;             //give the player permission to move
-        PlayerController.Instance.isReady = true;
-        CameraController.Instance.Play(CameraController.Instance.cameraMovingSpeed, true);     //play camera with x speed at downwards
+        player.isReady = true;
+        cameraController.Play(cameraController.cameraMovingSpeed, true);
     }
     public void PlaySound(AudioClip clip)
     {
@@ -105,11 +100,11 @@ public class LevelManager : MonoBehaviour
     {
         if (!gameOver)
         {
-            PlayerController.Instance.paused = true;
+            player.paused = true;
             paused = true;
             pauseTab.SetActive(true);
-            PlayerController.Instance.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
-            CameraController.Instance.Stop();   //stop the camera
+            player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            cameraController.Stop();
             Time.timeScale = 0;                 //freeze the time
         }
     }
@@ -117,13 +112,14 @@ public class LevelManager : MonoBehaviour
     {
         if (!gameOver && paused)
         {
-            PlayerController.Instance.paused = false;
+            player.paused = false;
             pauseTab.SetActive(false);
-            PlayerController.Instance.rigid.constraints = RigidbodyConstraints2D.None;
-            CameraController.Instance.Play();
+            player.rigid.constraints = RigidbodyConstraints2D.None;
+            cameraController.Play();
             Time.timeScale = 1;
-            PlayerController.Instance.isGoingLeft = !PlayerController.Instance.isGoingLeft;       //we use these booleans change to keep the same direction of the player after game resume
-            PlayerController.Instance.isGoingRight = !PlayerController.Instance.isGoingRight;
+
+            player.isGoingLeft = !player.isGoingLeft;   //this is for maintaining the player directions when resume the game
+            player.isGoingRight = !player.isGoingRight;
         }
     }
     public void OnHomeClicked()
@@ -154,11 +150,10 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());
         //load the current scene
-        //SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());
     }
     public void OnGameSucces()
     {
-        CameraController.Instance.Play(.2f, false);
+        cameraController.Play(.2f, false);
         gameOver = true;
         succesTab.SetActive(true);
         uiTab.SetActive(false);
@@ -171,8 +166,8 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
         uiTab.SetActive(false);
         gameOverTab.SetActive(true);
-        CameraController.Instance.Stop();
+        cameraController.Stop();
         //play the blowing particles
-        PlayerController.Instance.gameObject.SetActive(false);
+        player.gameObject.SetActive(false);
     }
 }

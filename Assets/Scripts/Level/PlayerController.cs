@@ -1,14 +1,8 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance { get; set; }
-
     [Header("Variables")]
     public float speed;
     float screenHalfInWorldUnits;
@@ -16,23 +10,15 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rigid;
 
-    [HideInInspector]
-    public bool isGoingLeft = true;
-    [HideInInspector]
-    public bool isGoingRight = false;
-    [HideInInspector]                   //in the right side the values are positive
-    public bool isReady = false;     //is this is false game cant start
-    [HideInInspector]
-    public bool gameOver = false;
-    [HideInInspector]
-    public bool paused = false;
+    LevelManager level;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    [HideInInspector]
+    public bool isGoingLeft = true, isGoingRight = false, isReady = false, gameOver = false, paused = false;
+
+
     private void Start()
     {
+        level = FindObjectOfType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
         float halfPlayerWidth = transform.localScale.x / 2f;
         screenHalfInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
@@ -82,27 +68,27 @@ public class PlayerController : MonoBehaviour
         if (col.tag == "Diamond")
         {
             col.gameObject.SetActive(false);
-            LevelManager.Instance.diamonds++;
-            LevelManager.Instance.PlaySound(LevelManager.Instance.sounds[1]);
+            level.diamonds++;
+            level.PlaySound(level.sounds[1]);
         }
         if (col.tag == "Final")
         {
-            LevelManager.Instance.OnGameSucces();
-            LevelManager.Instance.gameOver = true;
+            level.OnGameSucces();
+            level.gameOver = true;
         }
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            LevelManager.Instance.OnGameOver();
+            level.OnGameOver();
         }
     }
     private void OnBecameInvisible()
     {
-        if (!LevelManager.Instance.gameOver)
+        if (!level.gameOver)
         {
-            LevelManager.Instance.OnGameOver();
+            level.OnGameOver();
         }
     }
 }

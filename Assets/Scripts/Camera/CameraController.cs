@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController Instance { get; set; }
     public float cameraMovingSpeed = 2f;
     public float camerSpeedGameOver = .5f;
     public bool downWards = true;
     public bool isReady;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
     private void Update()
     {
         if (isReady && downWards)
