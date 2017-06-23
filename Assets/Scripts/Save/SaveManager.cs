@@ -12,7 +12,7 @@ public class SaveManager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        //ResetSave();
+        ResetSave();
         Load();
     }
 
@@ -68,6 +68,13 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("save");
     }
 
+    public bool IsActiveBall(int index)
+    {
+        if (index == data.activeBall)
+            return true;
+        else
+            return false;
+    }
     public bool BuyBall(int index, int cost)
     {
         //we can afford it, buy it bitch

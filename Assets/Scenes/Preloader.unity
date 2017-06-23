@@ -605,7 +605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 1
-  activePlayerBall: 0
+  soundOn: 0
+  soundSprites:
+  - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
+  - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}
   playerPrefabs:
   - {fileID: 1561551071471250, guid: ca158fab95dae704ca5342e0943a1d0e, type: 2}
   - {fileID: 1728524177526394, guid: d34c8699992ea564ab596fbb52d531c8, type: 2}
@@ -619,7 +622,6 @@ MonoBehaviour:
   - {fileID: 1728524177526394, guid: e12215565e71b0c4f98ec6a8892dba84, type: 2}
   - {fileID: 1728524177526394, guid: 799d52589d46b834384aecbf70dd9cd7, type: 2}
   - {fileID: 1728524177526394, guid: bc25047fe5095db458bc986a23fb614f, type: 2}
-  playerToSpawn: {fileID: 0}
 --- !u!114 &1938027139
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
     public GameObject totalDiamonds;  //we find the total number of diamonds counting his childs
     public Sprite[] soundSprites;
 
-    private bool soundOn = false;   //dont change this , there is a reason i left this that way
     private bool isReady = false;
 
     [HideInInspector]
@@ -42,6 +41,11 @@ public class LevelManager : MonoBehaviour
         gameOverTab.SetActive(false);       //set the game over tab false
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
+
+        if (Manager.Instance.soundOn)
+            soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
+        else
+            soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
     }
 
     private void Update()
@@ -123,17 +127,7 @@ public class LevelManager : MonoBehaviour
     }
     public void OnSoundClicked()
     {
-        soundOn = !soundOn;
-        AudioListener.pause = soundOn;
-
-        if (soundOn)
-        {
-            soundButton.GetComponent<Image>().sprite = soundSprites[0];
-        }
-        if (!soundOn)
-        {
-            soundButton.GetComponent<Image>().sprite = soundSprites[1];
-        }
+        Manager.Instance.OnSoundClick(soundButton);
     }
     public void OnNextClicked()
     {

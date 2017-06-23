@@ -11,17 +11,26 @@ public class ShopManager : MonoBehaviour
     public ShopButtons[] buttons;
     private int[] BallCosts = { 60, 100, 110, 120, 130, 150, 160, 170, 180, 190, 120, 130, 240 };
     public int activeBallIndex;
-    private Color green;   //a ball is bought is is green, is not bought if it is red, and active is is greenish
+    public int selectedBallIndex = 0;
+    public int savemanagerindex;
+    private Color green;   //a ball is bought is is green, is not bought if it is red, and active is is cyan
 
     private void Awake()
     {
         UpdateText();
-        //SaveManager.Instance.Load();
-        activeBallIndex = SaveManager.Instance.data.activeBall;
+        SaveManager.Instance.Load();
+        savemanagerindex = SaveManager.Instance.data.activeBall;
+        activeBallIndex = SaveManager.Instance.data.activeBall;   //load 
         green = new Color(0, 255, 118);
+        SetColors();
     }
 
-    private void Update()   //this is to refresh the frames colors
+    private void Update()
+    {
+        savemanagerindex = SaveManager.Instance.data.activeBall;
+    }
+
+    private void SetColors()   //this is to refresh the frames colors
     {
         foreach (var button in buttons)
         {
@@ -44,9 +53,20 @@ public class ShopManager : MonoBehaviour
 
     public void SetBall(int index)
     {
+        SetActiveBall(index);
+        SetColors();
+    }
+    public void SetActiveBall(int index)
+    {
+        if (index == activeBallIndex)
+            return;
+        frames[index].color = Color.cyan;               //put the active one on cyan
+        frames[selectedBallIndex].color = Color.green;  //put the previous one on green
+
+        selectedBallIndex = index;
         activeBallIndex = index;
-        //SaveManager.Instance.data.activeBall = index;
-        // SaveManager.Instance.Save();
+        SaveManager.Instance.data.activeBall = activeBallIndex;
+        SetColors();
     }
     private void UpdateText()
     {
@@ -55,9 +75,8 @@ public class ShopManager : MonoBehaviour
 
     public void OnHomeClick()
     {
-        SceneManager.LoadScene("Main Menu");
         SaveManager.Instance.data.activeBall = activeBallIndex;
-        SaveManager.Instance.Save();
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void OnBallBuy(int index)
@@ -80,8 +99,6 @@ public class ShopManager : MonoBehaviour
             }
             else
             {
-                print("Not enough coins or diamonds");
-                print("Now ur rich bitch bro");
                 SaveManager.Instance.data.diamonds += 5000;
                 UpdateText();
             }

@@ -1,25 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; set; }
     public int sceneIndex = 1;
-    public int activePlayerBall = 0;
+    public bool soundOn = false;
+    public Sprite[] soundSprites;
     public GameObject[] playerPrefabs;
-
-    [HideInInspector]
-    public GameObject playerToSpawn;
 
     private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    private void Start()
+
+    public void OnSoundClick(Button btn)
     {
-        activePlayerBall = SaveManager.Instance.data.activeBall;
-        playerToSpawn = playerPrefabs[activePlayerBall];
+        soundOn = !soundOn;
+        AudioListener.pause = soundOn;
+
+        if (soundOn)
+        {
+            btn.GetComponent<Image>().sprite = soundSprites[0];
+        }
+        if (!soundOn)
+        {
+            btn.GetComponent<Image>().sprite = soundSprites[1];
+        }
     }
 }
