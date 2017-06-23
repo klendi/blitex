@@ -24,10 +24,7 @@ public class LevelManager : MonoBehaviour
     public GameObject gameOverTab;
     public GameObject startTabExit;
     public GameObject totalDiamonds;  //we find the total number of diamonds counting his childs
-    public AudioClip[] sounds;
     public Sprite[] soundSprites;
-
-    private AudioSource gameAudio;
 
     private bool soundOn = false;   //dont change this , there is a reason i left this that way
     private bool isReady = false;
@@ -39,9 +36,7 @@ public class LevelManager : MonoBehaviour
     {
         cameraController = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerController>();
-        gameAudio = soundManager.GetComponent<AudioSource>();
         StartCoroutine(Load(0.2f, true));    //load the big play button when the level loads, play that after 0.2 seconds
-        gameAudio.Play();                    //play the soundtrack
         pauseTab.SetActive(false);           //set the pause tab false
         succesTab.SetActive(false);         //set the succes tab false
         gameOverTab.SetActive(false);       //set the game over tab false
@@ -56,7 +51,6 @@ public class LevelManager : MonoBehaviour
             diamondsText.text = diamonds.ToString();
         }
     }
-
 
     private IEnumerator Load(float seconds, bool entering)
     {
@@ -78,7 +72,12 @@ public class LevelManager : MonoBehaviour
         player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
         player.gameObject.SetActive(false);
     }
-
+    private IEnumerator WaitThenUnplay(float seconds, float minVolume)
+    {
+        AudioManager.instance.sounds[0].source.volume = minVolume;
+        yield return new WaitForSeconds(seconds);
+        AudioManager.instance.sounds[0].source.volume = .7f;
+    }
 
     public void OnGameInit()
     {
@@ -89,11 +88,6 @@ public class LevelManager : MonoBehaviour
         isReady = true;             //give the player permission to move
         player.isReady = true;
         cameraController.Play(cameraController.cameraMovingSpeed, true);
-    }
-    public void PlaySound(AudioClip clip)
-    {
-        soundManager.GetComponent<AudioSource>().clip = clip;
-        soundManager.GetComponent<AudioSource>().Play();
     }
     public void OnPauseClicked()
     {
@@ -123,6 +117,8 @@ public class LevelManager : MonoBehaviour
     }
     public void OnHomeClicked()
     {
+        Time.timeScale = 1;
+        gameOver = true;
         SceneManager.LoadScene("Main Menu");
     }
     public void OnSoundClicked()
@@ -154,6 +150,8 @@ public class LevelManager : MonoBehaviour
     public void OnGameSucces()
     {
         cameraController.Play(.2f, false);
+        AudioManager.instance.PlaySoundTrack("SuccesSound");
+        StartCoroutine(WaitThenUnplay(2.2f, .2f));
         gameOver = true;
         succesTab.SetActive(true);
         uiTab.SetActive(false);
@@ -166,8 +164,10 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
         if (uiTab != null)
             uiTab.SetActive(false);
-        if (!gameOverTab.activeInHierarchy)
+        if (gameOverTab != null)
             gameOverTab.SetActive(true);
+        AudioManager.instance.PlaySoundTrack("GameOverSound");
+        StartCoroutine(WaitThenUnplay(2.2f, .2f));
         cameraController.Stop();
         //play the blowing particles
         player.gameObject.SetActive(false);

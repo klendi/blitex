@@ -8,7 +8,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { get; set; }
     public SaveData data;
 
-    public void Awake()
+    private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -18,7 +18,7 @@ public class SaveManager : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetString("save", Helper.Serialize<SaveData>(data));
+        PlayerPrefs.SetString("save", Helper.Serialize(data));
     }
     public void Load()
     {
@@ -57,7 +57,7 @@ public class SaveManager : MonoBehaviour
     }
     public void CompleteLevel(int index)
     {
-        if(data.completedLevel == index)
+        if (data.completedLevel == index)
         {
             data.completedLevel++;
             Save();

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
 
     private void Start()
-    {
+    { 
         level = FindObjectOfType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
         float halfPlayerWidth = transform.localScale.x / 2f;
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             col.gameObject.SetActive(false);
             level.diamonds++;
-            level.PlaySound(level.sounds[0]);
+            AudioManager.instance.PlaySoundTrack("DiamondCollect");
         }
         if (col.tag == "Final")
         {

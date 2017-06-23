@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelShopManager : MonoBehaviour
 {
     public GameObject infoLabel;
+    public GameObject infoLabelExit;
 
     public void Start()
     {
         infoLabel.SetActive(false);
+        infoLabelExit.SetActive(false);
     }
 
     public void OnShopClicked()
@@ -30,6 +32,14 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnInfoExitClicked()
     {
+        StartCoroutine(ExitThenWait(1f));
+    }
+
+    private IEnumerator ExitThenWait(float seconds)
+    {
         infoLabel.SetActive(false);
+        infoLabelExit.SetActive(true);
+        yield return new WaitForSeconds(seconds);
+        infoLabelExit.SetActive(false);
     }
 }

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61057756479179198}
   - component: {fileID: 114751063486512524}
   m_Layer: 0
-  m_Name: Player_2
+  m_Name: Player_10
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4567bb3fa58329b4889e8eaaccf72a83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a8a268b1e731f95438c8cba0f10c6b1e, type: 3}
+  m_Color: {r: 1, g: 0, b: 0.30980393, a: 1}
   m_FlipX: 0
   m_FlipY: 0

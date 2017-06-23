@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; set; }
+    public static SoundManager Instance;
 
-    [Range(0f,1f)]
-    public float volume = 1f;
-    public bool loop = false;
-    public AudioClip[] sounds;
-    public AudioSource audioSource;
-
-    public void PlayClip(AudioClip clip)
+    void Awake()
     {
-        audioSource.volume = volume;
-        audioSource.clip = clip;
-        audioSource.Play();
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
-    public void PlayClip(AudioClip clip, Transform point)
+
+    void Start()
     {
-        audioSource.clip = clip;
-        audioSource.volume = volume;
-        AudioSource.PlayClipAtPoint(clip, point.position);
+        AudioManager.instance.PlaySoundTrack("Theme");
     }
 }

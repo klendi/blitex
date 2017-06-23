@@ -277,8 +277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 64}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -11, y: -22}
+  m_SizeDelta: {x: 91, y: 91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341801438
 MonoBehaviour:
@@ -299,7 +299,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5480369c2fb9f3e4386b80a647e042ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 383d3a0b620ce41498a7dbfbad351ee2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -606,6 +606,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 1
   activePlayerBall: 0
+  playerPrefabs:
+  - {fileID: 1561551071471250, guid: ca158fab95dae704ca5342e0943a1d0e, type: 2}
+  - {fileID: 1728524177526394, guid: d34c8699992ea564ab596fbb52d531c8, type: 2}
+  - {fileID: 1561551071471250, guid: cf30197435927c8418245fbca18485a4, type: 2}
+  - {fileID: 1561551071471250, guid: 552620b36b0c05c458e95f29ba1170aa, type: 2}
+  - {fileID: 1728524177526394, guid: 37709ac4e1c66834d99e0d7b5fc3bb45, type: 2}
+  - {fileID: 1728524177526394, guid: 37099b1189183fc458641ded2e93415c, type: 2}
+  - {fileID: 1728524177526394, guid: 1e7651adfcf7c404fbc00157923fb362, type: 2}
+  - {fileID: 1728524177526394, guid: 94a548e3d8ab2e54999276bb7b3fde0c, type: 2}
+  - {fileID: 1728524177526394, guid: 261bb8cba6116ef499e287acfc74afcc, type: 2}
+  - {fileID: 1728524177526394, guid: e12215565e71b0c4f98ec6a8892dba84, type: 2}
+  - {fileID: 1728524177526394, guid: 799d52589d46b834384aecbf70dd9cd7, type: 2}
+  - {fileID: 1728524177526394, guid: bc25047fe5095db458bc986a23fb614f, type: 2}
+  playerToSpawn: {fileID: 0}
 --- !u!114 &1938027139
 MonoBehaviour:
   m_ObjectHideFlags: 0

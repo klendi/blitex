@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class ShopButtons : MonoBehaviour
 {
+    ShopManager shopMg;
+
+    private void Awake()
+    {
+        shopMg = FindObjectOfType<ShopManager>();
+    }
     private void OnMouseDown()
     {
-        ShopManager.Instance.OnBallBuy(int.Parse(gameObject.name));
+        shopMg.OnBallBuy(int.Parse(gameObject.name) - 1);
     }
 }
