@@ -2077,6 +2077,7 @@ GameObject:
   - component: {fileID: 1844705272}
   - component: {fileID: 1844705274}
   - component: {fileID: 1844705273}
+  - component: {fileID: 1844705275}
   m_Layer: 5
   m_Name: UI Vertical Scroller
   m_TagString: Untagged
@@ -2152,6 +2153,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!225 &1844705275
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844705271}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1954902584
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void Awake()
     {
-        scroll = FindObjectOfType<UIVerticalScroller>(); 
+        scroll = FindObjectOfType<UIVerticalScroller>();
         scroll.StartingIndex = SaveManager.Instance.data.completedLevel;
 
         foreach (Transform t in levelPanel)

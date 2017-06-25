@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToSpawn: {fileID: 0}
   spawnPoint: {fileID: 543321455}
+  savemanagerindex: 0
 --- !u!1 &103823184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3723,11 +3724,6 @@ Prefab:
     - target: {fileID: 1666940534559892, guid: fa65c4eef84548e4e9870a8a26401903, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224331779494061000, guid: fa65c4eef84548e4e9870a8a26401903,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -9.900024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa65c4eef84548e4e9870a8a26401903, type: 2}
