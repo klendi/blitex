@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4139b966f501204ba0d2273b83baf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimunLoadTime: 3.5
 --- !u!114 &1098497946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,21 +608,21 @@ MonoBehaviour:
   sceneIndex: 1
   soundOn: 0
   soundSprites:
-  - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}
+  - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   playerPrefabs:
   - {fileID: 1561551071471250, guid: ca158fab95dae704ca5342e0943a1d0e, type: 2}
   - {fileID: 1728524177526394, guid: d34c8699992ea564ab596fbb52d531c8, type: 2}
-  - {fileID: 1561551071471250, guid: cf30197435927c8418245fbca18485a4, type: 2}
-  - {fileID: 1561551071471250, guid: 552620b36b0c05c458e95f29ba1170aa, type: 2}
-  - {fileID: 1728524177526394, guid: 37709ac4e1c66834d99e0d7b5fc3bb45, type: 2}
-  - {fileID: 1728524177526394, guid: 37099b1189183fc458641ded2e93415c, type: 2}
-  - {fileID: 1728524177526394, guid: 1e7651adfcf7c404fbc00157923fb362, type: 2}
-  - {fileID: 1728524177526394, guid: 94a548e3d8ab2e54999276bb7b3fde0c, type: 2}
-  - {fileID: 1728524177526394, guid: 261bb8cba6116ef499e287acfc74afcc, type: 2}
-  - {fileID: 1728524177526394, guid: e12215565e71b0c4f98ec6a8892dba84, type: 2}
-  - {fileID: 1728524177526394, guid: 799d52589d46b834384aecbf70dd9cd7, type: 2}
-  - {fileID: 1728524177526394, guid: bc25047fe5095db458bc986a23fb614f, type: 2}
+  - {fileID: 1561551071471250, guid: fa488d74515fa4c44bd659ea7f6a5523, type: 2}
+  - {fileID: 1561551071471250, guid: 780fc849be69faa4d89a8fcb6e540b52, type: 2}
+  - {fileID: 1561551071471250, guid: 3453e8f4edfc60e459dd604e6c819d81, type: 2}
+  - {fileID: 1561551071471250, guid: 4ed13744dd000e647a0f57478003f4fd, type: 2}
+  - {fileID: 1728524177526394, guid: 0724cf32fbf5b124cb5eeae5f455bb39, type: 2}
+  - {fileID: 1728524177526394, guid: 68a4342d67d477b47acde36f391a6445, type: 2}
+  - {fileID: 1728524177526394, guid: 3e216c71d80831d4cb5b8fc672b28439, type: 2}
+  - {fileID: 1728524177526394, guid: 78364895d2c61b74ebf4fb08f6835e78, type: 2}
+  - {fileID: 1561551071471250, guid: 7128932b32eea54419943e9f2b977bd1, type: 2}
+  - {fileID: 1728524177526394, guid: 6e51f87098d96724ea0c76a0a382aeb5, type: 2}
 --- !u!114 &1938027139
 MonoBehaviour:
   m_ObjectHideFlags: 0

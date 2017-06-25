@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -10,7 +9,6 @@ public class LevelShopManager : MonoBehaviour
     public GameObject infoLabelExit;
     public Button soundButton;
     public CanvasGroup cg;
-    public int savemanagerindex;
 
     private void Start()
     {
@@ -18,27 +16,19 @@ public class LevelShopManager : MonoBehaviour
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
 
-        if (Manager.Instance.soundOn)
+        if (!Manager.Instance.soundOn)
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
         else
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
     }
 
-    private void Update()
-    {
-        savemanagerindex = SaveManager.Instance.data.activeBall;
-    }
-
     public void OnShopClicked()
     {
-        //we load the shop level
-        print("Shop button clicked");
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("Shop-New");
     }
     public void OnPlayClicked()
     {
-        print("Play button clicked");
-        SceneManager.LoadScene("LevelSelector");
+        SceneManager.LoadScene("LevelSelector-New");
     }
 
     public void OnSoundClicked()

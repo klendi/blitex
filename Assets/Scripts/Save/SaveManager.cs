@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
@@ -36,6 +33,11 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Return true or false if the player has bought the ball
+    /// </summary>
+    /// <param name="index">the index to check the bit</param>
+    /// <returns></returns>
     public bool DoesOwnBall(int index)
     {
         //check if the bit is set, so the ball is owned
@@ -68,13 +70,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("save");
     }
 
-    public bool IsActiveBall(int index)
-    {
-        if (index == data.activeBall)
-            return true;
-        else
-            return false;
-    }
+
     public bool BuyBall(int index, int cost)
     {
         //we can afford it, buy it bitch

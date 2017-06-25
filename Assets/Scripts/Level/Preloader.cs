@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Preloader : MonoBehaviour
 {
     private CanvasGroup fadeGroup = new CanvasGroup();
     private float loadTime;
-    private float minimunLoadTime = 5.0f; // minimum time of that scene
+    public float minimunLoadTime = 1f; // minimum time of that scene
 
     private void Start()
     {

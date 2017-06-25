@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728524177526394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 3.97, z: -0.005859375}
+  m_LocalPosition: {x: -0.8215072, y: 1.6320238, z: -0.005859375}
   m_LocalScale: {x: -0.06725619, y: -0.06725621, z: -0.06725621}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2
+  m_Mass: 0.118578106
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
@@ -127,6 +127,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a8a268b1e731f95438c8cba0f10c6b1e, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.30980393, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.8068962, a: 1}
   m_FlipX: 0
   m_FlipY: 0

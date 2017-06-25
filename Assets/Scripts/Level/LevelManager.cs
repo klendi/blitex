@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,6 +30,7 @@ public class LevelManager : MonoBehaviour
     [HideInInspector]
     public bool paused = false, gameOver = false;
 
+
     private void Start()
     {
         cameraController = FindObjectOfType<CameraController>();
@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
 
-        if (Manager.Instance.soundOn)
+        if (!Manager.Instance.soundOn)
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
         else
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];

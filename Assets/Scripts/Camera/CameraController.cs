@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -33,6 +31,7 @@ public class CameraController : MonoBehaviour
     {
         cameraMovingSpeed = cameraSpeed;
         isReady = true;
+
         if (down)
             downWards = true;
         else if (!down)

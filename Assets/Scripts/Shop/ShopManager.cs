@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,22 +10,15 @@ public class ShopManager : MonoBehaviour
     private int[] BallCosts = { 60, 100, 110, 120, 130, 150, 160, 170, 180, 190, 120, 130, 240 };
     public int activeBallIndex;
     public int selectedBallIndex = 0;
-    public int savemanagerindex;
     private Color green;   //a ball is bought is is green, is not bought if it is red, and active is is cyan
 
     private void Awake()
     {
         UpdateText();
         SaveManager.Instance.Load();
-        savemanagerindex = SaveManager.Instance.data.activeBall;
         activeBallIndex = SaveManager.Instance.data.activeBall;   //load 
         green = new Color(0, 255, 118);
         SetColors();
-    }
-
-    private void Update()
-    {
-        savemanagerindex = SaveManager.Instance.data.activeBall;
     }
 
     private void SetColors()   //this is to refresh the frames colors
