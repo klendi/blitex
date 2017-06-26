@@ -16,6 +16,11 @@ public class LevelSelectorManager : MonoBehaviour
         InitLevel();
     }
 
+    public void OnHomeClick()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
     private void InitLevel()
     {
         if (levelPanel == null)

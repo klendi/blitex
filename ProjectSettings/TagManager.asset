@@ -4,13 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Red
-  - Yellow
-  - Cyan
-  - Purple
   - Final
   - Enemy
-  - Coin
   - Diamond
   layers:
   - Default
@@ -48,10 +43,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Icons
-    uniqueID: 2559150901
-    locked: 0
-  - name: Text
-    uniqueID: 2525206317
     locked: 0

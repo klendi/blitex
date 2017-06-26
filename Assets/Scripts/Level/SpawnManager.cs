@@ -8,6 +8,6 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         playerToSpawn = Manager.Instance.playerPrefabs[SaveManager.Instance.data.activeBall];
-        Instantiate(playerToSpawn, spawnPoint.position, Quaternion.identity);
+        GameObject player = Instantiate(playerToSpawn, spawnPoint.position, Quaternion.identity);
     }
 }
