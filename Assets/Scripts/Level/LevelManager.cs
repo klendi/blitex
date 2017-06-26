@@ -131,9 +131,8 @@ public class LevelManager : MonoBehaviour
     }
     public void OnNextClicked()
     {
-        Manager.Instance.sceneIndex++;   //if next is clicked , on the object that never is destroyed set the scene index to += 1
-        SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());      //I have named all the scenes with numbers like this (1 ,2, 3, ) etc
         //so when we are at index 3 we load the scene named 3
+        SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());      //I have named all the scenes with numbers like this (1 ,2, 3, ) etc
     }
     public void OnReplayClicked()
     {
@@ -151,15 +150,15 @@ public class LevelManager : MonoBehaviour
         uiTab.SetActive(false);
         highScoreDiamonds.text = string.Format("{0} / {1}", diamonds, totalDiamonds.transform.childCount);
         SaveManager.Instance.data.diamonds += diamonds;
+        SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex);
+        //SaveManager.Instance.UnlockLevel(Manager.Instance.sceneIndex++);
         StartCoroutine(WaitThenDestroy(1.5f));
     }
     public void OnGameOver()
     {
         gameOver = true;
-        if (uiTab != null)
-            uiTab.SetActive(false);
-        if (gameOverTab != null)
-            gameOverTab.SetActive(true);
+        uiTab.SetActive(false);
+        gameOverTab.SetActive(true);
         AudioManager.instance.PlaySoundTrack("GameOverSound");
         StartCoroutine(WaitThenUnplay(2.2f, .2f));
         cameraController.Stop();

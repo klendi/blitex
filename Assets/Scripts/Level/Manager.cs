@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; set; }
-    public int sceneIndex = 1;
+    public int sceneIndex = 0;
     public bool soundOn = false;
     public Sprite[] soundSprites;
     public GameObject[] playerPrefabs;

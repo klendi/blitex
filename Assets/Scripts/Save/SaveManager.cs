@@ -46,12 +46,12 @@ public class SaveManager : MonoBehaviour
     public bool hasUnlockedLevel(int index)
     {
         //check if the bit is set, so the level is owned
-        return (data.completedLevel & (1 << index)) != 0;
+        return (data.completedLevels & (1 << index)) != 0;
     }
     public void UnlockLevel(int index)
     {
         //Toggle on the bit at selected index, so we can detect later
-        data.completedLevel |= 1 << index;
+        data.completedLevels |= 1 << index;
     }
     public void UnlockBall(int index)
     {
@@ -59,9 +59,9 @@ public class SaveManager : MonoBehaviour
     }
     public void CompleteLevel(int index)
     {
-        if (data.completedLevel == index)
+        if (data.completedLevels == index)
         {
-            data.completedLevel++;
+            data.completedLevels++;
             Save();
         }
     }
