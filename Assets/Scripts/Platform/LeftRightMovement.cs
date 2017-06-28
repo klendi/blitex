@@ -3,14 +3,16 @@
 public enum MovementType
 {
     LeftToRight,
-    RightToLeft
+    RightToLeft,
 }
 
 public class LeftRightMovement : MonoBehaviour
 {
     public float speed;
     public float range;
-    public MovementType movementType = MovementType.RightToLeft;
+    [Tooltip("This is for delaying the platforms")]
+    public MovementType movementType = MovementType.LeftToRight;
+    public float timeDelay = 0f;
     float timeCounter = 0;
     Vector3 startPos;
 
@@ -21,14 +23,14 @@ public class LeftRightMovement : MonoBehaviour
 
     private void Update()
     {
+        timeCounter += Time.deltaTime * speed;
+
         if (movementType == MovementType.RightToLeft)
         {
-            timeCounter += Time.deltaTime * speed;
             transform.position = startPos + new Vector3(Mathf.Sin(timeCounter) * range, 0f);
         }
-        else if(movementType == MovementType.LeftToRight)
+        else if (movementType == MovementType.LeftToRight)
         {
-            timeCounter += Time.deltaTime * speed;
             transform.position = startPos + new Vector3(-Mathf.Sin(timeCounter) * range, 0f);
         }
     }

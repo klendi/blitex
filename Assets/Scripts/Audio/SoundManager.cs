@@ -14,6 +14,6 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        AudioManager.instance.PlaySoundTrack("Theme");
+        AudioManager.instance.PlaySound("Theme");
     }
 }

@@ -69,9 +69,15 @@ public class PlayerController : MonoBehaviour
         {
             col.gameObject.SetActive(false);
             level.diamonds++;
-            AudioManager.instance.PlaySoundTrack("DiamondCollect");
+            AudioManager.instance.PlaySound("DiamondCollect");
         }
-        if (col.tag == "Final")
+        else if (col.tag == "SuperDiamond")
+        {
+            col.gameObject.SetActive(false);
+            level.diamonds += 10;
+            AudioManager.instance.PlaySound("DiamondCollect");
+        }
+        else if (col.tag == "Final")
         {
             level.OnGameSucces();
             level.gameOver = true;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    #region variables
     public int diamonds = 0;
 
     [Header("Attachments")]
@@ -29,6 +30,7 @@ public class LevelManager : MonoBehaviour
 
     [HideInInspector]
     public bool paused = false, gameOver = false;
+    #endregion
 
 
     private void Start()
@@ -132,6 +134,7 @@ public class LevelManager : MonoBehaviour
     public void OnNextClicked()
     {
         //so when we are at index 3 we load the scene named 3
+        Manager.Instance.sceneIndex++;
         SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());      //I have named all the scenes with numbers like this (1 ,2, 3, ) etc
     }
     public void OnReplayClicked()
@@ -143,7 +146,7 @@ public class LevelManager : MonoBehaviour
     public void OnGameSucces()
     {
         cameraController.Play(.2f, false);
-        AudioManager.instance.PlaySoundTrack("SuccesSound");
+        AudioManager.instance.PlaySound("SuccesSound");
         StartCoroutine(WaitThenUnplay(2.2f, .2f));
         gameOver = true;
         succesTab.SetActive(true);
@@ -159,7 +162,7 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
         uiTab.SetActive(false);
         gameOverTab.SetActive(true);
-        AudioManager.instance.PlaySoundTrack("GameOverSound");
+        AudioManager.instance.PlaySound("GameOverSound");
         StartCoroutine(WaitThenUnplay(2.2f, .2f));
         cameraController.Stop();
         //play the blowing particles

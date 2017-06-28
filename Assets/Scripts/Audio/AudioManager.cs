@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundTrack(string sound)
+    public void PlaySound(string sound)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);
         if (s == null)
@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
 
         s.source.Play();
     }
-    public void PlaySoundTrack(string sound, float volume)
+    public void PlaySound(string sound, float volume)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);
         if (s == null)

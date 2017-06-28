@@ -25,13 +25,13 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.35714287
+        time: 0.3125
         value: {x: 5.5095625, y: 5.509564, z: 5.509564}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.75714284
+        time: 0.6625
         value: {x: 4.243726, y: 4.2437263, z: 4.2437263}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -42,7 +42,7 @@ AnimationClip:
     path: 
   m_FloatCurves: []
   m_PPtrCurves: []
-  m_SampleRate: 70
+  m_SampleRate: 80
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -61,7 +61,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.75714284
+    m_StopTime: 0.6625
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,13 +87,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.35714287
+        time: 0.3125
         value: 5.5095625
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75714284
+        time: 0.6625
         value: 4.243726
         inSlope: 0
         outSlope: 0
@@ -115,13 +115,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.35714287
+        time: 0.3125
         value: 5.509564
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75714284
+        time: 0.6625
         value: 4.2437263
         inSlope: 0
         outSlope: 0
@@ -143,13 +143,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.35714287
+        time: 0.3125
         value: 5.509564
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75714284
+        time: 0.6625
         value: 4.2437263
         inSlope: 0
         outSlope: 0
