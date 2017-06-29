@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         else if (col.tag == "SuperDiamond")
         {
             col.gameObject.SetActive(false);
-            level.diamonds += 10;
+            level.specialDiamonds++;
             AudioManager.instance.PlaySound("DiamondCollect");
         }
         else if (col.tag == "Final")

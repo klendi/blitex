@@ -12,7 +12,7 @@ public class RotatingPlatform : MonoBehaviour
 
     private void Start()
     {
-        startRotation = transform.rotation;
+        startRotation = transform.localRotation;
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class RotatingPlatform : MonoBehaviour
         if (!loopingMode)
         {
             timeCounter += Time.deltaTime;
-            transform.rotation = Quaternion.Euler(startRotation.x, startRotation.y, startRotation.z + (angle * Mathf.Sin(speed * timeCounter)));
+            transform.localRotation = Quaternion.Euler(startRotation.x, startRotation.y, startRotation.z + (angle * Mathf.Sin(speed * timeCounter)));
         }
         else if (loopingMode && !reverse)
         {

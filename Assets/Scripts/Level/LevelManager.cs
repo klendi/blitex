@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     #region variables
     public int diamonds = 0;
+    public int specialDiamonds = 0;
 
     [Header("Attachments")]
     PlayerController player;
@@ -14,16 +15,15 @@ public class LevelManager : MonoBehaviour
     public Button pauseButton;
     public Button soundButton;
     public Button startGameButton;
-    public Text highScoreDiamonds;
+    public Text highScoreDiamonds, highScoreSpecialDiamonds;
     public Text diamondsText;
     public GameObject pauseTab;
     public GameObject succesTab;
-    public GameObject soundManager;
     public GameObject uiTab;
     public GameObject startTab;
     public GameObject gameOverTab;
     public GameObject startTabExit;
-    public GameObject totalDiamonds;  //we find the total number of diamonds counting his childs
+    public GameObject totalDiamonds, totalSpecialDiamonds;  //we find the total number of diamonds counting his childs
     public Sprite[] soundSprites;
 
     private bool isReady = false;
@@ -152,9 +152,10 @@ public class LevelManager : MonoBehaviour
         succesTab.SetActive(true);
         uiTab.SetActive(false);
         highScoreDiamonds.text = string.Format("{0} / {1}", diamonds, totalDiamonds.transform.childCount);
+        highScoreDiamonds.text = string.Format("{0} / {1}", specialDiamonds, totalSpecialDiamonds.transform.childCount);
         SaveManager.Instance.data.diamonds += diamonds;
+        SaveManager.Instance.data.specialDiamond += specialDiamonds;
         SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex);
-        //SaveManager.Instance.UnlockLevel(Manager.Instance.sceneIndex++);
         StartCoroutine(WaitThenDestroy(1.5f));
     }
     public void OnGameOver()

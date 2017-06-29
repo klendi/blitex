@@ -12,7 +12,6 @@ public class LeftRightMovement : MonoBehaviour
     public float range;
     [Tooltip("This is for delaying the platforms")]
     public MovementType movementType = MovementType.LeftToRight;
-    public float timeDelay = 0f;
     float timeCounter = 0;
     Vector3 startPos;
 
