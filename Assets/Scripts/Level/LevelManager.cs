@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     #region variables
     public int diamonds = 0;
+    int totalDiamonds = 0, totalSpecialDiamonds = 0;
     public int specialDiamonds = 0;
 
     [Header("Attachments")]
@@ -23,7 +24,6 @@ public class LevelManager : MonoBehaviour
     public GameObject startTab;
     public GameObject gameOverTab;
     public GameObject startTabExit;
-    public GameObject totalDiamonds, totalSpecialDiamonds;  //we find the total number of diamonds counting his childs
     public Sprite[] soundSprites;
 
     private bool isReady = false;
@@ -43,6 +43,8 @@ public class LevelManager : MonoBehaviour
         gameOverTab.SetActive(false);       //set the game over tab false
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
+        totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
+        totalSpecialDiamonds = GameObject.FindGameObjectsWithTag("SuperDiamond").Length;
 
         if (!Manager.Instance.soundOn)
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
@@ -151,8 +153,8 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
         succesTab.SetActive(true);
         uiTab.SetActive(false);
-        highScoreDiamonds.text = string.Format("{0} / {1}", diamonds, totalDiamonds.transform.childCount);
-        highScoreDiamonds.text = string.Format("{0} / {1}", specialDiamonds, totalSpecialDiamonds.transform.childCount);
+        highScoreDiamonds.text = string.Format("{0} / {1}", diamonds, totalDiamonds);
+        highScoreSpecialDiamonds.text = string.Format("{0} / {1}", specialDiamonds, totalSpecialDiamonds);
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
         SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex);

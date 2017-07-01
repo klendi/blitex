@@ -39,11 +39,9 @@ public class ScaleEffects : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sin(timecounter) * range, Mathf.Sin(timecounter) * range);
 
         else if (scaleType == ScaleType.BothClamped)
-            //transform.localScale = new Vector3(0, transform.localScale.x, 0) + Vector3.up * ((Mathf.Cos(timecounter) + 1) * .5f * (max - min) + min);
             transform.localScale = startScale + Vector3.one * ((Mathf.Cos(timecounter) + 1) * .5f * (max - min) + min);
 
         else if (scaleType == ScaleType.SideClamped)
-            //transform.localScale = new Vector3(transform.localScale.x, 0, 0) + Vector3.right * ((Mathf.Cos(timecounter) + 1) * .5f * (max - min) + min);
             transform.localScale = startScale + Vector3.right * ((Mathf.Cos(timecounter) + 1) * .5f * (max - min) + min);
 
         else if (scaleType == ScaleType.UpClamped)

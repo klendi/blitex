@@ -3,7 +3,7 @@
 public enum MovementType
 {
     LeftToRight,
-    RightToLeft,
+    RightToLeft
 }
 
 public class LeftRightMovement : MonoBehaviour

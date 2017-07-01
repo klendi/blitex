@@ -12,7 +12,7 @@ public class LevelSelectorManager : MonoBehaviour
     private void Awake()
     {
         scroll = FindObjectOfType<UIVerticalScroller>();
-        scroll.StartingIndex = (SaveManager.Instance.data.completedLevels) + 1;
+        scroll.StartingIndex = (SaveManager.Instance.data.completedLevels);
         InitLevel();
     }
 
@@ -32,8 +32,6 @@ public class LevelSelectorManager : MonoBehaviour
 
         foreach (Transform t in levelPanel)
         {
-            int currentIndex = i;
-
             Button b = t.GetComponent<Button>();
 
             b.onClick.AddListener(() => LoadLevel(t.GetComponent<Button>().gameObject.name));

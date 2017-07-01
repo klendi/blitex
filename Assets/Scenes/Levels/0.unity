@@ -1085,6 +1085,11 @@ Prefab:
       propertyPath: totalSpecialDiamonds
       value: 
       objectReference: {fileID: 1021031324}
+    - target: {fileID: 114700196321583142, guid: 078d06e87fc9b884aac49fb54db91ac7,
+        type: 2}
+      propertyPath: highScoreSpecialDiamonds
+      value: 
+      objectReference: {fileID: 1537856591}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 078d06e87fc9b884aac49fb54db91ac7, type: 2}
   m_IsPrefabParent: 0
@@ -2771,7 +2776,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1313517557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0.56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3234,6 +3239,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa65c4eef84548e4e9870a8a26401903, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1537856591 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114876470280404492, guid: fa65c4eef84548e4e9870a8a26401903,
+    type: 2}
+  m_PrefabInternal: {fileID: 1537856590}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1559590744
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,10 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
+        //TODO
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        //ResetSave();
+        ResetSave();
         Load();
     }
 

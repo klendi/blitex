@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     public void OnSoundClick(Button btn)
