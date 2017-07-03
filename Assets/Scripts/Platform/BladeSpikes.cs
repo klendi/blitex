@@ -27,9 +27,9 @@ public class BladeSpikes : MonoBehaviour
     void Update()
     {
 
-        if (reverse)
+        if (reverse && detected)
             rotating.speed = rotatingSpeed;
-        else
+        else if (!reverse && detected)
             rotating.speed = -rotatingSpeed;
 
         if (detected && !isRight)

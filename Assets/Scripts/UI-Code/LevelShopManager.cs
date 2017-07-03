@@ -24,11 +24,11 @@ public class LevelShopManager : MonoBehaviour
 
     public void OnShopClicked()
     {
-        SceneManager.LoadScene("Shop-New");
+        SceneManager.LoadScene("Shop");
     }
     public void OnPlayClicked()
     {
-        SceneManager.LoadScene("LevelSelector-New");
+        SceneManager.LoadScene("LevelSelector");
     }
 
     public void OnSoundClicked()

@@ -21,6 +21,13 @@ public class LevelSelectorManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    //Testing
+    public void CompleteLevel()
+    {
+        SaveManager.Instance.data.completedLevels++;
+        SaveManager.Instance.Save();
+    }
+
     private void InitLevel()
     {
         if (levelPanel == null)
