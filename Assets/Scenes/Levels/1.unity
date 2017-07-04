@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 543321455}
-  zOffset: -0.131
   startingSpeed: 5
   startingRight: 0
 --- !u!1 &103823184
@@ -3792,7 +3791,7 @@ Prefab:
       objectReference: {fileID: 1972569515}
     - target: {fileID: 1334724586635108, guid: fa65c4eef84548e4e9870a8a26401903, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1853403553135462, guid: fa65c4eef84548e4e9870a8a26401903, type: 2}
       propertyPath: m_IsActive
@@ -4516,17 +4515,17 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1544606009}
-  - {fileID: 249459917}
-  - {fileID: 2016949434}
-  - {fileID: 1858949104}
   - {fileID: 303562904}
   - {fileID: 455980974}
-  - {fileID: 1825527179}
   - {fileID: 550214752}
-  - {fileID: 1488597208}
   - {fileID: 1296517717}
+  - {fileID: 1488597208}
+  - {fileID: 1544606009}
   - {fileID: 1587699034}
+  - {fileID: 1825527179}
+  - {fileID: 1858949104}
+  - {fileID: 2016949434}
+  - {fileID: 249459917}
   m_Father: {fileID: 48527266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
