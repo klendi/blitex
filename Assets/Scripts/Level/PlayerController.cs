@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        print(GameObject.FindGameObjectsWithTag("Final").Length); 
         level = FindObjectOfType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
         float halfPlayerWidth = transform.localScale.x / 2f;

@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     #region variables
+    [Header("Diamonds")]
     public int diamonds = 0;
     int totalDiamonds = 0, totalSpecialDiamonds = 0;
     public int specialDiamonds = 0;
+    [HideInInspector]
+    public bool paused = false, gameOver = false;
 
     [Header("Attachments")]
     PlayerController player;
@@ -25,9 +28,6 @@ public class LevelManager : MonoBehaviour
     public GameObject gameOverTab;
     public GameObject startTabExit;
     public Sprite[] soundSprites;
-
-    [HideInInspector]
-    public bool paused = false, gameOver = false;
     #endregion
 
 

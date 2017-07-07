@@ -2970,6 +2970,36 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 2.41
       objectReference: {fileID: 0}
+    - target: {fileID: 114167121237387234, guid: 58976474434f0d24b9abd491f9424a42,
+        type: 2}
+      propertyPath: min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114452419605233460, guid: 58976474434f0d24b9abd491f9424a42,
+        type: 2}
+      propertyPath: min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167121237387234, guid: 58976474434f0d24b9abd491f9424a42,
+        type: 2}
+      propertyPath: speed
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 114167121237387234, guid: 58976474434f0d24b9abd491f9424a42,
+        type: 2}
+      propertyPath: max
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 114452419605233460, guid: 58976474434f0d24b9abd491f9424a42,
+        type: 2}
+      propertyPath: speed
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 114452419605233460, guid: 58976474434f0d24b9abd491f9424a42,
+        type: 2}
+      propertyPath: max
+      value: 0.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58976474434f0d24b9abd491f9424a42, type: 2}
   m_IsPrefabParent: 0
