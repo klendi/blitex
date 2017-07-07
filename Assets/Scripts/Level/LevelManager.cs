@@ -134,6 +134,8 @@ public class LevelManager : MonoBehaviour
     public void OnNextClicked()
     {
         //so when we are at index 3 we load the scene named 3
+        succesTab.SetActive(false);
+        uiTab.SetActive(false);
         Manager.Instance.sceneIndex++;
         SceneManager.LoadScene(Manager.Instance.sceneIndex.ToString());      //I have named all the scenes with numbers like this (1 ,2, 3, ) etc
     }
