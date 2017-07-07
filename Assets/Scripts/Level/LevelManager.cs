@@ -26,8 +26,6 @@ public class LevelManager : MonoBehaviour
     public GameObject startTabExit;
     public Sprite[] soundSprites;
 
-    private bool isReady = false;
-
     [HideInInspector]
     public bool paused = false, gameOver = false;
     #endregion
@@ -54,7 +52,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (isReady && !gameOver && !paused)
+        if (player.isReady && !gameOver && !paused)
         {
             diamondsText.text = diamonds.ToString();
         }
@@ -93,8 +91,8 @@ public class LevelManager : MonoBehaviour
         //remove the big play button after he is pressed
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;    //enable the pause button
-        isReady = true;             //give the player permission to move
-        player.isReady = true;
+                                       
+        player.isReady = true;  //give the player permission to move
         cameraController.Play(cameraController.cameraMovingSpeed, true);
     }
     public void OnPauseClicked()

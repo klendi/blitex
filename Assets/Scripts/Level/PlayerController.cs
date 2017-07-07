@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
 
     private void Start()
-    { 
+    {
+        print(GameObject.FindGameObjectsWithTag("Final").Length); 
         level = FindObjectOfType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
         float halfPlayerWidth = transform.localScale.x / 2f;
@@ -80,15 +81,15 @@ public class PlayerController : MonoBehaviour
         else if (col.tag == "Final")
         {
             level.OnGameSucces();
-            level.gameOver = true;
         }
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            gameOver = true;
+            //gameOver = true;
             level.OnGameOver();
+            print("Game over by spikes");
         }
     }
     private void OnBecameInvisible()
