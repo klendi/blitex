@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Diamond
   - SuperDiamond
+  - Generation
+  - Destruction
   layers:
   - Default
   - TransparentFX
