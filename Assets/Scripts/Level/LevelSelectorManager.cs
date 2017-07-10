@@ -12,7 +12,6 @@ public class LevelSelectorManager : MonoBehaviour
     private void Start()
     {
         scroll = FindObjectOfType<UIVerticalScroller>();
-        print("Index is: " + SaveManager.Instance.data.completedLevels);
         scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
         InitLevel();
     }

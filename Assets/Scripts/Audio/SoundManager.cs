@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        if (Instance == null)         //if already is a game object then destroy this and keep that
             Instance = this;
         else
             Destroy(gameObject);
