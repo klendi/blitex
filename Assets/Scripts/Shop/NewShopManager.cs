@@ -17,6 +17,12 @@ public class NewShopManager : MonoBehaviour
 
     private void Awake()
     {
+        if (SaveManager.Instance.data.activeBall == 0)
+        {
+            SaveManager.Instance.UnlockBall(0);     //if this is the first time we run the game and we want to have bought the default ball, and set it as bought
+            SetBall(0);
+        }
+
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         activeBallIndex = SaveManager.Instance.data.activeBall;
         SaveManager.Instance.data.diamonds += 50000;

@@ -44,4 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/14.unity
   - enabled: 1
-    path: Assets/Scenes/Levels/15.unity
+    path: Assets/Scenes/Levels/16.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/15.unity
+  - enabled: 1
+    path: Assets/Scenes/Main/LevelSelectorSnow.unity

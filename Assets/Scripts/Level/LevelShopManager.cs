@@ -30,6 +30,20 @@ public class LevelShopManager : MonoBehaviour
     {
         SceneManager.LoadScene("LevelSelector");
     }
+    public void OnTwitterClick()
+    {
+        float startTime;
+        startTime = Time.timeSinceLevelLoad;
+
+        //open the twitter app
+        Application.OpenURL("twitter:///user?screen_name=klendigocci");
+
+        if (Time.timeSinceLevelLoad - startTime <= 2f)
+        {
+            //fail. Open chrome.
+            Application.OpenURL("http://www.twitter.com/klendigocci");
+        }
+    }
 
     public void OnSoundClicked()
     {

@@ -41,11 +41,13 @@ public class LevelSelectorManager : MonoBehaviour
         {
             Button b = t.GetComponent<Button>();
 
-            b.onClick.AddListener(() => LoadLevel(t.GetComponent<Button>().gameObject.name));
+            if (b.tag == "LevelButtons")
+                b.onClick.AddListener(() => LoadLevelNonIndex(t.GetComponent<Button>().gameObject.name));
+            else
+                b.onClick.AddListener(() => LoadLevel(t.GetComponent<Button>().gameObject.name));
 
-            if (b != null)
+            if (b != null && b.tag != "LevelButtons")
             {
-
                 Image img = t.GetComponent<Image>();
 
                 //Is it unlocked?
@@ -81,5 +83,9 @@ public class LevelSelectorManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
         Manager.Instance.sceneIndex = int.Parse(name);
+    }
+    private void LoadLevelNonIndex(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

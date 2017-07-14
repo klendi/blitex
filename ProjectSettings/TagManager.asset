@@ -10,6 +10,7 @@ TagManager:
   - SuperDiamond
   - Generation
   - Destruction
+  - LevelButtons
   layers:
   - Default
   - TransparentFX
