@@ -20,6 +20,6 @@ public class LevelCompleted : MonoBehaviour
             tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex);
 
         else if (levelType == LevelType.SnowLevels)
-            tx.text = string.Format("YOU COMPLETED LEVEL {0}", 15 - Manager.Instance.sceneIndex);
+            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex - 15);
 	}
 }
