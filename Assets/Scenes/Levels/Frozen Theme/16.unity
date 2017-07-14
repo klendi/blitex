@@ -8874,6 +8874,15 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1972569515}
+    - target: {fileID: 1454713448564136, guid: 57efc2980f6769248b15446258d2e9f2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114176215008825280, guid: 57efc2980f6769248b15446258d2e9f2,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.091
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57efc2980f6769248b15446258d2e9f2, type: 2}
   m_IsPrefabParent: 0
