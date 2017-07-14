@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 543321455}
-  startingSpeed: 4.2
+  startingSpeed: 5
   startingRight: 1
 --- !u!1001 &116928233
 Prefab:
