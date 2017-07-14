@@ -200,8 +200,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Klendi Gocci/Desktop/keystore.keystore
-  AndroidKeyaliasName: blitex keystore
+  AndroidKeystoreName: C:/Users/Klendi Gocci/Desktop/blitex_keystore.keystore
+  AndroidKeyaliasName: blitex
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
