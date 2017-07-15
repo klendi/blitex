@@ -450,6 +450,21 @@ Prefab:
       propertyPath: m_Name
       value: ClosinOpeningPlatforms (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114779573853399396, guid: 7eec23fe7b13aa046a9d7289d803d898,
+        type: 2}
+      propertyPath: min
+      value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808023394924230, guid: 7eec23fe7b13aa046a9d7289d803d898,
+        type: 2}
+      propertyPath: min
+      value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717012276940310, guid: 7eec23fe7b13aa046a9d7289d803d898,
+        type: 2}
+      propertyPath: min
+      value: -0.24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7eec23fe7b13aa046a9d7289d803d898, type: 2}
   m_IsPrefabParent: 0
@@ -4035,7 +4050,7 @@ MonoBehaviour:
   range: 0.5
   scaleType: 3
   max: 0.47
-  min: 0.001
+  min: -0.05
 --- !u!114 &1431783431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4051,7 +4066,7 @@ MonoBehaviour:
   range: 0.5
   scaleType: 3
   max: 0.47
-  min: 0.001
+  min: -0.05
 --- !u!114 &1431783432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,7 +4082,7 @@ MonoBehaviour:
   range: 0.5
   scaleType: 3
   max: 0.47
-  min: 0.001
+  min: -0.05
 --- !u!114 &1431783433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4083,7 +4098,7 @@ MonoBehaviour:
   range: 0.5
   scaleType: 3
   max: 0.47
-  min: 0.001
+  min: -0.05
 --- !u!1 &1455379943
 GameObject:
   m_ObjectHideFlags: 0

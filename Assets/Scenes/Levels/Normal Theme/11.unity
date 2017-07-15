@@ -2494,7 +2494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577640e141429794bb0c10e7e42491f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMovingSpeed: 1.1
+  cameraMovingSpeed: 1
   camerSpeedGameOver: 0.5
   downWards: 1
   isReady: 0
@@ -2771,7 +2771,7 @@ Prefab:
     - target: {fileID: 114933522300822612, guid: d65fe1949de522c478460fcbc96ef144,
         type: 2}
       propertyPath: speed
-      value: 1.26
+      value: 0.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d65fe1949de522c478460fcbc96ef144, type: 2}
@@ -3436,6 +3436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diamonds: 0
   specialDiamonds: 0
+  paused: 0
+  gameOver: 0
   pauseButton: {fileID: 1600705739}
   soundButton: {fileID: 566691560}
   startGameButton: {fileID: 1147778172}
@@ -3451,8 +3453,6 @@ MonoBehaviour:
   soundSprites:
   - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}
-  paused: 0
-  gameOver: 0
 --- !u!1001 &1974865299
 Prefab:
   m_ObjectHideFlags: 0
