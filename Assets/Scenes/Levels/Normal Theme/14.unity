@@ -161,12 +161,12 @@ Prefab:
     - target: {fileID: 114452419605233460, guid: 58976474434f0d24b9abd491f9424a42,
         type: 2}
       propertyPath: speed
-      value: 1.65
+      value: 3.15
       objectReference: {fileID: 0}
     - target: {fileID: 114167121237387234, guid: 58976474434f0d24b9abd491f9424a42,
         type: 2}
       propertyPath: speed
-      value: 1.65
+      value: 3.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58976474434f0d24b9abd491f9424a42, type: 2}
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 543321455}
-  startingSpeed: 4.5
+  startingSpeed: 4.2
   startingRight: 1
 --- !u!1001 &123901293
 Prefab:
@@ -1520,7 +1520,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4937121547584082, guid: f231359db24fe744da04301ac448f40c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -21.992443
+      value: -18.57
       objectReference: {fileID: 0}
     - target: {fileID: 4937121547584082, guid: f231359db24fe744da04301ac448f40c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1544,7 +1544,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4937121547584082, guid: f231359db24fe744da04301ac448f40c, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f231359db24fe744da04301ac448f40c, type: 2}

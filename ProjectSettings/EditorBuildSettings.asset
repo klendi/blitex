@@ -49,3 +49,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Normal Theme/9.unity
   - enabled: 1
     path: Assets/Scenes/Levels/Frozen Theme/16.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/17.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/18.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/19.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/20.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/21.unity
