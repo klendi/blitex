@@ -21,6 +21,11 @@ public class LevelSelectorManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    public void OnFrozenPlay()
+    {
+        SceneManager.LoadScene("LevelSelectorSnow");
+    }
+
     //Testing
     public void CompleteLevel()
     {
@@ -55,6 +60,56 @@ public class LevelSelectorManager : MonoBehaviour
                 {
                     //It is unlocked!
                     if (i == SaveManager.Instance.data.completedLevels)
+                    {
+                        //Its not completed
+                        img.color = Color.cyan;
+                    }
+                    else
+                    {
+                        //Level is already completed
+                        img.color = Color.green;
+                    }
+                }
+                else
+                {
+                    //Level isn't unlocked disable the button
+                    b.interactable = false;
+
+                    //Set to dark color
+                    img.color = Color.grey;
+                }
+
+                i++;
+            }
+        }
+    }
+    private void InitSnowLevel()
+    {
+        if (levelPanel == null)
+            Debug.LogError("You didn't assigned the values to the levelPanel Component");
+
+        //For every children transform under our level panel, find the button and add onclick()
+
+        int i = 15;
+
+        foreach (Transform t in levelPanel)
+        {
+            Button b = t.GetComponent<Button>();
+
+            if (b.tag == "LevelButtons")
+                b.onClick.AddListener(() => LoadLevelNonIndex(t.GetComponent<Button>().gameObject.name));
+            else
+                b.onClick.AddListener(() => LoadLevel(t.GetComponent<Button>().gameObject.name));
+
+            if (b != null && b.tag != "LevelButtons")
+            {
+                Image img = t.GetComponent<Image>();
+
+                //Is it unlocked?
+                if (i <= SaveManager.Instance.data.completedLevels + 15)
+                {
+                    //It is unlocked!
+                    if (i == SaveManager.Instance.data.completedLevels + 15)
                     {
                         //Its not completed
                         img.color = Color.cyan;

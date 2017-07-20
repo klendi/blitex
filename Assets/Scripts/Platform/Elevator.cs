@@ -15,6 +15,11 @@ public class Elevator : MonoBehaviour
     public float distance = 5f;
     public ElevatorDirection direction = ElevatorDirection.Down;
 
+    private void Start()
+    {
+        startPos = transform.position;
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.collider.tag == "Player")
