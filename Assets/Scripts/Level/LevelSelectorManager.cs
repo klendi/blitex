@@ -8,12 +8,17 @@ public class LevelSelectorManager : MonoBehaviour
 {
     public Transform levelPanel;
     UIVerticalScroller scroll;
+    public bool isSnowSelector = false;
 
     private void Start()
     {
         scroll = FindObjectOfType<UIVerticalScroller>();
         scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
-        InitLevel();
+
+        if (!isSnowSelector)
+            InitLevel();
+        else if (isSnowSelector)
+            InitSnowLevel();
     }
 
     public void OnHomeClick()

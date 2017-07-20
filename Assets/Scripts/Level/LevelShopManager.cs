@@ -7,14 +7,20 @@ public class LevelShopManager : MonoBehaviour
 {
     public GameObject infoLabel;
     public GameObject infoLabelExit;
+    public GameObject gameModeTab;
+    public GameObject playButtonOriginal, playButtonOther;
+    public Animator playButtonAnimator;
     public Button soundButton;
     public CanvasGroup cg;
+    bool hasPlayed = false;
 
     private void Start()
     {
         cg.alpha = 0;
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
+        gameModeTab.SetActive(false);
+        playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
         if (!Manager.Instance.soundOn)
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
@@ -26,9 +32,27 @@ public class LevelShopManager : MonoBehaviour
     {
         SceneManager.LoadScene("Shop");
     }
-    public void OnPlayClicked()
+    public void OnAnimStart()
+    {
+        if (!hasPlayed)
+        {
+            playButtonAnimator.SetBool("hasPressed", true);
+            StartCoroutine(WaitForAnimToEndThenPlay());
+            hasPlayed = true;
+        }
+        else if (hasPlayed)
+        {
+            SceneManager.LoadScene("LevelSelector");
+        }
+    }
+    public void OnPlayClick()
     {
         SceneManager.LoadScene("LevelSelector");
+    }
+    private IEnumerator WaitForAnimToEndThenPlay()
+    {
+        yield return new WaitForSeconds(.1f);
+        gameModeTab.SetActive(true);
     }
     public void OnFrozenPlay()
     {
