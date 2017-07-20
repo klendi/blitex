@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 543321455}
-  startingSpeed: 3.5
+  startingSpeed: 3.7
   startingRight: 1
 --- !u!1001 &117577890
 Prefab:
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577640e141429794bb0c10e7e42491f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMovingSpeed: 1.2
+  cameraMovingSpeed: 1.1
   camerSpeedGameOver: 0.5
   downWards: 1
   isReady: 0
@@ -3051,7 +3051,7 @@ Prefab:
     - target: {fileID: 114576754125664282, guid: c6b243f9ce63b704e9364940be248dff,
         type: 2}
       propertyPath: speed
-      value: 1.03
+      value: 0.78
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6b243f9ce63b704e9364940be248dff, type: 2}
@@ -3070,7 +3070,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.45
+      value: 2.93
       objectReference: {fileID: 0}
     - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_LocalPosition.y
