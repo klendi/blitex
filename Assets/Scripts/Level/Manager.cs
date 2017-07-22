@@ -19,7 +19,6 @@ public class Manager : MonoBehaviour
     public void OnSoundClick(Button btn)
     {
         soundOn = !soundOn;
-        //AudioListener.pause = soundOn;
         AudioListener.volume = 0;
 
         if (!soundOn)

@@ -53,14 +53,18 @@ public class PlayerController : MonoBehaviour
         }
         //is moving to right ? then set the direction to right and don't stop
         if (isGoingRight && isReady && !paused)
+        {
             rigid.velocity = new Vector2(speed, rigid.velocity.y);
-        //transform.Translate(Vector2.right * speed * Time.deltaTime);
+            //transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
 
 
         //is moving to left ? then set the direction to left and don't stop
         else if (isGoingLeft && isReady && !paused)
+        {
             rigid.velocity = new Vector2(-speed, rigid.velocity.y);
-        //transform.Translate(Vector2.left * speed * Time.deltaTime);
+            //transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5a0fa76282c3e2d4ba1770ae032e8f05
-timeCreated: 1496574531
+guid: aa0b5965cb68fda49b90ac698554ab6d
+timeCreated: 1500751627
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: LEIXO
+  fontName: abeatbyKai
   fontNames:
-  - LEIXO
+  - abeatbyKai
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 23bfee03bdb4b0f48b8c998059fb673f
-timeCreated: 1500473938
+timeCreated: 1500751857
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,7 @@ TextureImporter:
     21300026: ice_2_13
     21300028: ice_2_14
     21300030: ice_2_15
+    21300032: ice_2_16
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -108,9 +109,9 @@ TextureImporter:
       name: ice_2_1
       rect:
         serializedVersion: 2
-        x: 28
+        x: 31
         y: 670
-        width: 271
+        width: 268
         height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,7 +125,7 @@ TextureImporter:
         serializedVersion: 2
         x: 372
         y: 670
-        width: 268
+        width: 267
         height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -138,8 +139,8 @@ TextureImporter:
         serializedVersion: 2
         x: 735
         y: 607
-        width: 201
-        height: 201
+        width: 199
+        height: 199
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +167,7 @@ TextureImporter:
         serializedVersion: 2
         x: 372
         y: 558
-        width: 268
+        width: 267
         height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -178,9 +179,9 @@ TextureImporter:
       name: ice_2_6
       rect:
         serializedVersion: 2
-        x: 28
+        x: 31
         y: 518
-        width: 271
+        width: 268
         height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -206,10 +207,10 @@ TextureImporter:
       name: ice_2_8
       rect:
         serializedVersion: 2
-        x: 36
+        x: 37
         y: 426
-        width: 269
-        height: 66
+        width: 268
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,9 +249,9 @@ TextureImporter:
       name: ice_2_11
       rect:
         serializedVersion: 2
-        x: 76
+        x: 79
         y: 330
-        width: 70
+        width: 67
         height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -264,7 +265,7 @@ TextureImporter:
         serializedVersion: 2
         x: 153
         y: 330
-        width: 71
+        width: 70
         height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -308,6 +309,20 @@ TextureImporter:
         y: 186
         width: 277
         height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ice_2_16
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 319
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -10,7 +10,7 @@ public class NewShopManager : MonoBehaviour
     public VerticalScrollSnap scroll;
     public Button buyButton;
 
-    private int[] ballCosts = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170 };
+    private int[] ballCosts = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
     public int activeBallIndex = 0;
     private int currentPage = 0;
     public int selectedBallIndex = 0;

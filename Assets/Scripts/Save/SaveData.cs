@@ -6,4 +6,6 @@
     public int activeBall = 0;
     public int completedLevels = 0;
     public int currentLevel = 0;
+    public bool firstTimeRunning = true;
+    public bool firstTimeRunninglvl = true;
 }
