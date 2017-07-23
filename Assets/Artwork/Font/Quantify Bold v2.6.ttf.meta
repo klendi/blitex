@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 167c63f09a0eff7418fd2301769730b4
-timeCreated: 1496574530
+guid: 269dc8b85b70fac47b56481d500e84b1
+timeCreated: 1500790211
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Roboto
+  fontName: Quantify
   fontNames:
-  - Roboto
+  - Quantify
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

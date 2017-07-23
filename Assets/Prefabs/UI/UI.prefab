@@ -1223,8 +1223,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8dd25c890202bf44f8632f639ff45e85, type: 3}
-    m_FontSize: 101
+    m_Font: {fileID: 12800000, guid: 269dc8b85b70fac47b56481d500e84b1, type: 3}
+    m_FontSize: 119
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 39
@@ -1702,7 +1702,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8dd25c890202bf44f8632f639ff45e85, type: 3}
+    m_Font: {fileID: 12800000, guid: c285eba107f79b541823c0d4eeb808af, type: 3}
     m_FontSize: 175
     m_FontStyle: 0
     m_BestFit: 0
@@ -1735,12 +1735,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8dd25c890202bf44f8632f639ff45e85, type: 3}
-    m_FontSize: 181
+    m_Font: {fileID: 12800000, guid: c285eba107f79b541823c0d4eeb808af, type: 3}
+    m_FontSize: 207
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 181
+    m_MaxSize: 207
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2013,7 +2013,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8dd25c890202bf44f8632f639ff45e85, type: 3}
+    m_Font: {fileID: 12800000, guid: c285eba107f79b541823c0d4eeb808af, type: 3}
     m_FontSize: 192
     m_FontStyle: 0
     m_BestFit: 0
@@ -2399,7 +2399,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2594,7 +2594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 169.4, y: -9.900024}
+  m_AnchoredPosition: {x: 159.5, y: -18.7}
   m_SizeDelta: {x: 410.4, y: 206.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224397297665651778
@@ -2648,7 +2648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -164, y: -73}
+  m_AnchoredPosition: {x: -215, y: -73}
   m_SizeDelta: {x: 737.5, y: 350.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224473764869745918
@@ -2741,7 +2741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 172, y: -66}
+  m_AnchoredPosition: {x: 121.00003, y: -66}
   m_SizeDelta: {x: 93.8, y: 79.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224604843894502414
@@ -2842,7 +2842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -200}
+  m_AnchoredPosition: {x: -176, y: -200}
   m_SizeDelta: {x: 670.5, y: 319.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224749081179618954
@@ -2878,7 +2878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -17, y: -235}
+  m_AnchoredPosition: {x: -17, y: -185}
   m_SizeDelta: {x: 1270, y: 834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224806114253367086
@@ -2914,7 +2914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 172.00003, y: -191}
+  m_AnchoredPosition: {x: 121.00006, y: -191}
   m_SizeDelta: {x: 93.8, y: 79.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224825165681451596
@@ -2932,7 +2932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 38}
+  m_AnchoredPosition: {x: -2.000008, y: 38}
   m_SizeDelta: {x: 907.3, y: 431.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224834616320325240

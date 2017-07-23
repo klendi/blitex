@@ -2543,8 +2543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 199.4, y: 188}
-  m_SizeDelta: {x: 1186.3, y: 893.93}
+  m_AnchoredPosition: {x: 191, y: 188}
+  m_SizeDelta: {x: 1330.8, y: 893.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &684854456
 MonoBehaviour:
@@ -2578,9 +2578,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Drag balls
-
-    down to see other balls'
+  m_Text: "Drag balls\n up & down\nto see more"
 --- !u!222 &684854457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3231,6 +3229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb27acd8bec33864ba4ad89bdafb69b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isShop: 1
 --- !u!1 &901778739
 GameObject:
   m_ObjectHideFlags: 0
