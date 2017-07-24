@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public int diamonds = 0;
     int totalDiamonds = 0, totalSpecialDiamonds = 0;
     public int specialDiamonds = 0;
+    [Tooltip("If level is of snow theme then use this activate this")]
     public bool isSnowLevel = false;
     [HideInInspector]
     public bool paused = false, gameOver = false;
@@ -92,7 +93,7 @@ public class LevelManager : MonoBehaviour
         //remove the big play button after he is pressed
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;    //enable the pause button
-                                       
+
         player.isReady = true;  //give the player permission to move
         cameraController.Play(cameraController.cameraMovingSpeed, true);
     }
@@ -161,12 +162,9 @@ public class LevelManager : MonoBehaviour
 
         if (!isSnowLevel)
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, false);
+
         else if (isSnowLevel)
-        {
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, true);
-            print("Completed level, scene index is:" + Manager.Instance.sceneIndex);
-            print("Snow int is: " + SaveManager.Instance.data.completedSnowLevels);
-        }
 
         StartCoroutine(WaitThenDestroy(1.5f));
     }

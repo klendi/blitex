@@ -24,7 +24,6 @@ public class SaveManager : MonoBehaviour
         {
             data = Helper.DeSerialize<SaveData>(PlayerPrefs.GetString("save"));
             print("Loaded Succesfully");
-            print(Helper.Serialize(data));
         }
         else
         {
@@ -79,7 +78,6 @@ public class SaveManager : MonoBehaviour
             {
                 data.completedSnowLevels++;
                 Save();
-                print("This was finally called");
             }
         }
     }
