@@ -5,7 +5,7 @@
     public int ballOwned = 0;
     public int activeBall = 0;
     public int completedLevels = 0;
-    public int currentLevel = 0;
+    public int completedSnowLevels = 16;
     public bool firstTimeRunning = true;
     public bool firstTimeRunninglvl = true;
 }

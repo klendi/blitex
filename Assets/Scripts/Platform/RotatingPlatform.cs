@@ -8,7 +8,6 @@ public class RotatingPlatform : MonoBehaviour
     public bool reverse;
     Quaternion startRotation;
     float timeCounter = 0;
-    float i = 0;
 
     private void Start()
     {
@@ -22,16 +21,6 @@ public class RotatingPlatform : MonoBehaviour
             timeCounter += Time.deltaTime;
             transform.localRotation = Quaternion.Euler(startRotation.x, startRotation.y, startRotation.z + (angle * Mathf.Sin(speed * timeCounter)));
         }
-        //else if (loopingMode && !reverse)
-        //{
-        //    i++;
-        //    transform.eulerAngles = new Vector3(startRotation.x, startRotation.y, startRotation.z + (i * speed));
-        //}
-        //else if (loopingMode && reverse)
-        //{
-        //    i++;
-        //    transform.eulerAngles = new Vector3(startRotation.x, startRotation.y, startRotation.z + (-(i * speed)));
-        //}
         else if (loopingMode && !reverse)
         {
             transform.eulerAngles += new Vector3(0, 0, speed);

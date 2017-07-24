@@ -95,7 +95,7 @@ public class LevelSelectorManager : MonoBehaviour
 
         //For every children transform under our level panel, find the button and add onclick()
 
-        int i = 15;
+        int i = 16;
 
         foreach (Transform t in levelPanel)
         {
@@ -111,10 +111,10 @@ public class LevelSelectorManager : MonoBehaviour
                 Image img = t.GetComponent<Image>();
 
                 //Is it unlocked?
-                if (i <= SaveManager.Instance.data.completedLevels + 15)
+                if (i <= SaveManager.Instance.data.completedSnowLevels)
                 {
                     //It is unlocked!
-                    if (i == SaveManager.Instance.data.completedLevels + 15)
+                    if (i == SaveManager.Instance.data.completedSnowLevels)
                     {
                         //Its not completed
                         img.color = Color.cyan;

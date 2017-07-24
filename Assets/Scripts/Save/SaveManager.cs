@@ -24,6 +24,7 @@ public class SaveManager : MonoBehaviour
         {
             data = Helper.DeSerialize<SaveData>(PlayerPrefs.GetString("save"));
             print("Loaded Succesfully");
+            print(Helper.Serialize(data));
         }
         else
         {
@@ -57,12 +58,29 @@ public class SaveManager : MonoBehaviour
     {
         data.ballOwned |= 1 << index;
     }
-    public void CompleteLevel(int index)
+    /// <summary>
+    /// This completes the level at specific index
+    /// </summary>
+    /// <param name="index">The index from where to complete</param>
+    /// <param name="isSnowLevel">If this is true then it will unlock from the snows levels, if false it will load from normal levels</param>
+    public void CompleteLevel(int index, bool isSnowLevel)
     {
-        if (data.completedLevels == index)
+        if (!isSnowLevel)
         {
-            data.completedLevels++;
-            Save();
+            if (data.completedLevels == index)
+            {
+                data.completedLevels++;
+                Save();
+            }
+        }
+        else if(isSnowLevel)
+        {
+            if (data.completedSnowLevels == index)
+            {
+                data.completedSnowLevels++;
+                Save();
+                print("This was finally called");
+            }
         }
     }
     public void ResetSave()

@@ -3682,6 +3682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diamonds: 0
   specialDiamonds: 0
+  isSnowLevel: 1
   paused: 0
   gameOver: 0
   pauseButton: {fileID: 1600705739}

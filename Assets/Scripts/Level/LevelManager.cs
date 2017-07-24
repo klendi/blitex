@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public int diamonds = 0;
     int totalDiamonds = 0, totalSpecialDiamonds = 0;
     public int specialDiamonds = 0;
+    public bool isSnowLevel = false;
     [HideInInspector]
     public bool paused = false, gameOver = false;
 
@@ -157,7 +158,16 @@ public class LevelManager : MonoBehaviour
         highScoreSpecialDiamonds.text = string.Format("{0} / {1}", specialDiamonds, totalSpecialDiamonds);
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
-        SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex);
+
+        if (!isSnowLevel)
+            SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, false);
+        else if (isSnowLevel)
+        {
+            SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, true);
+            print("Completed level, scene index is:" + Manager.Instance.sceneIndex);
+            print("Snow int is: " + SaveManager.Instance.data.completedSnowLevels);
+        }
+
         StartCoroutine(WaitThenDestroy(1.5f));
     }
     public void OnGameOver()
