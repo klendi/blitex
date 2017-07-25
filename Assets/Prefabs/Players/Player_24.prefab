@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1725573561275312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.452, y: 1.72, z: 0}
-  m_LocalScale: {x: -0.4885261, y: -0.48852527, z: -0.48852527}
+  m_LocalPosition: {x: 1.006, y: -6.393, z: 0}
+  m_LocalScale: {x: -0.5104261, y: -0.5104252, z: -0.5104252}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.105435774
+  m_Mass: 0.11510077
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3.5
