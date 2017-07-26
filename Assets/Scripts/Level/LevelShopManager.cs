@@ -72,6 +72,20 @@ public class LevelShopManager : MonoBehaviour
             Application.OpenURL("http://www.twitter.com/klendigocci");
         }
     }
+    public void OnFacebookClick()
+    {
+        float startTime;
+        startTime = Time.timeSinceLevelLoad;
+
+        //open the twitter app
+        Application.OpenURL("facebook:///user?screen_name=klendigocci");
+
+        if (Time.timeSinceLevelLoad - startTime <= 3f)
+        {
+            //fail. Open chrome.
+            Application.OpenURL("http://www.facebook.com/sublexgames");
+        }
+    }
 
     public void OnSoundClicked()
     {

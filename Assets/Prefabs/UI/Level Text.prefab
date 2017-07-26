@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424022913713160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: 4.82, z: 0}
+  m_LocalPosition: {x: -0.97, y: 6.83, z: 0}
   m_LocalScale: {x: 0.025643446, y: 0.025643444, z: 0.025643444}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8dd25c890202bf44f8632f639ff45e85, type: 3}
+  - {fileID: 2100000, guid: 269dc8b85b70fac47b56481d500e84b1, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,7 +91,7 @@ TextMesh:
   m_FontSize: 251
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 8dd25c890202bf44f8632f639ff45e85, type: 3}
+  m_Font: {fileID: 12800000, guid: 269dc8b85b70fac47b56481d500e84b1, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -106,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54548a29407f264d82b2f90d9b876d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelType: 2
+  levelType: 3

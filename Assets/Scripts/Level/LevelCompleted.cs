@@ -5,7 +5,8 @@ public enum LevelType
 {
     NormalLevels,
     SnowLevels,
-    LevelText
+    LevelText,
+    SnowLevelText
 }
 public class LevelCompleted : MonoBehaviour 
 {
@@ -25,6 +26,10 @@ public class LevelCompleted : MonoBehaviour
         else if(levelType == LevelType.LevelText)
         {
             gameObject.GetComponent<TextMesh>().text = string.Format("LEVEL {0}", Manager.Instance.sceneIndex);
+        }
+        else if (levelType == LevelType.SnowLevelText)
+        {
+            gameObject.GetComponent<TextMesh>().text = string.Format("LEVEL {0}", Manager.Instance.sceneIndex - 15);
         }
 	}
 }
