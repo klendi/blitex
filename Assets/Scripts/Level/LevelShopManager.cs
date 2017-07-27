@@ -77,8 +77,8 @@ public class LevelShopManager : MonoBehaviour
         float startTime;
         startTime = Time.timeSinceLevelLoad;
 
-        //open the twitter app
-        Application.OpenURL("facebook:///user?screen_name=klendigocci");
+        //open the fb app
+        Application.OpenURL("fb://page/1984682608469987");
 
         if (Time.timeSinceLevelLoad - startTime <= 3f)
         {
