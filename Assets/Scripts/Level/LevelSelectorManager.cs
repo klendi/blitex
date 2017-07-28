@@ -31,12 +31,18 @@ public class LevelSelectorManager : MonoBehaviour
         SceneManager.LoadScene("LevelSelectorSnow");
     }
 
-    //Testing
+    //******TESTING******//
     public void CompleteLevel()
     {
         SaveManager.Instance.data.completedLevels++;
         SaveManager.Instance.Save();
     }
+    public void CompleteLevelSnow()
+    {
+        SaveManager.Instance.data.completedSnowLevels++;
+        SaveManager.Instance.Save();
+    }
+    //*******TESTING******//
 
     private void InitLevel()
     {
