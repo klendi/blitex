@@ -13,7 +13,6 @@ public class LevelSelectorManager : MonoBehaviour
     private void Start()
     {
         scroll = FindObjectOfType<UIVerticalScroller>();
-        scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
 
         if (!isSnowSelector)
             InitLevel();
@@ -49,6 +48,7 @@ public class LevelSelectorManager : MonoBehaviour
         if (levelPanel == null)
             Debug.LogError("You didn't assigned the values to the levelPanel Component");
 
+        scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
         //For every children transform under our level panel, find the button and add onclick()
 
         int i = 0;
@@ -99,6 +99,7 @@ public class LevelSelectorManager : MonoBehaviour
         if (levelPanel == null)
             Debug.LogError("You didn't assigned the values to the levelPanel Component");
 
+        scroll.StartingIndex = SaveManager.Instance.data.completedSnowLevels;
         //For every children transform under our level panel, find the button and add onclick()
 
         int i = 16;

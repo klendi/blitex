@@ -72,13 +72,17 @@ public class LevelShopManager : MonoBehaviour
             Application.OpenURL("http://www.twitter.com/klendigocci");
         }
     }
+    public void OnGameReset()
+    {
+        PlayerPrefs.DeleteKey("save");
+    }
     public void OnFacebookClick()
     {
         float startTime;
         startTime = Time.timeSinceLevelLoad;
 
         //open the fb app
-        Application.OpenURL("fb://page/1984682608469987");
+        Application.OpenURL("fb:///page/1984682608469987");
 
         if (Time.timeSinceLevelLoad - startTime <= 3f)
         {

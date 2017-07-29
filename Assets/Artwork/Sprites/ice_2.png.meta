@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: 23bfee03bdb4b0f48b8c998059fb673f
-timeCreated: 1500751857
+timeCreated: 1501337862
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: ice_2_0
     21300002: ice_2_1
-    21300004: ice_2_2
+    21300004: ice_2_15
     21300006: ice_2_3
     21300008: ice_2_4
     21300010: ice_2_5
@@ -21,6 +21,7 @@ TextureImporter:
     21300028: ice_2_14
     21300030: ice_2_15
     21300032: ice_2_16
+    21300034: ice_2_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -179,6 +180,20 @@ TextureImporter:
       name: ice_2_6
       rect:
         serializedVersion: 2
+        x: 707
+        y: 319
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ice_2_7
+      rect:
+        serializedVersion: 2
         x: 31
         y: 518
         width: 268
@@ -190,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_7
+      name: ice_2_8
       rect:
         serializedVersion: 2
         x: 437
@@ -204,7 +219,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_8
+      name: ice_2_9
       rect:
         serializedVersion: 2
         x: 37
@@ -218,7 +233,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_9
+      name: ice_2_10
       rect:
         serializedVersion: 2
         x: 378
@@ -232,7 +247,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_10
+      name: ice_2_11
       rect:
         serializedVersion: 2
         x: 464
@@ -246,7 +261,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_11
+      name: ice_2_12
       rect:
         serializedVersion: 2
         x: 79
@@ -260,7 +275,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_12
+      name: ice_2_13
       rect:
         serializedVersion: 2
         x: 153
@@ -274,7 +289,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_13
+      name: ice_2_14
       rect:
         serializedVersion: 2
         x: 81
@@ -288,7 +303,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_14
+      name: ice_2_15
       rect:
         serializedVersion: 2
         x: 481
@@ -302,27 +317,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ice_2_15
+      name: ice_2_16
       rect:
         serializedVersion: 2
         x: 341
         y: 186
         width: 277
         height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ice_2_16
-      rect:
-        serializedVersion: 2
-        x: 707
-        y: 319
-        width: 256
-        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

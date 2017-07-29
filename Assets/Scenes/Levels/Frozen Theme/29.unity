@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc359c6a5648aa147bcb17853d8ccbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2.3
   range: 1.33
   movementType: 0
 --- !u!1001 &357532501
@@ -3636,7 +3636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577640e141429794bb0c10e7e42491f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMovingSpeed: 1
+  cameraMovingSpeed: 1.2
   camerSpeedGameOver: 0.5
   downWards: 1
   isReady: 0
@@ -4456,7 +4456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc359c6a5648aa147bcb17853d8ccbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2.3
   range: 1.33
   movementType: 0
 --- !u!1001 &1533944709
@@ -4729,7 +4729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc359c6a5648aa147bcb17853d8ccbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   range: 1.8
   movementType: 1
 --- !u!114 &1600705739 stripped
@@ -5896,7 +5896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc359c6a5648aa147bcb17853d8ccbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   range: 1.8
   movementType: 1
 --- !u!1001 &2117906641

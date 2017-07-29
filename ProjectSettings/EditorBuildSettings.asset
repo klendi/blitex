@@ -110,3 +110,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Frozen Theme/29.unity
     guid: 53b7e4a82329dca4597ea76bf8ce96b6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/30.unity
+    guid: 7a609cdded7e1d74da6089e81123613a
