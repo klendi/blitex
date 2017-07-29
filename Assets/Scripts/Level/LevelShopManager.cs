@@ -74,7 +74,8 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnGameReset()
     {
-        PlayerPrefs.DeleteKey("save");
+        SaveManager.Instance.ResetSave();
+        SaveManager.Instance.Load();
     }
     public void OnFacebookClick()
     {
