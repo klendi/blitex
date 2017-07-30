@@ -1,21 +1,10 @@
 ﻿using UnityEngine;
 
-public enum PlatformType
-{
-    normalOne,
-    normalTwo,
-    scalingTwo,
-    scalingTrio,
-    leftRightMoving
-};
-
 public class PlatformGenerator : MonoBehaviour
 {
-    [Header("Constants")]
-    public float cameraSpeed = .8f;
-    public float playerSpeed = 3f;
-    public float trapsSpeed = .5f;
     private int platformIndex = 0;
+    private float[] platform_two_fav_pos = { -5.24f, -1.6f, -2f, -3.65f, -4.73f };
+    public float diamondThreshold = 30;
 
     [Header("Min Max")]
     public Vector2 platform_one_min_max;
@@ -29,8 +18,13 @@ public class PlatformGenerator : MonoBehaviour
     [Header("Attachables")]
     public Transform constructionPoint;
     public ObjectPooling[] thePoolingPlatforms;
+    private DiamondGenerator diamondGen;
 
-    private float[] platform_two_fav_pos = { -5.24f, -1.6f, -2f, -3.65f, -4.73f };
+    private void Start()
+    {
+        diamondGen = FindObjectOfType<DiamondGenerator>();
+    }
+
 
     private void Update()
     {
@@ -52,7 +46,6 @@ public class PlatformGenerator : MonoBehaviour
                     break;
                 case "platform_two":
                     int i = Random.Range(0, platform_two_fav_pos.Length);
-                    //newPlatform.transform.position = new Vector3(Random.Range(platform_two_min_max.x, platform_two_min_max.y), newPlatform.transform.position.y);
                     newPlatform.transform.position = new Vector3(platform_two_fav_pos[i], 0f);
                     break;
                 case "scaling_duo":
@@ -71,6 +64,9 @@ public class PlatformGenerator : MonoBehaviour
             }
             newPlatform.transform.position = new Vector3(newPlatform.transform.position.x, transform.position.y);
             newPlatform.SetActive(true);
+
+            if (Random.Range(0, 100) < diamondThreshold)
+                diamondGen.SpawnDiamond(new Vector3(transform.position.x, transform.position.y + .5f));
         }
     }
 }

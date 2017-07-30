@@ -57,12 +57,12 @@ public class LevelSelectorManager : MonoBehaviour
         {
             Button b = t.GetComponent<Button>();
 
-            if (b.tag == "LevelButtons")
+            if (b.tag == "SpecialLevels")
                 b.onClick.AddListener(() => LoadLevelNonIndex(t.GetComponent<Button>().gameObject.name));
             else
                 b.onClick.AddListener(() => LoadLevel(t.GetComponent<Button>().gameObject.name));
 
-            if (b != null && b.tag != "LevelButtons")
+            if (b != null && b.tag != "SpecialLevels")
             {
                 Image img = t.GetComponent<Image>();
 
@@ -107,12 +107,12 @@ public class LevelSelectorManager : MonoBehaviour
         {
             Button b = t.GetComponent<Button>();
 
-            if (b.tag == "LevelButtons")
+            if (b.tag == "SpecialLevels")
                 b.onClick.AddListener(() => LoadLevelNonIndex(t.GetComponent<Button>().gameObject.name));
             else
                 b.onClick.AddListener(() => LoadLevel(t.GetComponent<Button>().gameObject.name));
 
-            if (b != null && b.tag != "LevelButtons")
+            if (b != null && b.tag != "SpecialLevels")
             {
                 Image img = t.GetComponent<Image>();
 

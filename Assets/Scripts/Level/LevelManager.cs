@@ -12,12 +12,14 @@ public class LevelManager : MonoBehaviour
     public int specialDiamonds = 0;
     [Tooltip("If level is of snow theme then use this activate this")]
     public bool isSnowLevel = false;
+    public bool isEndlessLevel = false;
     [HideInInspector]
     public bool paused = false, gameOver = false;
 
     [Header("Attachments")]
     PlayerController player;
     CameraController cameraController;
+    EndlessManager endless;
     public Button pauseButton;
     public Button soundButton;
     public Button startGameButton;
@@ -43,6 +45,7 @@ public class LevelManager : MonoBehaviour
         gameOverTab.SetActive(false);       //set the game over tab false
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
+        endless = FindObjectOfType<EndlessManager>();
         totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
         totalSpecialDiamonds = GameObject.FindGameObjectsWithTag("SuperDiamond").Length;
 
@@ -96,6 +99,9 @@ public class LevelManager : MonoBehaviour
 
         player.isReady = true;  //give the player permission to move
         cameraController.Play(cameraController.cameraMovingSpeed, true);
+
+        if (isEndlessLevel)
+            endless.scoreIncreasing = true;
     }
     public void OnPauseClicked()
     {
@@ -107,6 +113,8 @@ public class LevelManager : MonoBehaviour
             player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
             cameraController.Stop();
             Time.timeScale = 0;                 //freeze the time
+            if (isEndlessLevel)
+                endless.scoreIncreasing = false;
         }
     }
     public void OnResumeClicked()
@@ -121,6 +129,9 @@ public class LevelManager : MonoBehaviour
 
             player.isGoingLeft = !player.isGoingLeft;   //this is for maintaining the player directions when resume the game
             player.isGoingRight = !player.isGoingRight;
+
+            if (isEndlessLevel)
+                endless.scoreIncreasing = true;
         }
     }
     public void OnHomeClicked()
@@ -170,6 +181,9 @@ public class LevelManager : MonoBehaviour
     }
     public void OnGameOver()
     {
+        if (isEndlessLevel)
+            endless.OnGameOver();
+
         gameOver = true;
         uiTab.SetActive(false);
         gameOverTab.SetActive(true);

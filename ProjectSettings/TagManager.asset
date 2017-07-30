@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - Diamond
   - SuperDiamond
-  - Generation
   - Destruction
   - left_right
   - platform_one
@@ -16,6 +15,7 @@ TagManager:
   - scaling_duo
   - scaling_trio
   - scaling_one
+  - SpecialLevels
   layers:
   - Default
   - TransparentFX

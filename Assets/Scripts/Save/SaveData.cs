@@ -6,6 +6,7 @@
     public int activeBall = 0;
     public int completedLevels = 0;
     public int completedSnowLevels = 16;
+    public float highscore = 0;
     public bool firstTimeRunning = true;
     public bool firstTimeRunninglvl = true;
 }
