@@ -10,7 +10,12 @@ TagManager:
   - SuperDiamond
   - Generation
   - Destruction
-  - LevelButtons
+  - left_right
+  - platform_one
+  - platform_two
+  - scaling_duo
+  - scaling_trio
+  - scaling_one
   layers:
   - Default
   - TransparentFX
