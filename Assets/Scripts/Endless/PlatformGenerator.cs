@@ -2,9 +2,11 @@
 
 public class PlatformGenerator : MonoBehaviour
 {
+    public float diamondThreshold = 30;
+    public float spikeThreshold = 50;
     private int platformIndex = 0;
     private float[] platform_two_fav_pos = { -5.24f, -1.6f, -2f, -3.65f, -4.73f };
-    public float diamondThreshold = 30;
+
 
     [Header("Min Max")]
     public Vector2 platform_one_min_max;
@@ -19,10 +21,12 @@ public class PlatformGenerator : MonoBehaviour
     public Transform constructionPoint;
     public ObjectPooling[] thePoolingPlatforms;
     private DiamondGenerator diamondGen;
+    private SpikeGenerator spikeGen;
 
     private void Start()
     {
         diamondGen = FindObjectOfType<DiamondGenerator>();
+        spikeGen = FindObjectOfType<SpikeGenerator>();
     }
 
 
@@ -40,22 +44,40 @@ public class PlatformGenerator : MonoBehaviour
             {
                 case "left_right":
                     newPlatform.transform.position = new Vector3(Random.Range(left_right_movement_min_max.x, left_right_movement_min_max.y), newPlatform.transform.position.y);
+
+                    if (Random.Range(0, 100) < diamondThreshold)
+                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
                     break;
                 case "platform_one":
                     newPlatform.transform.position = new Vector3(Random.Range(platform_one_min_max.x, platform_one_min_max.y), newPlatform.transform.position.y);
+
+                    if (Random.Range(0, 100) < diamondThreshold)
+                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
                     break;
                 case "platform_two":
                     int i = Random.Range(0, platform_two_fav_pos.Length);
                     newPlatform.transform.position = new Vector3(platform_two_fav_pos[i], 0f);
+
+                    if (Random.Range(0, 100) < diamondThreshold)
+                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
                     break;
                 case "scaling_duo":
                     newPlatform.transform.position = new Vector3(Random.Range(scaling_duo_min_max.x, scaling_duo_min_max.y), newPlatform.transform.position.y);
+
+                    if (Random.Range(0, 100) < diamondThreshold)
+                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
                     break;
                 case "scaling_trio":
                     newPlatform.transform.position = new Vector3(Random.Range(scaling_trio_min_max.x, scaling_trio_min_max.y), newPlatform.transform.position.y);
+
+                    if (Random.Range(0, 100) < diamondThreshold)
+                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
                     break;
                 case "scaling_one":
                     newPlatform.transform.position = new Vector3(Random.Range(scaling_one_min_max.x, scaling_one_min_max.y), newPlatform.transform.position.y);
+
+                    if (Random.Range(0, 100) < diamondThreshold)
+                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
                     break;
 
                 default:
@@ -66,7 +88,10 @@ public class PlatformGenerator : MonoBehaviour
             newPlatform.SetActive(true);
 
             if (Random.Range(0, 100) < diamondThreshold)
-                diamondGen.SpawnDiamond(new Vector3(transform.position.x, transform.position.y + .5f));
+                diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+
+            if (Random.Range(0, 100) < spikeThreshold)
+                spikeGen.SpawnSpikes(new Vector3(transform.position.x + Random.Range(.4f, 1.3f), transform.position.y + .2f));
         }
     }
 }

@@ -74,8 +74,16 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnGameReset()
     {
-        SaveManager.Instance.ResetSave();
-        SaveManager.Instance.Load();
+        //SaveManager.Instance.ResetSave();
+        SaveManager.Instance.data.activeBall = 0;
+        SaveManager.Instance.data.ballOwned = 0;
+        SaveManager.Instance.data.completedLevels = 0;
+        SaveManager.Instance.data.completedSnowLevels = 0;
+        SaveManager.Instance.data.diamonds = 0;
+        SaveManager.Instance.data.highscore = 0;
+        SaveManager.Instance.data.specialDiamond = 0;
+        SaveManager.Instance.Save();
+        print("Reset succesfully");
     }
     public void OnFacebookClick()
     {

@@ -28,7 +28,6 @@ public class EndlessManager : MonoBehaviour
 
     CameraController mainCamera;
     PlayerController player;
-    LevelManager level;
 
 
     private void Start()
@@ -36,7 +35,6 @@ public class EndlessManager : MonoBehaviour
         mainCamera = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerController>();
         speedMilestoneCount = speedIncreaseMilestone;
-        level = FindObjectOfType<LevelManager>();
         highscore = SaveManager.Instance.data.highscore;
     }
 
@@ -70,10 +68,10 @@ public class EndlessManager : MonoBehaviour
 
     public void OnGameOver()
     {
-        if(score > highscore)
+        if (score > highscore)
         {
-            highscore = score;
-            SaveManager.Instance.data.highscore = highscore;
+            highscore = Mathf.Round(score);
+            SaveManager.Instance.data.highscore = Mathf.Round(highscore);
             SaveManager.Instance.Save();
         }
 
