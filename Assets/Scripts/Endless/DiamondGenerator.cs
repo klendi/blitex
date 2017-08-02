@@ -2,13 +2,10 @@
 
 public class DiamondGenerator : MonoBehaviour
 {
-    public ObjectPooling diamondPool;
+    public GameObject diamond;
 
-    public void SpawnDiamond(Vector3 startPosition)
+    public void SpawnDiamond(Vector3 pos)
     {
-        GameObject diamond1 = diamondPool.GetPoolObject();
-        diamond1.transform.position = startPosition;
-        diamond1.SetActive(true);
+        GameObject diamondd = Instantiate(diamond, pos, Quaternion.identity);
     }
-
 }

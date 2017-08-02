@@ -28,14 +28,17 @@ public class EndlessManager : MonoBehaviour
 
     CameraController mainCamera;
     PlayerController player;
+    Rigidbody2D rigid;
 
 
     private void Start()
     {
         mainCamera = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerController>();
+        rigid = FindObjectOfType<Rigidbody2D>();
         speedMilestoneCount = speedIncreaseMilestone;
         highscore = SaveManager.Instance.data.highscore;
+        rigid.useAutoMass = false;
     }
 
     private void Update()
@@ -53,11 +56,13 @@ public class EndlessManager : MonoBehaviour
 
         if (mainCamera.transform.position.y < -speedMilestoneCount)
         {
+            print("milestone");
             speedMilestoneCount += speedIncreaseMilestone;
             player.speed *= speedMultiplier;
             mainCamera.cameraMovingSpeed *= speedMultiplier;
             speedIncreaseMilestone *= speedMultiplier;
             trapsSpeed *= speedMultiplier;
+            rigid.mass *= speedMultiplier;
         }
     }
 
@@ -76,8 +81,12 @@ public class EndlessManager : MonoBehaviour
         }
 
         scoreIncreasing = false;
-        scoreTxt.text = "Score: " + Mathf.Round(score);
-        highScoreTxt.text = "Highscore: " + Mathf.Round(highscore);
+
+        if (scoreTxt != null)
+            scoreTxt.text = "Score: " + Mathf.Round(score);
+
+        if (highScoreTxt != null)
+            highScoreTxt.text = "Highscore: " + Mathf.Round(highscore);
     }
 
     private void OnHighScore()

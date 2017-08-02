@@ -2,31 +2,22 @@
 
 public class PlatformGenerator : MonoBehaviour
 {
+    [Header("Constants")]
     public float diamondThreshold = 30;
-    public float spikeThreshold = 50;
     private int platformIndex = 0;
-    private float[] platform_two_fav_pos = { -5.24f, -1.6f, -2f, -3.65f, -4.73f };
-
-
-    [Header("Min Max")]
-    public Vector2 platform_one_min_max;
-    public Vector2 platform_two_min_max;
-    public Vector2 left_right_movement_min_max;
-    public Vector2 scaling_duo_min_max;
-    public Vector2 scaling_trio_min_max;
-    public Vector2 scaling_one_min_max;
-    public Vector2 trapsLeft, trapsRight;
+    private float[] platform_two_fav_pos = { -5.24f, -1.6f, -2f, -4.73f };
+    private float[] scaling_duo_fav_pos = { .3f, .7f, -1f, -1.6f };
+    private float[] left_right_fav_pos = { -2.5f, -3f, -1.85f };
+    private float[] scaling_one_fav_pos = { 0.0f, 1.72f, -1.6f };
 
     [Header("Attachables")]
     public Transform constructionPoint;
     public ObjectPooling[] thePoolingPlatforms;
     private DiamondGenerator diamondGen;
-    private SpikeGenerator spikeGen;
 
     private void Start()
     {
         diamondGen = FindObjectOfType<DiamondGenerator>();
-        spikeGen = FindObjectOfType<SpikeGenerator>();
     }
 
 
@@ -43,55 +34,57 @@ public class PlatformGenerator : MonoBehaviour
             switch (newPlatform.tag)
             {
                 case "left_right":
-                    newPlatform.transform.position = new Vector3(Random.Range(left_right_movement_min_max.x, left_right_movement_min_max.y), newPlatform.transform.position.y);
+                    int k = Random.Range(0, left_right_fav_pos.Length);
+                    newPlatform.transform.position = new Vector3(left_right_fav_pos[k], transform.position.y - .43f);
 
                     if (Random.Range(0, 100) < diamondThreshold)
-                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+                        diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .43f + .5f));
+
                     break;
                 case "platform_one":
-                    newPlatform.transform.position = new Vector3(Random.Range(platform_one_min_max.x, platform_one_min_max.y), newPlatform.transform.position.y);
+                    int p = Random.Range(0, scaling_one_fav_pos.Length);
+                    newPlatform.transform.position = new Vector3(scaling_one_fav_pos[p], transform.position.y);
 
                     if (Random.Range(0, 100) < diamondThreshold)
-                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+                        diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f));
+
                     break;
                 case "platform_two":
                     int i = Random.Range(0, platform_two_fav_pos.Length);
-                    newPlatform.transform.position = new Vector3(platform_two_fav_pos[i], 0f);
+                    newPlatform.transform.position = new Vector3(platform_two_fav_pos[i], transform.position.y);
 
                     if (Random.Range(0, 100) < diamondThreshold)
-                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+                        diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f));
+
                     break;
                 case "scaling_duo":
-                    newPlatform.transform.position = new Vector3(Random.Range(scaling_duo_min_max.x, scaling_duo_min_max.y), newPlatform.transform.position.y);
+                    int j = Random.Range(0, scaling_duo_fav_pos.Length);
+                    newPlatform.transform.position = new Vector3(scaling_duo_fav_pos[j], transform.position.y - .43f);
 
                     if (Random.Range(0, 100) < diamondThreshold)
-                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+                        diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f + .43f));
+
                     break;
                 case "scaling_trio":
-                    newPlatform.transform.position = new Vector3(Random.Range(scaling_trio_min_max.x, scaling_trio_min_max.y), newPlatform.transform.position.y);
+                    newPlatform.transform.position = new Vector3(-0.2f, transform.position.y - .43f);
 
                     if (Random.Range(0, 100) < diamondThreshold)
-                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+                        diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f + .43f));
                     break;
                 case "scaling_one":
-                    newPlatform.transform.position = new Vector3(Random.Range(scaling_one_min_max.x, scaling_one_min_max.y), newPlatform.transform.position.y);
+                    int o = Random.Range(0, scaling_one_fav_pos.Length);
+                    newPlatform.transform.position = new Vector3(scaling_one_fav_pos[o], transform.position.y);
 
                     if (Random.Range(0, 100) < diamondThreshold)
-                        diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
+                        diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f));
                     break;
 
                 default:
                     Debug.LogWarning("the object doesnt have a tag that is declared at switch function");
                     break;
             }
-            newPlatform.transform.position = new Vector3(newPlatform.transform.position.x, transform.position.y);
+
             newPlatform.SetActive(true);
-
-            if (Random.Range(0, 100) < diamondThreshold)
-                diamondGen.SpawnDiamond(new Vector3(transform.position.x + Random.Range(.3f, .9f), transform.position.y + .25f));
-
-            if (Random.Range(0, 100) < spikeThreshold)
-                spikeGen.SpawnSpikes(new Vector3(transform.position.x + Random.Range(.4f, 1.3f), transform.position.y + .2f));
         }
     }
 }
