@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.loop = s.loop;
+            s.source.priority = s.priority;
 
             s.source.outputAudioMixerGroup = mixerGroup;
         }
@@ -57,6 +58,7 @@ public class AudioManager : MonoBehaviour
 
         s.source.volume = volume;
         s.source.pitch = s.pitch;
+        s.source.priority = s.priority;
 
         s.source.Play();
     }
@@ -83,6 +85,7 @@ public class AudioManager : MonoBehaviour
         }
         s.source.volume = s.volume;
         s.source.pitch = s.pitch;
+        s.source.priority = s.priority;
 
         s.source.UnPause();
     }
@@ -96,6 +99,7 @@ public class AudioManager : MonoBehaviour
         }
         s.source.volume = volume;
         s.source.pitch = s.pitch;
+        s.source.priority = s.priority;
 
         s.source.UnPause();
     }

@@ -154,4 +154,14 @@ public class LevelSelectorManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+    public void OnEndlessClick()
+    {
+        SceneManager.LoadScene("Endless");
+    }
+
+    public void OnEndlessClickNormal()
+    {
+        SceneManager.LoadScene("Endless_normal");
+    }
 }

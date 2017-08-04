@@ -16,6 +16,9 @@ public class Sound {
 
 	public bool loop = false;
 
+    [Range(0, 256)]
+    public int priority = 128;
+
 	public AudioMixerGroup mixerGroup;
 
 	[HideInInspector]

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     LevelManager level;
 
     [HideInInspector]
-    public bool isGoingLeft = true, isGoingRight = false, isReady = false, gameOver = false, paused = false;
+    public bool isGoingLeft = true, isGoingRight = false, isReady = false, gameOver = false, paused = false, isInvincible = false;
 
 
     private void Start()
@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         if (isGoingRight && isReady && !paused)
         {
             rigid.velocity = new Vector2(speed, rigid.velocity.y);
-            //transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
 
 
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour
         else if (isGoingLeft && isReady && !paused)
         {
             rigid.velocity = new Vector2(-speed, rigid.velocity.y);
-            //transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
     }
 
@@ -88,11 +86,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy" && !isInvincible)
         {
-            //gameOver = true;
             level.OnGameOver();
-            print("Game over by spikes");
         }
     }
     private void OnBecameInvisible()

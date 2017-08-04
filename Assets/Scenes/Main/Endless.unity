@@ -346,7 +346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &101797344
 MonoBehaviour:
@@ -6172,9 +6172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSpeed: 0.8
   playerSpeed: 3
-  trapsSpeed: 0.5
   speedMultiplier: 1.25
-  speedIncreaseMilestone: 50
+  speedIncreaseMilestone: 40
+  speedMilestoneCount: 0
   score: 0
   highscore: 0
   scoreIncreasing: 0
@@ -6923,7 +6923,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1863275060
 MonoBehaviour:
@@ -7006,7 +7006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1972569515
 MonoBehaviour:
@@ -7455,7 +7455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7fc36dc18e0a47a3fa9b5b8f46334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondThreshold: 80
+  diamondThreshold: 35
   constructionPoint: {fileID: 1304952767}
   thePoolingPlatforms:
   - {fileID: 793039004}
@@ -7498,5 +7498,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

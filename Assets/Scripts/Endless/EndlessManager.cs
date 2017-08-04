@@ -8,10 +8,9 @@ public class EndlessManager : MonoBehaviour
     [Header("Constants")]
     public float cameraSpeed = .8f;
     public float playerSpeed = 3f;
-    public float trapsSpeed = .5f;
     public float speedMultiplier;
     public float speedIncreaseMilestone;
-    private float speedMilestoneCount;
+    public float speedMilestoneCount;
     public float score = 0;
     public float highscore = 0;
     public bool scoreIncreasing = false;
@@ -61,7 +60,6 @@ public class EndlessManager : MonoBehaviour
             player.speed *= speedMultiplier;
             mainCamera.cameraMovingSpeed *= speedMultiplier;
             speedIncreaseMilestone *= speedMultiplier;
-            trapsSpeed *= speedMultiplier;
             rigid.mass *= speedMultiplier;
         }
     }
