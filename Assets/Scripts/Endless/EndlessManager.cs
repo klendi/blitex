@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 public class EndlessManager : MonoBehaviour
 {
     [Header("Constants")]
-    public float cameraSpeed = .8f;
-    public float playerSpeed = 3f;
     public float speedMultiplier;
     public float speedIncreaseMilestone;
     public float speedMilestoneCount;
     public float score = 0;
     public float highscore = 0;
+    public bool isNormalLevel = false;
     public bool scoreIncreasing = false;
     public float pointsForSecond = 0;
 
@@ -36,7 +35,12 @@ public class EndlessManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         rigid = FindObjectOfType<Rigidbody2D>();
         speedMilestoneCount = speedIncreaseMilestone;
-        highscore = SaveManager.Instance.data.highscore;
+
+        if (!isNormalLevel)
+            highscore = SaveManager.Instance.data.highscore;
+        else if (isNormalLevel)
+            highscore = SaveManager.Instance.data.normalHighscore;
+
         rigid.useAutoMass = false;
     }
 
@@ -69,12 +73,24 @@ public class EndlessManager : MonoBehaviour
         SceneManager.LoadScene("Endless");
     }
 
+    public void RestartNormalLevel()
+    {
+        SceneManager.LoadScene("Endless_normal");
+    }
+
     public void OnGameOver()
     {
-        if (score > highscore)
+        if (score > highscore && !isNormalLevel)
         {
             highscore = Mathf.Round(score);
             SaveManager.Instance.data.highscore = Mathf.Round(highscore);
+            SaveManager.Instance.Save();
+        }
+
+        if (score > highscore && isNormalLevel)
+        {
+            highscore = Mathf.Round(score);
+            SaveManager.Instance.data.normalHighscore = Mathf.Round(highscore);
             SaveManager.Instance.Save();
         }
 

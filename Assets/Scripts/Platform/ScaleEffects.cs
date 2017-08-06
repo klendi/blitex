@@ -12,11 +12,11 @@ public enum ScaleType
 
 public class ScaleEffects : MonoBehaviour
 {
-    public float speed;
+    public float speed = 3f;
     public float range;
     [Tooltip("This is used only when you select clamped scale")]
     public ScaleType scaleType = ScaleType.Side;
-    public float max, min;
+    public float max = .48f, min = -.8f;
     float timecounter = 0;
     Vector3 startScale;
 

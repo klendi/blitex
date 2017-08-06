@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
@@ -7,6 +6,7 @@ using UnityEngine.UI.Extensions;
 public class LevelSelectorManager : MonoBehaviour
 {
     public Transform levelPanel;
+    public GameObject endlessUnlockTab;
     UIVerticalScroller scroll;
     public bool isSnowSelector = false;
 
@@ -14,6 +14,7 @@ public class LevelSelectorManager : MonoBehaviour
     {
         scroll = FindObjectOfType<UIVerticalScroller>();
         scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
+        endlessUnlockTab.SetActive(false);
 
         if (!isSnowSelector)
             InitLevel();
@@ -78,7 +79,7 @@ public class LevelSelectorManager : MonoBehaviour
                     else
                     {
                         //Level is already completed
-                        img.color = Color.green;
+                        img.color = new Color(0f, 1f, 202f / 255f);
                     }
                 }
                 else
@@ -157,11 +158,28 @@ public class LevelSelectorManager : MonoBehaviour
 
     public void OnEndlessClick()
     {
-        SceneManager.LoadScene("Endless");
+        if (SaveManager.Instance.data.specialDiamond <= 10)
+        {
+            endlessUnlockTab.SetActive(true);
+            SaveManager.Instance.data.specialDiamond -= 10;
+        }
+        else if (SaveManager.Instance.data.completedLevels > 5)
+            SceneManager.LoadScene("Endless_normal");
     }
 
-    public void OnEndlessClickNormal()
+    public void OnSnowEndlessClick()
     {
-        SceneManager.LoadScene("Endless_normal");
+        if (SaveManager.Instance.data.specialDiamond <= 10)
+        {
+            endlessUnlockTab.SetActive(true);
+            SaveManager.Instance.data.specialDiamond -= 10;
+        }
+        else if (SaveManager.Instance.data.completedSnowLevels > 5)
+            SceneManager.LoadScene("Endless_snow");
+    }
+
+    public void OnEndlessTabClick()
+    {
+        endlessUnlockTab.SetActive(false);
     }
 }

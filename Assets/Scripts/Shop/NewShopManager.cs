@@ -6,11 +6,13 @@ using UnityEngine.UI.Extensions;
 public class NewShopManager : MonoBehaviour
 {
     public Transform ballsPanel;
-    public Text buttonText, diamondsText;
+    public GameObject notEnoughMoneyTab;
+    public Outline buyButtonColor;
+    public Text buttonText, diamondsText, costText;
     public VerticalScrollSnap scroll;
-    public Button buyButton;
+    //public Button buyButton;
 
-    private int[] ballCosts = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
+    private int[] ballCosts = { 0, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
     public int activeBallIndex = 0;
     private int currentPage = 0;
     public int selectedBallIndex = 0;
@@ -24,6 +26,7 @@ public class NewShopManager : MonoBehaviour
         }
 
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
+        notEnoughMoneyTab.SetActive(false);
         activeBallIndex = SaveManager.Instance.data.activeBall;
         SaveManager.Instance.data.diamonds += 50000;
         OnNewPage();
@@ -51,14 +54,23 @@ public class NewShopManager : MonoBehaviour
         if (SaveManager.Instance.DoesOwnBall(selectedBallIndex))
         {
             if (activeBallIndex == selectedBallIndex)
+            {
                 buttonText.text = "Current";
+                buyButtonColor.effectColor = new Color(0f, 234f / 255f, 1f);
+            }
             else
+            {
                 buttonText.text = "Select";
+                buyButtonColor.effectColor = new Color(0f, 234f / 255f, 1f);
+            }
         }
         else
         {
-            buttonText.text = "Buy " + ballCosts[index].ToString();
+            buttonText.text = "Buy";
+            buyButtonColor.effectColor = new Color(1f, 0f, 90f / 255f);
         }
+
+        costText.text = string.Format("Price: {0}", ballCosts[index].ToString());
     }
 
     private void UpdateText()
@@ -71,6 +83,7 @@ public class NewShopManager : MonoBehaviour
         activeBallIndex = index;
         SaveManager.Instance.data.activeBall = activeBallIndex;
         buttonText.text = "Current";
+        buyButtonColor.effectColor = new Color(0f, 234f / 255f, 1f);
     }
 
     public void OnBallBuy()
@@ -88,7 +101,7 @@ public class NewShopManager : MonoBehaviour
             }
             else
             {
-                print("Not enough gold");
+                notEnoughMoneyTab.SetActive(true);
             }
         }
         OnNewPage();

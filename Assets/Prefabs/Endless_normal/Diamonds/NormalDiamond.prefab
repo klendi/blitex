@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212730091101200496}
   - component: {fileID: 114428738892830226}
   - component: {fileID: 60911228897993740}
+  - component: {fileID: 114083515064505692}
   m_Layer: 0
   m_Name: NormalDiamond
   m_TagString: Diamond
@@ -107,6 +108,18 @@ PolygonCollider2D:
       - {x: 0.08, y: -1.225}
       - {x: 0.25, y: -1.0649999}
       - {x: 0.32999998, y: -0.97499996}
+--- !u!114 &114083515064505692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742861245867732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f3dde145f06e54eb73bb06ccc01963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformDestroyerPoint: {fileID: 0}
 --- !u!114 &114428738892830226
 MonoBehaviour:
   m_ObjectHideFlags: 1

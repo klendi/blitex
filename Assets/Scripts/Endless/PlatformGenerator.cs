@@ -13,8 +13,7 @@ public class PlatformGenerator : MonoBehaviour
 
     private float[] platform_two_fav_pos_normal = { -0f, .9f, 2.2f, -.34f };
     private float[] scaling_duo_fav_pos_normal = { -.27f, 1.08f, 2f };
-    private float[] scaling_one_fav_pos_normal = { -1.19f, 1.83f };
-    private float[] scaling_three = { 0f, 1.87f, -2.13f };
+    private float[] scaling_one_fav_pos_normal = { -1.9f, 2.7f };
     private float[] scaling_four = { .8f, -1.68f, -.45f };
     private float[] normal_four = { .62f, -1.67f, -.55f };
 
@@ -110,8 +109,7 @@ public class PlatformGenerator : MonoBehaviour
             switch (newPlatform.tag)
             {
                 case "left_right":
-                    int k = Random.Range(0, left_right_fav_pos.Length);
-                    newPlatform.transform.position = new Vector3(left_right_fav_pos[k], transform.position.y);
+                    newPlatform.transform.position = new Vector3(Random.Range(0, 1), transform.position.y);
 
                     if (Random.Range(0, 100) < diamondThreshold)
                         diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f));
@@ -142,8 +140,7 @@ public class PlatformGenerator : MonoBehaviour
                     break;
 
                 case "scaling_trio":
-                    int h = Random.Range(0, scaling_three.Length);
-                    newPlatform.transform.position = new Vector3(scaling_three[h], transform.position.y);
+                    newPlatform.transform.position = new Vector3(0f, transform.position.y);
 
                     if (Random.Range(0, 100) < diamondThreshold)
                         diamondGen.SpawnDiamond(new Vector3(Random.Range(-2f, 2f), newPlatform.transform.position.y + .5f));

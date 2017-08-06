@@ -86,7 +86,7 @@ MonoBehaviour:
   speed: 3
   range: 0
   scaleType: 3
-  max: 0.42
+  max: 0.33
   min: -0.2
 --- !u!212 &212546899581714524
 SpriteRenderer:

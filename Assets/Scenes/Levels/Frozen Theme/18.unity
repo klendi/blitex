@@ -609,21 +609,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 114504516392371076, guid: b029fcd23321f6f4b8b73a2d7c98da25,
-        type: 2}
-      propertyPath: speed
-      value: 2.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 114063162037749080, guid: b029fcd23321f6f4b8b73a2d7c98da25,
-        type: 2}
-      propertyPath: speed
-      value: 2.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310353591558886, guid: b029fcd23321f6f4b8b73a2d7c98da25,
-        type: 2}
-      propertyPath: speed
-      value: 2.83
-      objectReference: {fileID: 0}
     - target: {fileID: 1682899249468916, guid: b029fcd23321f6f4b8b73a2d7c98da25, type: 2}
       propertyPath: m_Name
       value: Scaling_tree (1)
@@ -2265,7 +2250,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1845321144}
+    m_TransformParent: {fileID: 1963049715}
     m_Modifications:
     - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2297,7 +2282,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1207623116757604, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_Name
@@ -2711,7 +2696,6 @@ Transform:
   - {fileID: 899293960}
   - {fileID: 2071372273}
   - {fileID: 717409440}
-  - {fileID: 1446892548}
   - {fileID: 1532729687}
   - {fileID: 355056527}
   - {fileID: 186587208}
@@ -2800,6 +2784,7 @@ Transform:
   - {fileID: 1207523388}
   - {fileID: 248060008}
   - {fileID: 1118022641}
+  - {fileID: 1446892548}
   m_Father: {fileID: 48527266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2902,6 +2887,7 @@ MonoBehaviour:
   diamonds: 0
   specialDiamonds: 0
   isSnowLevel: 1
+  isEndlessLevel: 0
   paused: 0
   gameOver: 0
   pauseButton: {fileID: 1600705739}

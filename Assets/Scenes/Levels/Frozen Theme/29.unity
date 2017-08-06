@@ -2215,7 +2215,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4937121547584082, guid: f231359db24fe744da04301ac448f40c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -22.44
+      value: -19.92
       objectReference: {fileID: 0}
     - target: {fileID: 4937121547584082, guid: f231359db24fe744da04301ac448f40c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5605,6 +5605,7 @@ MonoBehaviour:
   diamonds: 0
   specialDiamonds: 0
   isSnowLevel: 1
+  isEndlessLevel: 0
   paused: 0
   gameOver: 0
   pauseButton: {fileID: 1600705739}
