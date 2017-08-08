@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     public float speed;
     float screenHalfInWorldUnits;
+    float screenHalfInY;
     float visibleHeightThreshold;
 
     [HideInInspector]
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     LevelManager level;
 
     [HideInInspector]
-    public bool isGoingLeft = true, isGoingRight = false, isReady = false, gameOver = false, paused = false, isInvincible = false;
+    public bool isGoingLeft = true, isGoingRight = false, isReady = false, gameOver = false, paused = false;
 
 
     private void Start()
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         level = FindObjectOfType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
         float halfPlayerWidth = transform.localScale.x / 2f;
+        screenHalfInY = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
         screenHalfInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
     }
     private void Update()
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(-screenHalfInWorldUnits, transform.position.y);
         }
+
         //Move the object to the left by adding speed to player
         if (Input.GetMouseButtonDown(0) && isReady && isGoingLeft && !paused)
         {
@@ -86,7 +89,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Enemy" && !isInvincible)
+        if (col.gameObject.tag == "Enemy")
         {
             level.OnGameOver();
         }

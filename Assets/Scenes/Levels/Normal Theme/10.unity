@@ -4520,6 +4520,7 @@ MonoBehaviour:
   diamonds: 0
   specialDiamonds: 0
   isSnowLevel: 0
+  isEndlessLevel: 0
   paused: 0
   gameOver: 0
   pauseButton: {fileID: 1600705739}

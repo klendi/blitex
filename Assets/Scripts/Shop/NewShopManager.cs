@@ -8,9 +8,8 @@ public class NewShopManager : MonoBehaviour
     public Transform ballsPanel;
     public GameObject notEnoughMoneyTab;
     public Outline buyButtonColor;
-    public Text buttonText, diamondsText, costText;
+    public Text buttonText, diamondsText, costText, NotEnoughDiamondsText;
     public VerticalScrollSnap scroll;
-    //public Button buyButton;
 
     private int[] ballCosts = { 0, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
     public int activeBallIndex = 0;
@@ -28,15 +27,32 @@ public class NewShopManager : MonoBehaviour
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         notEnoughMoneyTab.SetActive(false);
         activeBallIndex = SaveManager.Instance.data.activeBall;
-        SaveManager.Instance.data.diamonds += 50000;
+        SaveManager.Instance.data.diamonds += 50;
         OnNewPage();
         UpdateText();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("Main Menu");
     }
 
     public void OnNewPage()
     {
         currentPage = scroll.CurrentPage;
         OnBallSelect(currentPage);
+    }
+
+    public void CloseNotEnoughTab()
+    {
+        notEnoughMoneyTab.SetActive(false);
+    }
+
+    public void ShowVideoAd()
+    {
+        AdsManager.Instance.ShowAdVideo();
+        notEnoughMoneyTab.SetActive(false);
     }
 
     public void OnHomeClick()
@@ -61,13 +77,22 @@ public class NewShopManager : MonoBehaviour
             else
             {
                 buttonText.text = "Select";
-                buyButtonColor.effectColor = new Color(0f, 234f / 255f, 1f);
+                buyButtonColor.effectColor = new Color(0f, 1f, 171f / 255f);
             }
         }
         else
         {
-            buttonText.text = "Buy";
-            buyButtonColor.effectColor = new Color(1f, 0f, 90f / 255f);
+            if (SaveManager.Instance.data.diamonds >= ballCosts[selectedBallIndex])
+            {
+                //he can afford it but he hasnt buyed yet, set the color to green
+                buttonText.text = "Buy";
+                buyButtonColor.effectColor = new Color(0f, 1f, 171f / 255f);
+            }
+            else if (SaveManager.Instance.data.diamonds < ballCosts[selectedBallIndex])
+            {
+                buttonText.text = "Buy";
+                buyButtonColor.effectColor = new Color(1f, 0f, 90f / 255f);
+            }
         }
 
         costText.text = string.Format("Price: {0}", ballCosts[index].ToString());
@@ -101,6 +126,7 @@ public class NewShopManager : MonoBehaviour
             }
             else
             {
+                NotEnoughDiamondsText.text = "You need " + ballCosts[selectedBallIndex].ToString();
                 notEnoughMoneyTab.SetActive(true);
             }
         }

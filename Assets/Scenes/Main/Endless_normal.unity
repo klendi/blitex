@@ -6927,6 +6927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972569514}
   - component: {fileID: 1972569515}
+  - component: {fileID: 1972569516}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -6979,6 +6980,18 @@ MonoBehaviour:
   soundSprites:
   - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}
+--- !u!114 &1972569516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972569513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7a5f7dab49b65468e89ccc9358d949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advertisementType: 0
 --- !u!1 &1979438778
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,12 @@ public class LevelSelectorManager : MonoBehaviour
             InitSnowLevel();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("Main Menu");
+    }
+
     public void OnHomeClick()
     {
         SceneManager.LoadScene("Main Menu");
