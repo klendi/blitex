@@ -14,6 +14,7 @@ public class Manager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        AdsManager.Instance.showBannerAd();
     }
 
     public void OnSoundClick(Button btn)

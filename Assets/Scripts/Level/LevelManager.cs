@@ -93,6 +93,7 @@ public class LevelManager : MonoBehaviour
     public void OnGameInit()
     {
         print("Game Started");
+        startGameButton.interactable = false;
         //remove the big play button after he is pressed
         StartCoroutine(Load(0f, false));
         pauseButton.enabled = true;    //enable the pause button

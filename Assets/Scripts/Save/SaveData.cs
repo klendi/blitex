@@ -10,4 +10,6 @@
     public float normalHighscore = 0;
     public bool firstTimeRunning = true;
     public bool firstTimeRunninglvl = true;
+    public bool hasUnlockedNormalEndless = false;
+    public bool hasUnlockedSnowEndless = false;
 }

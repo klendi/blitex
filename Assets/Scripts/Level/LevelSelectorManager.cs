@@ -7,6 +7,8 @@ public class LevelSelectorManager : MonoBehaviour
 {
     public Transform levelPanel;
     public GameObject endlessUnlockTab;
+    bool hasUnlockedNormalEndless = false;
+    bool hasUnlockedSnowEndless = false;
     UIVerticalScroller scroll;
     public bool isSnowSelector = false;
 
@@ -15,6 +17,8 @@ public class LevelSelectorManager : MonoBehaviour
         scroll = FindObjectOfType<UIVerticalScroller>();
         scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
         endlessUnlockTab.SetActive(false);
+        hasUnlockedNormalEndless = SaveManager.Instance.data.hasUnlockedNormalEndless;
+        hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
 
         if (!isSnowSelector)
             InitLevel();
@@ -164,24 +168,48 @@ public class LevelSelectorManager : MonoBehaviour
 
     public void OnEndlessClick()
     {
-        if (SaveManager.Instance.data.specialDiamond <= 10)
+        //player can afford it and hasent unlocked snow endless
+        if (SaveManager.Instance.data.specialDiamond >= 10 && !hasUnlockedNormalEndless)
         {
-            endlessUnlockTab.SetActive(true);
+            print("Bough normal Endless");
             SaveManager.Instance.data.specialDiamond -= 10;
-        }
-        else if (SaveManager.Instance.data.completedLevels > 5)
+            SaveManager.Instance.data.hasUnlockedNormalEndless = true;
+            SaveManager.Instance.Save();
             SceneManager.LoadScene("Endless_normal");
+        }
+        //he has bough it before
+        else if (hasUnlockedNormalEndless)
+        {
+            SceneManager.LoadScene("Endless_normal");
+        }
+        else if (SaveManager.Instance.data.specialDiamond < 10 && !hasUnlockedNormalEndless)
+        {
+            //not enough diamonds
+            endlessUnlockTab.SetActive(true);
+        }
     }
 
     public void OnSnowEndlessClick()
     {
-        if (SaveManager.Instance.data.specialDiamond <= 10)
+        //player can afford it and hasent unlocked snow endless
+        if (SaveManager.Instance.data.specialDiamond >= 10 && !hasUnlockedSnowEndless)
         {
-            endlessUnlockTab.SetActive(true);
+            print("Bough Snow Endless");
             SaveManager.Instance.data.specialDiamond -= 10;
-        }
-        else if (SaveManager.Instance.data.completedSnowLevels > 5)
+            SaveManager.Instance.data.hasUnlockedSnowEndless = true;
+            SaveManager.Instance.Save();
             SceneManager.LoadScene("Endless_snow");
+        }
+        //he has bough it before
+        else if (hasUnlockedNormalEndless)
+        {
+            SceneManager.LoadScene("Endless_snow");
+        }
+        else if(SaveManager.Instance.data.specialDiamond < 10 && !hasUnlockedSnowEndless)
+        {
+            //not enough diamonds
+            endlessUnlockTab.SetActive(true);
+        }
     }
 
     public void OnEndlessTabClick()

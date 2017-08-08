@@ -9,11 +9,7 @@ public class AdsManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        if (FindObjectOfType<LevelManager>() != null)
-        {
-            showBannerAd();
-        }
+        showBannerAd();
     }
     public void showBannerAd()
     {
@@ -27,7 +23,7 @@ public class AdsManager : MonoBehaviour
         //***For Production When Submit App***
         //AdRequest request = new AdRequest.Builder().Build();
 
-        BannerView bannerAd = new BannerView(adID, AdSize.SmartBanner, AdPosition.BottomLeft);
+        BannerView bannerAd = new BannerView(adID, AdSize.SmartBanner, AdPosition.Bottom);
         bannerAd.LoadAd(request);
     }
 
