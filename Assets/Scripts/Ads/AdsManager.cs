@@ -4,77 +4,26 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
-    public static AdsManager Instance { get; set; }
-
     private void Awake()
     {
-        Instance = this;
-        showBannerAd();
-    }
-    public void showBannerAd()
-    {
-        string adID = "ca-app-pub-3940256099942544/6300978111";
-
-        //***For Testing in the Device***
-        AdRequest request = new AdRequest.Builder()
-       .AddTestDevice("dc0be7b182029808")  // My test device.
-       .Build();
-
-        //***For Production When Submit App***
-        //AdRequest request = new AdRequest.Builder().Build();
-
-        BannerView bannerAd = new BannerView(adID, AdSize.SmartBanner, AdPosition.Bottom);
+        string bannerADID = "ca-app-pub-2457877020060990/1885151063";
+        BannerView bannerAd = new BannerView(bannerADID, AdSize.SmartBanner, AdPosition.Bottom);
+        AdRequest request = new AdRequest.Builder().Build();
         bannerAd.LoadAd(request);
-    }
-
-    public void ShowAdVideo()
-    {
-        if (Advertisement.IsReady())
-        {
-            //Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleAdResult });
-            Advertisement.Show();
-
-        }
-    }
-
-    private void HandleAdResult(ShowResult result)
-    {
-        switch (result)
-        {
-            case ShowResult.Failed:
-                print("AD FAILED TO PLAY, Maybe internet");
-                break;
-            case ShowResult.Skipped:
-                print("Player skipped the add");
-                break;
-            case ShowResult.Finished:
-                print("Has finished the ad");
-                break;
-
-            default:
-                break;
-        }
+        bannerAd.Show();
     }
 
     #region SHOP_ADS
+
     /* funcs for shop */
+    /*
     public void ShowShopAdVideo()
     {
         if (Advertisement.IsReady())
         {
-            //Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleShopAdResult });
-            Advertisement.Show();
-
+            Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleShopAdResult });
         }
     }
-
-    public void OnAdFinishedShop()
-    {
-        SaveManager.Instance.data.diamonds += 2;
-        SaveManager.Instance.Save();
-        print("Added diamonds to player");
-    }
-    //callback for showAdVideo
 
     private void HandleShopAdResult(ShowResult result)
     {
@@ -87,13 +36,17 @@ public class AdsManager : MonoBehaviour
                 print("Player skipped the add");
                 break;
             case ShowResult.Finished:
-                OnAdFinishedShop();
+                SaveManager.Instance.data.diamonds += 2;
+                SaveManager.Instance.Save();
+                FindObjectOfType<NewShopManager>().UpdateText();
+                print("Added 2 diamonds to player");
                 break;
 
             default:
                 break;
         }
-    }
+    }*/
+
     /* Adds funcs for shop*/
     #endregion
 }

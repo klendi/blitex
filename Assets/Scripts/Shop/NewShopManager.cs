@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using GoogleMobileAds.Api;
+using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
@@ -6,10 +8,13 @@ using UnityEngine.UI.Extensions;
 public class NewShopManager : MonoBehaviour
 {
     public Transform ballsPanel;
-    public GameObject notEnoughMoneyTab;
+    public GameObject notEnoughMoneyTab, loadingTab;
     public Outline buyButtonColor;
     public Text buttonText, diamondsText, costText, NotEnoughDiamondsText;
     public VerticalScrollSnap scroll;
+
+    //const string interstitialAdId = "ca-app-pub-2457877020060990/9029321528";
+    //InterstitialAd interstitalAd = new InterstitialAd(interstitialAdId);
 
     private int[] ballCosts = { 0, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
     public int activeBallIndex = 0;
@@ -23,6 +28,7 @@ public class NewShopManager : MonoBehaviour
             SaveManager.Instance.UnlockBall(0);     //if this is the first time we run the game and we want to have bought the default ball, and set it as bought
             SetBall(0);
         }
+        //ShowInterstitalAd();
 
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         notEnoughMoneyTab.SetActive(false);
@@ -36,6 +42,11 @@ public class NewShopManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
+
+        if (Time.timeSinceLevelLoad >= 30f)
+        {
+            ShowInterstitalAd();
+        }
     }
 
     public void OnNewPage()
@@ -49,11 +60,52 @@ public class NewShopManager : MonoBehaviour
         notEnoughMoneyTab.SetActive(false);
     }
 
-    public void ShowVideoAd()
+    /* Video Ads stuff */
+    public void ShowAdVideo()
     {
-        AdsManager.Instance.ShowAdVideo();
-        notEnoughMoneyTab.SetActive(false);
+        if (Advertisement.IsReady())
+        {
+            Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleAdResult });
+        }
     }
+    private void HandleAdResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Failed:
+
+                loadingTab.SetActive(false);
+                notEnoughMoneyTab.SetActive(false);
+                break;
+            case ShowResult.Skipped:
+
+                loadingTab.SetActive(false);
+                notEnoughMoneyTab.SetActive(false);
+                break;
+            case ShowResult.Finished:
+
+                loadingTab.SetActive(false);
+                notEnoughMoneyTab.SetActive(false);
+                break;
+
+            default:
+                break;
+        }
+    }
+    /* End ads stuff */
+
+    /* Interstital AD stuff*/
+    public void ShowInterstitalAd()
+    {
+        //interstitalAd.OnAdLoaded += InterstitalAd_OnAdLoaded;
+    }
+    private void InterstitalAd_OnAdLoaded(object sender, System.EventArgs e)
+    {
+        AdRequest request = new AdRequest.Builder().Build();
+        //interstitalAd.LoadAd(request);
+        print("Yay now the ad is loaded display it");
+    }
+    /* End Interstital AD stuff*/
 
     public void OnHomeClick()
     {
@@ -98,7 +150,7 @@ public class NewShopManager : MonoBehaviour
         costText.text = string.Format("Price: {0}", ballCosts[index].ToString());
     }
 
-    private void UpdateText()
+    public void UpdateText()
     {
         diamondsText.text = SaveManager.Instance.data.diamonds.ToString();
     }
@@ -126,7 +178,7 @@ public class NewShopManager : MonoBehaviour
             }
             else
             {
-                NotEnoughDiamondsText.text = "You need " + ballCosts[selectedBallIndex].ToString();
+                NotEnoughDiamondsText.text = "You need " + (ballCosts[selectedBallIndex] - SaveManager.Instance.data.diamonds);
                 notEnoughMoneyTab.SetActive(true);
             }
         }

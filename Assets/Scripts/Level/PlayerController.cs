@@ -20,10 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         level = FindObjectOfType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
-        print(Screen.width.ToString());
         float halfPlayerWidth = transform.localScale.x / 2f;
         screenHalfInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
-        cameraHeight = -(Camera.main.orthographicSize * 2) - transform.localScale.y;
     }
     private void Update()
     {
@@ -38,11 +36,6 @@ public class PlayerController : MonoBehaviour
         else if (transform.position.x > screenHalfInWorldUnits)
         {
             transform.position = new Vector3(-screenHalfInWorldUnits, transform.position.y);
-        }
-
-        if (transform.position.y < cameraHeight)
-        {
-            print("out of sight at y: " + transform.position.y);
         }
 
         //Move the object to the left by adding speed to player
@@ -64,7 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             rigid.velocity = new Vector2(speed, rigid.velocity.y);
         }
-
 
         //is moving to left ? then set the direction to left and don't stop
         else if (isGoingLeft && isReady && !paused)
