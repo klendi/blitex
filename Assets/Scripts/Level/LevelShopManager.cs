@@ -2,17 +2,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames;
 
 public class LevelShopManager : MonoBehaviour
 {
     public GameObject infoLabel;
     public GameObject infoLabelExit;
+    public GameObject googlePlaygameTab;
+    public GameObject googlePlaygameTabExit;
     public GameObject gameModeTab;
+    public GameObject errorTab;
     public GameObject playButtonOriginal, playButtonOther;
     public Animator playButtonAnimator;
     public Button soundButton;
     public CanvasGroup cg;
     bool hasPlayed = false;
+    bool isAtGameMode = false, isAtInfoTab = false, isAtGameServices = false;
 
     private void Start()
     {
@@ -28,6 +34,22 @@ public class LevelShopManager : MonoBehaviour
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
     }
 
+    private void Update()
+    {
+        if (isAtGameMode && Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameModeTab.SetActive(false);
+        }
+        else if (isAtInfoTab && Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnInfoExitClicked();
+        }
+        else if (isAtGameServices && Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnGameServiceExit();
+        }
+    }
+
     public void OnShopClicked()
     {
         SceneManager.LoadScene("Shop");
@@ -36,26 +58,25 @@ public class LevelShopManager : MonoBehaviour
     {
         if (!hasPlayed)
         {
+            isAtGameMode = true;
             playButtonAnimator.SetBool("hasPressed", true);
             StartCoroutine(WaitForAnimToEndThenPlay());
             hasPlayed = true;
         }
         else if (hasPlayed)
         {
+            isAtGameMode = false;
             SceneManager.LoadScene("LevelSelector");
         }
     }
     public void OnPlayClick()
     {
+        isAtGameMode = false;
         SceneManager.LoadScene("LevelSelector");
-    }
-    private IEnumerator WaitForAnimToEndThenPlay()
-    {
-        yield return new WaitForSeconds(.1f);
-        gameModeTab.SetActive(true);
     }
     public void OnFrozenPlay()
     {
+        isAtGameMode = false;
         SceneManager.LoadScene("LevelSelectorSnow");
     }
     public void OnTwitterClick()
@@ -92,27 +113,71 @@ public class LevelShopManager : MonoBehaviour
             Application.OpenURL("http://www.facebook.com/sublexgames");
         }
     }
-
     public void OnSoundClicked()
     {
         Manager.Instance.OnSoundClick(soundButton);
+    }
+    public void OnRatingClicked()
+    {
+        print("Now it loads the game");
     }
 
     public void OnInfoClicked()
     {
         cg.alpha = 0;
         infoLabel.SetActive(true);
+        isAtInfoTab = true;
     }
     public void OnInfoExitClicked()
     {
-        StartCoroutine(ExitThenWait(1f));
+        StartCoroutine(ExitThenWait(.65f, infoLabel, infoLabelExit));
+        isAtInfoTab = false;
     }
 
-    private IEnumerator ExitThenWait(float seconds)
+    public void OnGameServiceClicked()
     {
-        infoLabel.SetActive(false);
-        infoLabelExit.SetActive(true);
+        googlePlaygameTab.GetComponent<CanvasGroup>().alpha = 0;
+        isAtGameServices = true;
+        googlePlaygameTab.SetActive(true);
+    }
+    public void OnGameServiceExit()
+    {
+        StartCoroutine(ExitThenWait(.65f, googlePlaygameTab, googlePlaygameTabExit));
+    }
+
+    public void OnSignInClick()
+    {
+        Social.localUser.Authenticate(succes =>
+        {
+            errorTab.GetComponentInChildren<Text>().text = "Succes the player signed";
+            StartCoroutine(WaitThenDestroy());
+        });
+    }
+    public void OnAchievementsClick()
+    {
+        Social.ShowAchievementsUI();
+    }
+    public void OnLeaderBoardClick()
+    {
+        Social.ShowLeaderboardUI();
+    }
+
+    private IEnumerator WaitForAnimToEndThenPlay()
+    {
+        yield return new WaitForSeconds(.1f);
+        gameModeTab.SetActive(true);
+    }
+    private IEnumerator ExitThenWait(float seconds, GameObject current, GameObject next)
+    {
+        current.SetActive(false);
+        next.SetActive(true);
         yield return new WaitForSeconds(seconds);
-        infoLabelExit.SetActive(false);
+        next.SetActive(false);
+    }
+    private IEnumerator WaitThenDestroy()
+    {
+        errorTab.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        errorTab.SetActive(false);
     }
 }

@@ -5,7 +5,7 @@ public class Preloader : MonoBehaviour
 {
     private CanvasGroup fadeGroup = new CanvasGroup();
     private float loadTime;
-    public float minimunLoadTime = 1f; // minimum time of that scene
+    public float minimunLoadTime = 0; // minimum time of that scene
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class Preloader : MonoBehaviour
         // Fade-in
         if (Time.time < minimunLoadTime)
         {
-            fadeGroup.alpha = 2.5f - Time.time;
+            fadeGroup.alpha = 1.5f - Time.time;
         }
 
         //Fade-out

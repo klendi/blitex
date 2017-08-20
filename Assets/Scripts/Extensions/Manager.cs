@@ -7,13 +7,17 @@ public class Manager : MonoBehaviour
     public int sceneIndex = 0;
     public bool soundOn = false;
     public Sprite[] soundSprites;
+    PlayServices playGames;
     public GameObject[] playerPrefabs;
+    public static int Counter { get; private set; }
 
     private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        playGames = FindObjectOfType<PlayServices>();
+        playGames.SignIn();
     }
 
     public void OnSoundClick(Button btn)

@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(screenHalfInWorldUnits, transform.position.y);
         }
-
-        //Vice-Versa
         else if (transform.position.x > screenHalfInWorldUnits)
         {
             transform.position = new Vector3(-screenHalfInWorldUnits, transform.position.y);
