@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4019170783544674}
   - component: {fileID: 198103888999611740}
+  - component: {fileID: 114266968556854674}
   - component: {fileID: 199840721092763628}
   m_Layer: 0
   m_Name: Snow_vfx
@@ -27,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4019170783544674
 Transform:
   m_ObjectHideFlags: 1
@@ -35,12 +36,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1997949712220304}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.22, y: 7.398, z: 0.29}
+  m_LocalPosition: {x: 0.22, y: 6.27, z: 0.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &114266968556854674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997949712220304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad49b8a75adae224aa7b29cb23a0728f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startScales:
+  - 0.13
+  - 0.09
+  - 0.15
 --- !u!198 &198103888999611740
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -100,14 +116,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -988400279
+  randomSeed: 1908205025
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 7
       minScalar: 5
       maxCurve:
         serializedVersion: 2

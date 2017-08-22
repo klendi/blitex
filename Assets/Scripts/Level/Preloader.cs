@@ -28,7 +28,7 @@ public class Preloader : MonoBehaviour
         // Fade-in
         if (Time.time < minimunLoadTime)
         {
-            fadeGroup.alpha = 1.5f - Time.time;
+            fadeGroup.alpha = 0f - Time.time;
         }
 
         //Fade-out

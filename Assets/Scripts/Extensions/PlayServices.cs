@@ -1,24 +1,46 @@
 ﻿using GooglePlayGames.BasicApi;
 using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayServices : MonoBehaviour
 {
+    public static PlayServices Instance { get; set; }
+    public Text signedText;
+
     private void Awake()
     {
-        PlayGamesClientConfiguration config = new
-            PlayGamesClientConfiguration.Builder().Build();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        PlayGamesPlatform.InitializeInstance(config);
+        PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
+        Debug.Log("Activated Services");
         SignIn();
     }
 
     public void SignIn()
     {
+        Debug.Log("Trying to sign in");
+
         Social.localUser.Authenticate(succes =>
         {
-
+            if (succes)
+            {
+                Debug.Log("Succes loggin the player");
+            }
+            else if (!succes)
+            {
+                Debug.Log("Error logging the player");
+            }
         });
     }
 
@@ -42,7 +64,8 @@ public class PlayServices : MonoBehaviour
 
     public static void ShowAchievementsUI()
     {
-
+        Debug.Log("Show Achievement called");
+        Social.ShowAchievementsUI();
     }
     #endregion
 
@@ -57,6 +80,7 @@ public class PlayServices : MonoBehaviour
     }
     public static void ShowLeaderBoardUI()
     {
+        Debug.Log("Show LeaderBoard called");
         Social.ShowLeaderboardUI();
     }
     #endregion

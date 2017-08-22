@@ -77,5 +77,20 @@ public class BladeSpikes : MonoBehaviour
             print("Gameover by bladeSpike");
             level.OnGameOver();
         }
+        else if (col.collider.tag == "Diamond")
+        {
+            print("Blade Destroyed Diamond");
+            Destroy(col.gameObject);
+        }
+        else if(col.collider.tag == "SuperDiamond")
+        {
+            print("Blade Destroyed SuperDiamond");
+            Destroy(col.gameObject);
+        }
+        else if(col.collider.tag == "Enemy")
+        {
+            print("Blade Destroyed Spike");
+            Destroy(col.gameObject);
+        }
     }
 }

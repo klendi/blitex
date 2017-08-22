@@ -6,6 +6,7 @@ public class AdsManager : MonoBehaviour
 {
     private void Awake()
     {
+        //we show the banner ad at the start of main menu
         string bannerADID = "ca-app-pub-2457877020060990/1885151063";
         BannerView bannerAd = new BannerView(bannerADID, AdSize.SmartBanner, AdPosition.Bottom);
         AdRequest request = new AdRequest.Builder().Build();

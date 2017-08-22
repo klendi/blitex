@@ -170,46 +170,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &746308043
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 746308044}
-  - component: {fileID: 746308045}
-  m_Layer: 0
-  m_Name: PlayServices
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &746308044
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 746308043}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 240, y: 427, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &746308045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 746308043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4aeead2522ab54a85a10a17f34092b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1098497943
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +181,6 @@ GameObject:
   - component: {fileID: 1098497947}
   - component: {fileID: 1098497946}
   - component: {fileID: 1098497945}
-  - component: {fileID: 1098497948}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
@@ -255,10 +214,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1098497943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4139b966f501204ba0d2273b83baf6a, type: 3}
+  m_Script: {fileID: 11500000, guid: e289933e50407a64bbf78bd3d4ed59a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimunLoadTime: 3
+  splashPane: {fileID: 1098497946}
+  time: 1
+  sceneName: Main Menu
 --- !u!114 &1098497946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,17 +253,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1098497943}
---- !u!225 &1098497948
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1098497943}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &1341801436
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +649,8 @@ MonoBehaviour:
   - {fileID: 1910059797855436, guid: bf24e9302cdcbfb47916b87ef148dbb8, type: 2}
   - {fileID: 1316649431590212, guid: 780fc849be69faa4d89a8fcb6e540b52, type: 2}
   - {fileID: 1910059797855436, guid: 78364895d2c61b74ebf4fb08f6835e78, type: 2}
+  - {fileID: 1910059797855436, guid: 933cf544584e2134d8d527bee5179f49, type: 2}
+  hasAuthenticated: 0
 --- !u!114 &1938027139
 MonoBehaviour:
   m_ObjectHideFlags: 0

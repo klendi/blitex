@@ -12,11 +12,11 @@ public class LevelShopManager : MonoBehaviour
     public GameObject googlePlaygameTab;
     public GameObject googlePlaygameTabExit;
     public GameObject gameModeTab;
-    public GameObject errorTab;
-    public GameObject playButtonOriginal, playButtonOther;
+    public GameObject playButtonOriginal;
     public Animator playButtonAnimator;
     public Button soundButton;
     public CanvasGroup cg;
+    RectTransform playButtonTransform;
     bool hasPlayed = false;
     bool isAtGameMode = false, isAtInfoTab = false, isAtGameServices = false;
 
@@ -26,6 +26,7 @@ public class LevelShopManager : MonoBehaviour
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
+        playButtonTransform = playButtonOriginal.GetComponent<RectTransform>();
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
         if (!Manager.Instance.soundOn)
@@ -39,6 +40,8 @@ public class LevelShopManager : MonoBehaviour
         if (isAtGameMode && Input.GetKeyDown(KeyCode.Escape))
         {
             gameModeTab.SetActive(false);
+            playButtonOriginal.GetComponent<RectTransform>().anchoredPosition3D = playButtonTransform.anchoredPosition3D;
+            playButtonOriginal.GetComponent<RectTransform>().localScale = playButtonTransform.localScale;
         }
         else if (isAtInfoTab && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -142,6 +145,7 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnGameServiceExit()
     {
+        isAtGameServices = false;
         StartCoroutine(ExitThenWait(.65f, googlePlaygameTab, googlePlaygameTabExit));
     }
 
@@ -149,17 +153,23 @@ public class LevelShopManager : MonoBehaviour
     {
         Social.localUser.Authenticate(succes =>
         {
-            errorTab.GetComponentInChildren<Text>().text = "Succes the player signed";
-            StartCoroutine(WaitThenDestroy());
+            if(succes)
+            {
+                Debug.Log("Succes loggin the player");
+            }
+            else if(!succes)
+            {
+                Debug.Log("Error loggin the player");
+            }
         });
     }
     public void OnAchievementsClick()
     {
-        Social.ShowAchievementsUI();
+        PlayServices.ShowAchievementsUI();
     }
     public void OnLeaderBoardClick()
     {
-        Social.ShowLeaderboardUI();
+        PlayServices.ShowLeaderBoardUI();
     }
 
     private IEnumerator WaitForAnimToEndThenPlay()
@@ -173,11 +183,5 @@ public class LevelShopManager : MonoBehaviour
         next.SetActive(true);
         yield return new WaitForSeconds(seconds);
         next.SetActive(false);
-    }
-    private IEnumerator WaitThenDestroy()
-    {
-        errorTab.SetActive(true);
-        yield return new WaitForSeconds(.5f);
-        errorTab.SetActive(false);
     }
 }

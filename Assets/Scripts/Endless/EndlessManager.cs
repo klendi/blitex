@@ -14,7 +14,6 @@ public class EndlessManager : MonoBehaviour
     public bool isNormalLevel = false;
     public bool scoreIncreasing = false;
     public float pointsForSecond = 0;
-
     public bool hasDisplayedHighScore = false;
 
 
@@ -57,6 +56,7 @@ public class EndlessManager : MonoBehaviour
             OnHighScore();
         }
 
+        //we keep the track of the speeds by multiplier
         if (mainCamera.transform.position.y < -speedMilestoneCount)
         {
             print("milestone");
@@ -105,6 +105,7 @@ public class EndlessManager : MonoBehaviour
 
     private void OnHighScore()
     {
+        //if highscore isnt 0 then display higscore
         if (score > highscore && !hasDisplayedHighScore && highscore != 0)
         {
             highScoreAnimatedText.SetActive(true);
@@ -112,6 +113,7 @@ public class EndlessManager : MonoBehaviour
             if (highScoreAnimatedText.GetComponent<CanvasGroup>().alpha <= 0)
                 highScoreAnimatedText.SetActive(false);
 
+            //we set this to this because it mustn's be to 0, this cause when there is no highscore the highscore ui will apear
             highscore = .0001f;
         }
     }

@@ -1,4 +1,4 @@
-﻿using GoogleMobileAds.Api;
+﻿//using GoogleMobileAds.Api;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
@@ -45,7 +45,7 @@ public class NewShopManager : MonoBehaviour
 
         if (Time.timeSinceLevelLoad >= 30f)
         {
-            ShowInterstitalAd();
+            //ShowInterstitalAd();
         }
     }
 
@@ -92,19 +92,20 @@ public class NewShopManager : MonoBehaviour
                 break;
         }
     }
+    
     /* End ads stuff */
 
     /* Interstital AD stuff*/
-    public void ShowInterstitalAd()
-    {
-        //interstitalAd.OnAdLoaded += InterstitalAd_OnAdLoaded;
-    }
-    private void InterstitalAd_OnAdLoaded(object sender, System.EventArgs e)
-    {
-        AdRequest request = new AdRequest.Builder().Build();
-        //interstitalAd.LoadAd(request);
-        print("Yay now the ad is loaded display it");
-    }
+    //public void ShowInterstitalAd()
+    //{
+    //    //interstitalAd.OnAdLoaded += InterstitalAd_OnAdLoaded;
+    //}
+    //private void InterstitalAd_OnAdLoaded(object sender, System.EventArgs e)
+    //{
+    //    AdRequest request = new AdRequest.Builder().Build();
+    //    //interstitalAd.LoadAd(request);
+    //    print("Yay now the ad is loaded display it");
+    //}
     /* End Interstital AD stuff*/
 
     public void OnHomeClick()

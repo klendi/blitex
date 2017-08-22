@@ -27,116 +27,149 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/Endless_normal.unity
     guid: c1b5fb99ff4e60740934eff8138f1b8c
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/0.unity
+    path: Assets/Scenes/Levels/Normal Theme/Easy/0.unity
     guid: 0bd2e8ee0369e2b46b7e9358c4a657e1
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/1.unity
+    path: Assets/Scenes/Levels/Normal Theme/Easy/1.unity
     guid: 230ad2fa3069bd5479cf481f4f6edf97
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/2.unity
+    path: Assets/Scenes/Levels/Normal Theme/Easy/2.unity
     guid: c22a28d83c0a6464c9408c691b4397ed
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/3.unity
+    path: Assets/Scenes/Levels/Normal Theme/Easy/3.unity
     guid: fcc1ff3ee6f86d34184918d71c96c508
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/4.unity
+    path: Assets/Scenes/Levels/Normal Theme/Easy/4.unity
     guid: 66d5b6fa1534be148a350e236ed45040
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/5.unity
+    path: Assets/Scenes/Levels/Normal Theme/Easy/5.unity
     guid: cb59d72c28c5c0c48813e54949e5fabc
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/6.unity
-    guid: becc40b8b0fdb2e46a55a0f46f5b4ca5
+    path: Assets/Scenes/Levels/Normal Theme/Easy/6.unity
+    guid: e6f81aefa7623464188e0b54b2d67d89
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/7.unity
-    guid: fdece52f2030a66408398bb6b9809b24
+    path: Assets/Scenes/Levels/Normal Theme/Easy/7.unity
+    guid: 19a169cb4f94fb6408a3d1eba5830d47
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/8.unity
-    guid: a84661c6e83ff4447aa539cff1abed74
+    path: Assets/Scenes/Levels/Normal Theme/Easy/8.unity
+    guid: 979a5d0a98ee99144bea94eba58acef5
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/9.unity
-    guid: 43b886a5bc853a3449c6f44b46bcf6eb
-  - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/10.unity
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/10.unity
     guid: 79b1aa50e46f0ec4d8ecf0f38c9b506d
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/11.unity
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/11.unity
+    guid: 720e3a78426ee5c4ea6716a4c55be464
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/12.unity
+    guid: 6bb9c8b088a24284c8ba710bd2500166
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/13.unity
+    guid: 2bee1c2f5080db64e88ff90a1c746de6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/14.unity
+    guid: a84661c6e83ff4447aa539cff1abed74
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/15.unity
+    guid: 43b886a5bc853a3449c6f44b46bcf6eb
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/8.unity
+    guid: fdece52f2030a66408398bb6b9809b24
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/fMedium/9.unity
+    guid: becc40b8b0fdb2e46a55a0f46f5b4ca5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/Hard/16.unity
     guid: 616cc281504f6d645bffc9d33526bc8d
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/12.unity
+    path: Assets/Scenes/Levels/Normal Theme/Hard/17.unity
     guid: ffc47f6c38722724eb026463538c4796
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/13.unity
+    path: Assets/Scenes/Levels/Normal Theme/Hard/18.unity
     guid: 0af572b2a5371a3479bc1e8bbebfc565
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/14.unity
+    path: Assets/Scenes/Levels/Normal Theme/Hard/19.unity
     guid: a831d9a3d469b904e8999496ec0d3bae
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/15.unity
+    path: Assets/Scenes/Levels/Normal Theme/Hard/20.unity
     guid: 9522ad22eda6d404a8c0c00ad02c18d5
-  - enabled: 0
-    path: Assets/Scenes/Levels/Normal Theme/16.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/Hard/21.unity
     guid: 9bed2b521b1218e40b27822fa27c0fec
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/16.unity
+    path: Assets/Scenes/Levels/Normal Theme/Hard/22.unity
+    guid: bfd87820ca4ef144c8e10aa3db19a5aa
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/Hard/23.unity
+    guid: ab8848197ec9c6d45b5c0d32ccf058f1
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/24.unity
     guid: 660a9d7eb15292d45be1df072e99eb21
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/17.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/25.unity
     guid: c1a195c77b58caa4aa8c90a1f63b22de
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/18.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/26.unity
     guid: 40ee0a16a4ecb2845bb46d510bb47b38
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/19.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/27.unity
     guid: aecf0f8903e94e74faba6c562252ec13
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/20.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/28.unity
     guid: 1ba8d6b8846c50d469f2ad068ea5c060
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/21.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/29.unity
     guid: 6fc9f61cfffe3ac409c5dc46dba8741f
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/22.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/30.unity
+    guid: 8546cb8f1560a8c439899033cc8b4c17
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/Easy/31.unity
+    guid: 06cee6d1b30a69a44852a35b4d2e96e6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/32.unity
     guid: fb1b3b1f211edb8428b0e9aeac418358
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/23.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/33.unity
     guid: 36513d9ca2c6bdb4a957f860dfc16f59
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/24.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/34.unity
     guid: a3f76cd0ed338d042bedeefcf1c14187
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/25.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/35.unity
     guid: 581423d55e7c3984ea9f57fe23bed1de
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/26.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/36.unity
     guid: 33764adb90566dc4a9cb5c8969ea2513
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/27.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/37.unity
     guid: 48865ded49a0fac4599aff354e5b3b5f
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/28.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/38.unity
     guid: 1daf35f9c756d054da04993885a58ef4
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/29.unity
+    path: Assets/Scenes/Levels/Frozen Theme/fMedium/39.unity
     guid: 53b7e4a82329dca4597ea76bf8ce96b6
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/30.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/40.unity
     guid: 7a609cdded7e1d74da6089e81123613a
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/31.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/42.unity
     guid: df67d72311e699d4db3877ece5d8a2b1
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/32.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/43.unity
     guid: e85b927adb4daf142aea97617a6a63f4
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/33.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/44.unity
     guid: 25f53af4e30083a4f99654736612ac5e
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/34.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/45.unity
     guid: 9735386dd5ef45645b9363d78806f812
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/35.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/46.unity
     guid: 50350d7b49ca7264c94f6b817b9f930b
   - enabled: 1
-    path: Assets/Scenes/Levels/Frozen Theme/36.unity
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/47.unity
     guid: 20bb79c267341ec47913f630710ec71d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Frozen Theme/Hard/48.unity
+    guid: fa33eda4769014a479fd232204a8f38f

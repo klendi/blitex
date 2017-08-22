@@ -9,6 +9,7 @@ public class PlatformDestroyer : MonoBehaviour
     }
     private void Update()
     {
+        //for every object that is behind that gameobject destroy it
         if (transform.position.y > platformDestroyerPoint.transform.position.y)
         {
             gameObject.SetActive(false);

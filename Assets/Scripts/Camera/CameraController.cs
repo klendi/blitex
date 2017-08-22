@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        //if we are ready and is going downWards
         if (isReady && downWards)
         {
             transform.Translate(Vector2.down * cameraMovingSpeed * Time.deltaTime);

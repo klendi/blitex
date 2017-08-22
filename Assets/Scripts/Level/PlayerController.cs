@@ -5,7 +5,6 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     public float speed;
     float screenHalfInWorldUnits;
-    float cameraHeight;
 
     [HideInInspector]
     public Rigidbody2D rigid;

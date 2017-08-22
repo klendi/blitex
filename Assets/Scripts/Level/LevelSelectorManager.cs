@@ -7,10 +7,14 @@ public class LevelSelectorManager : MonoBehaviour
 {
     public Transform levelPanel;
     public GameObject endlessUnlockTab;
+    public GameObject snowONOF;
     bool hasUnlockedNormalEndless = false;
     bool hasUnlockedSnowEndless = false;
-    UIVerticalScroller scroll;
+    bool isSnowOn = true;
     public bool isSnowSelector = false;
+
+    UIVerticalScroller scroll;
+    public SnowParticles snow;
 
     private void Start()
     {
@@ -19,6 +23,18 @@ public class LevelSelectorManager : MonoBehaviour
         endlessUnlockTab.SetActive(false);
         hasUnlockedNormalEndless = SaveManager.Instance.data.hasUnlockedNormalEndless;
         hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
+        isSnowOn = SaveManager.Instance.data.snowOnOf;
+
+        if (isSnowOn)
+        {
+            snowONOF.GetComponentInChildren<Text>().text = "SNOW: ON";
+            snow.gameObject.SetActive(true);
+        }
+        else if (!isSnowOn)
+        {
+            snowONOF.GetComponentInChildren<Text>().text = "SNOW: OFF";
+            snow.gameObject.SetActive(false);
+        }
 
         if (!isSnowSelector)
             InitLevel();
@@ -186,6 +202,26 @@ public class LevelSelectorManager : MonoBehaviour
         {
             //not enough diamonds
             endlessUnlockTab.SetActive(true);
+        }
+    }
+
+    public void OnSnowVFXClicked()
+    {
+        if(isSnowOn)
+        {
+            isSnowOn = false;
+            snowONOF.GetComponentInChildren<Text>().text = "SNOW: OFF";
+            SaveManager.Instance.data.snowOnOf = false;
+            SaveManager.Instance.Save();
+            snow.gameObject.SetActive(false);
+        }
+        else if(!isSnowOn)
+        {
+            isSnowOn = true;
+            snowONOF.GetComponentInChildren<Text>().text = "SNOW: ON";
+            SaveManager.Instance.data.snowOnOf = true;
+            SaveManager.Instance.Save();
+            snow.gameObject.SetActive(true);
         }
     }
 
