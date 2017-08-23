@@ -23,14 +23,14 @@ public class LevelSelectorManager : MonoBehaviour
         endlessUnlockTab.SetActive(false);
         hasUnlockedNormalEndless = SaveManager.Instance.data.hasUnlockedNormalEndless;
         hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
-        isSnowOn = SaveManager.Instance.data.snowOnOf;
+        isSnowOn = SaveManager.Instance.data.snowOn;
 
-        if (isSnowOn)
+        if (isSnowOn && isSnowSelector)
         {
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: ON";
             snow.gameObject.SetActive(true);
         }
-        else if (!isSnowOn)
+        else if (!isSnowOn && isSnowSelector)
         {
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: OFF";
             snow.gameObject.SetActive(false);
@@ -58,7 +58,6 @@ public class LevelSelectorManager : MonoBehaviour
         SceneManager.LoadScene("LevelSelectorSnow");
     }
 
-    //******TESTING******//
     public void CompleteLevel()
     {
         SaveManager.Instance.data.completedLevels++;
@@ -69,7 +68,6 @@ public class LevelSelectorManager : MonoBehaviour
         SaveManager.Instance.data.completedSnowLevels++;
         SaveManager.Instance.Save();
     }
-    //*******TESTING******//
 
     private void InitLevel()
     {
@@ -128,7 +126,7 @@ public class LevelSelectorManager : MonoBehaviour
 
         //For every children transform under our level panel, find the button and add onclick()
 
-        int i = 16;
+        int i = Manager.Instance.totalNumSnowLevels;
 
         foreach (Transform t in levelPanel)
         {
@@ -211,7 +209,7 @@ public class LevelSelectorManager : MonoBehaviour
         {
             isSnowOn = false;
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: OFF";
-            SaveManager.Instance.data.snowOnOf = false;
+            SaveManager.Instance.data.snowOn = false;
             SaveManager.Instance.Save();
             snow.gameObject.SetActive(false);
         }
@@ -219,7 +217,7 @@ public class LevelSelectorManager : MonoBehaviour
         {
             isSnowOn = true;
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: ON";
-            SaveManager.Instance.data.snowOnOf = true;
+            SaveManager.Instance.data.snowOn = true;
             SaveManager.Instance.Save();
             snow.gameObject.SetActive(true);
         }

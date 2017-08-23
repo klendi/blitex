@@ -143,6 +143,7 @@ public class NewShopManager : MonoBehaviour
             }
             else if (SaveManager.Instance.data.diamonds < ballCosts[selectedBallIndex])
             {
+                //he cant afford it
                 buttonText.text = "Buy";
                 buyButtonColor.effectColor = new Color(1f, 0f, 90f / 255f);
             }
@@ -174,11 +175,15 @@ public class NewShopManager : MonoBehaviour
         {
             if (SaveManager.Instance.BuyBall(selectedBallIndex, ballCosts[selectedBallIndex]))
             {
+                //succes he bough the ball
+                PlayServices.UnlockAchievement(GPGSIds.achievement_first_purchase);
+                PlayServices.IncrementAchievement(GPGSIds.achievement_5_balls_purchased, 1);
                 SetBall(selectedBallIndex);
                 UpdateText();
             }
             else
             {
+                //he dont have enough diamonds to buy it :C
                 NotEnoughDiamondsText.text = "You need " + (ballCosts[selectedBallIndex] - SaveManager.Instance.data.diamonds);
                 notEnoughMoneyTab.SetActive(true);
             }

@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public enum LevelType
 {
     NormalLevels,
-    SnowLevels
+    SnowLevels,
+    BlackAndWhite
 }
 public class LevelCompleted : MonoBehaviour 
 {
@@ -16,9 +17,9 @@ public class LevelCompleted : MonoBehaviour
         tx = GetComponent<Text>();
 
         if (levelType == LevelType.NormalLevels)
-            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex);
+            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex + 1);
 
         else if (levelType == LevelType.SnowLevels)
-            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex - 16);
+            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex - Manager.Instance.totalNumSnowLevels);
 	}
 }

@@ -2,8 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames;
 
 public class LevelShopManager : MonoBehaviour
 {
@@ -16,9 +14,8 @@ public class LevelShopManager : MonoBehaviour
     public Animator playButtonAnimator;
     public Button soundButton;
     public CanvasGroup cg;
-    RectTransform playButtonTransform;
     bool hasPlayed = false;
-    bool isAtGameMode = false, isAtInfoTab = false, isAtGameServices = false;
+    bool isAtInfoTab = false, isAtGameServices = false;
 
     private void Start()
     {
@@ -26,7 +23,6 @@ public class LevelShopManager : MonoBehaviour
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
-        playButtonTransform = playButtonOriginal.GetComponent<RectTransform>();
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
         if (!Manager.Instance.soundOn)
@@ -37,13 +33,7 @@ public class LevelShopManager : MonoBehaviour
 
     private void Update()
     {
-        if (isAtGameMode && Input.GetKeyDown(KeyCode.Escape))
-        {
-            gameModeTab.SetActive(false);
-            playButtonOriginal.GetComponent<RectTransform>().anchoredPosition3D = playButtonTransform.anchoredPosition3D;
-            playButtonOriginal.GetComponent<RectTransform>().localScale = playButtonTransform.localScale;
-        }
-        else if (isAtInfoTab && Input.GetKeyDown(KeyCode.Escape))
+        if (isAtInfoTab && Input.GetKeyDown(KeyCode.Escape))
         {
             OnInfoExitClicked();
         }
@@ -61,25 +51,21 @@ public class LevelShopManager : MonoBehaviour
     {
         if (!hasPlayed)
         {
-            isAtGameMode = true;
             playButtonAnimator.SetBool("hasPressed", true);
             StartCoroutine(WaitForAnimToEndThenPlay());
             hasPlayed = true;
         }
         else if (hasPlayed)
         {
-            isAtGameMode = false;
             SceneManager.LoadScene("LevelSelector");
         }
     }
     public void OnPlayClick()
     {
-        isAtGameMode = false;
         SceneManager.LoadScene("LevelSelector");
     }
     public void OnFrozenPlay()
     {
-        isAtGameMode = false;
         SceneManager.LoadScene("LevelSelectorSnow");
     }
     public void OnTwitterClick()

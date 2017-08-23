@@ -10,6 +10,15 @@ public class SnowParticles : MonoBehaviour
     private void Awake()
     {
         particle = GetComponent<ParticleSystem>();
+
+        if(!SaveManager.Instance.data.snowOn)
+        {
+            gameObject.SetActive(false);
+        }
+        else if(SaveManager.Instance.data.snowOn)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     private void FixedUpdate()

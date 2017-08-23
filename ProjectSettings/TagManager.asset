@@ -16,9 +16,9 @@ TagManager:
   - scaling_trio
   - scaling_one
   - SpecialLevels
-  - Cyan
   - normal_four
   - scaling_four
+  - alerts
   layers:
   - Default
   - TransparentFX

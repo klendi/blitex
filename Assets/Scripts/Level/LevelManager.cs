@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public int diamonds = 0;
     int totalDiamonds = 0, totalSpecialDiamonds = 0;
     public int specialDiamonds = 0;
-    [Tooltip("If level is of snow theme then use this activate this")]
+    [Tooltip("If level is of snow theme then activate this")]
     public bool isSnowLevel = false;
     public bool isEndlessLevel = false;
     [HideInInspector]
@@ -172,11 +172,40 @@ public class LevelManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
 
+        PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_diamonds, diamonds);
+        PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_special_diamonds, specialDiamonds);
+
+        PlayServices.IncrementAchievement(GPGSIds.achievement_100_diamonds, diamonds);
+        PlayServices.IncrementAchievement(GPGSIds.achievement_1000_diamonds, diamonds);
+        PlayServices.IncrementAchievement(GPGSIds.achievement_10_000_diamonds, diamonds);
+
+        if (SaveManager.Instance.data.completedLevels == 0 && SaveManager.Instance.data.completedSnowLevels == Manager.Instance.totalNumSnowLevels)
+        {
+            //first level that is played
+            print("First level played");
+            PlayServices.UnlockAchievement(GPGSIds.achievement_first_level);
+        }
         if (!isSnowLevel)
+        {
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, false);
 
+            if (!SaveManager.Instance.hasPlayedLevel(Manager.Instance.sceneIndex, LevelType.NormalLevels))
+            {
+                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_normal_levels, 1);
+                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_normal_levels, 1);
+            }
+        }
+
         else if (isSnowLevel)
+        {
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, true);
+
+            if (!SaveManager.Instance.hasPlayedLevel(Manager.Instance.sceneIndex, LevelType.SnowLevels))
+            {
+                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_snow_levels, 1);
+                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_snow_levels, 1);
+            }
+        }
 
         StartCoroutine(WaitThenDestroy(1.5f));
     }
@@ -185,6 +214,14 @@ public class LevelManager : MonoBehaviour
         if (isEndlessLevel)
             endless.OnGameOver();
 
+        if (!SaveManager.Instance.data.firstGameOver)
+        {
+            print("This is the first gameover");
+            //this is the first time we show gameover
+            PlayServices.UnlockAchievement(GPGSIds.achievement_first_gameover);
+            SaveManager.Instance.data.firstGameOver = true;
+            SaveManager.Instance.Save();
+        }
         gameOver = true;
         uiTab.SetActive(false);
         gameOverTab.SetActive(true);

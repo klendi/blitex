@@ -29,6 +29,7 @@ public static class GPGSIds
         public const string achievement_100_diamonds = "CgkIn82q6YsbEAIQBQ"; // <GPGSID>
         public const string achievement_first_purchase = "CgkIn82q6YsbEAIQBw"; // <GPGSID>
         public const string leaderboard_blitexs_endless = "CgkIn82q6YsbEAIQAQ"; // <GPGSID>
+        public const string achievement_10_000_diamonds = "CgkIn82q6YsbEAIQEw"; // <GPGSID>
         public const string achievement_first_level = "CgkIn82q6YsbEAIQAg"; // <GPGSID>
         public const string achievement_unlocked_snow_endless = "CgkIn82q6YsbEAIQCQ"; // <GPGSID>
         public const string leaderboard_succes__gameover_rate = "CgkIn82q6YsbEAIQEg"; // <GPGSID>

@@ -370,6 +370,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 543321455}
   startingSpeed: 3.7
   startingRight: 1
+  bwMaterial: {fileID: 0}
+  isBwLevel: 0
 --- !u!1001 &129640946
 Prefab:
   m_ObjectHideFlags: 0
@@ -485,7 +487,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4019170783544674, guid: b028c06e8a6e2384f9ffc0e0af286221, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.398
+      value: 9.76
       objectReference: {fileID: 0}
     - target: {fileID: 4019170783544674, guid: b028c06e8a6e2384f9ffc0e0af286221, type: 2}
       propertyPath: m_LocalPosition.z

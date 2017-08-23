@@ -48,6 +48,28 @@ public class SaveManager : MonoBehaviour
         //check if the bit is set, so the level is owned
         return (data.completedLevels & (1 << index)) != 0;
     }
+    public bool hasPlayedLevel(int index, LevelType type)
+    {
+        if (type == LevelType.NormalLevels && data.completedLevels == index)
+        {
+            //we are at the level that we havent played yet, but its unlocked
+            return false;
+        }
+        else if (type == LevelType.SnowLevels && data.completedSnowLevels == index + Manager.Instance.totalNumSnowLevels)
+        {
+            //we are at the level that we havent played yet, but its unlocked
+            return false;
+        }
+        else if (type == LevelType.BlackAndWhite && data.completedBwLevels == index + Manager.Instance.totalNumBWLevels)
+        {
+            //we are at the level that we havent played yet, but its unlocked
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     public void UnlockLevel(int index)
     {
         //Toggle on the bit at selected index, so we can detect later

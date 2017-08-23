@@ -5,6 +5,8 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; set; }
     public int sceneIndex = 0;
+    public int totalNumSnowLevels = 26;
+    public int totalNumBWLevels = 56;
     public bool soundOn = false;
     public Sprite[] soundSprites;
     public GameObject[] playerPrefabs;

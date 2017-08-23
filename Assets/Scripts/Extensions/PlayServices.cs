@@ -15,16 +15,15 @@ public class PlayServices : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            PlayGamesPlatform.DebugLogEnabled = true;
+            PlayGamesPlatform.Activate();
+            Debug.Log("Activated Services");
+            SignIn();
         }
         else
         {
             Destroy(gameObject);
         }
-
-        PlayGamesPlatform.DebugLogEnabled = true;
-        PlayGamesPlatform.Activate();
-        Debug.Log("Activated Services");
-        SignIn();
     }
 
     public void SignIn()

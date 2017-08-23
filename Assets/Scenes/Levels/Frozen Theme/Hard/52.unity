@@ -269,6 +269,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 543321455}
   startingSpeed: 3.7
   startingRight: 1
+  bwMaterial: {fileID: 0}
+  isBwLevel: 0
 --- !u!1 &115951829 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1095515938486452, guid: 812beef3974729e4ea9055c722a283c5,
@@ -354,7 +356,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4019170783544674, guid: b028c06e8a6e2384f9ffc0e0af286221, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.27
+      value: 8.33
       objectReference: {fileID: 0}
     - target: {fileID: 4019170783544674, guid: b028c06e8a6e2384f9ffc0e0af286221, type: 2}
       propertyPath: m_LocalPosition.z
