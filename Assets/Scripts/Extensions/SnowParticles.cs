@@ -1,8 +1,18 @@
-﻿using UnityEngine;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using UnityEngine;
 
 public class SnowParticles : MonoBehaviour
 {
-    float speed = .3f;
+    public float speed = .3f;
     public float[] startScales = { .1f, .2f, .15f };
     ParticleSystem particle;
 
@@ -25,6 +35,7 @@ public class SnowParticles : MonoBehaviour
     {
         int i = Random.Range(0, startScales.Length);
         var part = particle.main;
-        part.startSizeMultiplier = startScales[i];
+        part.simulationSpeed = speed;
+        part.startSize = startScales[i];
     }
 }

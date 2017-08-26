@@ -1,13 +1,20 @@
-﻿using GooglePlayGames.BasicApi;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
 using GooglePlayGames;
-using UnityEngine.SocialPlatforms;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayServices : MonoBehaviour
 {
     public static PlayServices Instance { get; set; }
-    public Text signedText;
 
     private void Awake()
     {

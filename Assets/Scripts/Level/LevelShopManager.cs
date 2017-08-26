@@ -1,8 +1,22 @@
-﻿using System.Collections;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// The class that handle main menu
+/// I know the name of class doesnt connect with it, i was drunk when wrote it
+/// </summary>
 public class LevelShopManager : MonoBehaviour
 {
     public GameObject infoLabel;
@@ -12,23 +26,37 @@ public class LevelShopManager : MonoBehaviour
     public GameObject gameModeTab;
     public GameObject playButtonOriginal;
     public Animator playButtonAnimator;
-    public Button soundButton;
+    public Button soundButton, soundButton2;
     public CanvasGroup cg;
     bool hasPlayed = false;
+    bool shownInterstital = false;
     bool isAtInfoTab = false, isAtGameServices = false;
 
     private void Start()
     {
+        FindObjectOfType<AdsManager>().ShowInterstitalAd();
         cg.alpha = 0;
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
+        FindObjectOfType<AudioManager>().Pause("LevelTheme");
+
+        if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
+        {
+            FindObjectOfType<AudioManager>().PlaySound("MenuTheme");
+        }
 
         if (!Manager.Instance.soundOn)
+        {
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
+            soundButton2.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
+        }
         else
+        {
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
+            soundButton2.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
+        }
     }
 
     private void Update()
@@ -40,6 +68,15 @@ public class LevelShopManager : MonoBehaviour
         else if (isAtGameServices && Input.GetKeyDown(KeyCode.Escape))
         {
             OnGameServiceExit();
+        }
+
+        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && Random.Range(0, 100) <= 40)
+        {
+            AdsManager.Instance.ShowInterstitalAd();
+        }
+        else if (AdsManager.Instance.interstitalLoaded)
+        {
+            shownInterstital = true;
         }
     }
 
@@ -104,11 +141,11 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnSoundClicked()
     {
-        Manager.Instance.OnSoundClick(soundButton);
+        Manager.Instance.OnSoundClick(soundButton, soundButton2);
     }
     public void OnRatingClicked()
     {
-        print("Now it loads the game");
+        AdsManager.Instance.ShowInterstitalAd();
     }
 
     public void OnInfoClicked()
@@ -139,15 +176,19 @@ public class LevelShopManager : MonoBehaviour
     {
         Social.localUser.Authenticate(succes =>
         {
-            if(succes)
+            if (succes)
             {
                 Debug.Log("Succes loggin the player");
             }
-            else if(!succes)
+            else if (!succes)
             {
                 Debug.Log("Error loggin the player");
             }
         });
+    }
+    public void OnInterstitalAdShow()
+    {
+        AdsManager.Instance.ShowInterstitalAd();
     }
     public void OnAchievementsClick()
     {

@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +27,7 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator Start()
     {
+        print("Started Preloader");
         col = splashPane.color;
         yield return new WaitForSeconds(time);
         fadeIn = false;

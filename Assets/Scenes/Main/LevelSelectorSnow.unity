@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.023529414, g: 0.41960788, b: 0.3647059, a: 1}
+  m_EffectColor: {r: 0, g: 1, b: 0.8627451, a: 1}
   m_EffectDistance: {x: 12.92, y: -2.2}
   m_UseGraphicAlpha: 1
 --- !u!114 &124021336
@@ -2743,14 +2743,14 @@ RectTransform:
   m_GameObject: {fileID: 794264934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54536957, y: 2.8703861, z: 0.5740831}
+  m_LocalScale: {x: 0.5578037, y: 2.9358296, z: 0.587172}
   m_Children: []
-  m_Father: {fileID: 1374974805}
-  m_RootOrder: 2
+  m_Father: {fileID: 1247033245}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -3.2549133, y: 1004}
+  m_AnchoredPosition: {x: 35.128, y: 408.9793}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &794264936
@@ -4535,6 +4535,7 @@ RectTransform:
   - {fileID: 1565209417}
   - {fileID: 554779773}
   - {fileID: 598268354}
+  - {fileID: 794264935}
   m_Father: {fileID: 1374974805}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4572,7 +4573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.3931036, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.6689656, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5029,7 +5030,6 @@ RectTransform:
   m_Children:
   - {fileID: 1632479247}
   - {fileID: 1247033245}
-  - {fileID: 794264935}
   m_Father: {fileID: 2082130333}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5087,7 +5087,7 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.023529414, g: 0.41960788, b: 0.3647059, a: 1}
+  m_EffectColor: {r: 0, g: 1, b: 0.8627451, a: 1}
   m_EffectDistance: {x: 12.92, y: -2.2}
   m_UseGraphicAlpha: 1
 --- !u!114 &1400127412

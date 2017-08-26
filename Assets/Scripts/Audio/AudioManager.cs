@@ -1,3 +1,13 @@
+/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
@@ -102,6 +112,17 @@ public class AudioManager : MonoBehaviour
         s.source.priority = s.priority;
 
         s.source.UnPause();
+    }
+
+    public bool IsPlaying(string sound)
+    {
+        Sound s = Array.Find(sounds, item => item.name == sound);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+        }
+
+        return s.source.isPlaying;
     }
 
 }

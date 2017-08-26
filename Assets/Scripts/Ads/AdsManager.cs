@@ -1,11 +1,36 @@
-﻿using GoogleMobileAds.Api;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       26/8/2017. 11:58
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using GoogleMobileAds.Api;
 using UnityEngine;
-using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
+    public static AdsManager Instance { get; set; }
+    public bool interstitalLoaded = false;
+    public bool interstitalClosed = false;
+    const string interstitialAdId = "ca-app-pub-2457877020060990/9029321528";
+    InterstitialAd interstitalAd;
+    AdRequest request;
+
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+
+        interstitalAd = new InterstitialAd(interstitialAdId);
+
         //we show the banner ad at the start of main menu
         string bannerADID = "ca-app-pub-2457877020060990/1885151063";
         BannerView bannerAd = new BannerView(bannerADID, AdSize.SmartBanner, AdPosition.Bottom);
@@ -14,40 +39,29 @@ public class AdsManager : MonoBehaviour
         bannerAd.Show();
     }
 
-    #region SHOP_ADS
-
-    /* funcs for shop */
-    /*
-    public void ShowShopAdVideo()
+    public void ShowInterstitalAd()
     {
-        if (Advertisement.IsReady())
+        request = new AdRequest.Builder().Build();
+        interstitalAd.LoadAd(request);
+
+        if (interstitalAd.IsLoaded())
         {
-            Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleShopAdResult });
+            interstitalLoaded = true;
+            interstitalAd.Show();
+            print("Loaded and showed Interstital Ad");
         }
+        else
+        {
+            print("Not ready yet");
+        }
+
+        interstitalAd.OnAdClosed += InterstitalAd_OnAdClosed;
     }
 
-    private void HandleShopAdResult(ShowResult result)
+    private void InterstitalAd_OnAdClosed(object sender, System.EventArgs e)
     {
-        switch (result)
-        {
-            case ShowResult.Failed:
-                print("AD FAILED TO PLAY, Maybe internet");
-                break;
-            case ShowResult.Skipped:
-                print("Player skipped the add");
-                break;
-            case ShowResult.Finished:
-                SaveManager.Instance.data.diamonds += 2;
-                SaveManager.Instance.Save();
-                FindObjectOfType<NewShopManager>().UpdateText();
-                print("Added 2 diamonds to player");
-                break;
-
-            default:
-                break;
-        }
-    }*/
-
-    /* Adds funcs for shop*/
-    #endregion
+        print("Succes, the ad is closed now");
+        interstitalLoaded = false;
+        interstitalClosed = true;
+    }
 }

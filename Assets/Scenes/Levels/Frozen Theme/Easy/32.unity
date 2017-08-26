@@ -385,6 +385,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 543321455}
   startingSpeed: 3.5
   startingRight: 1
+  bwMaterial: {fileID: 0}
+  isBwLevel: 0
 --- !u!1 &173474439
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +416,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4019170783544674, guid: b028c06e8a6e2384f9ffc0e0af286221, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.61
+      value: 8.7
       objectReference: {fileID: 0}
     - target: {fileID: 4019170783544674, guid: b028c06e8a6e2384f9ffc0e0af286221, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2660,7 +2662,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1313517557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.39, z: -10}
+  m_LocalPosition: {x: 0, y: 2.24, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3525,7 +3527,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1963049714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 580147883}

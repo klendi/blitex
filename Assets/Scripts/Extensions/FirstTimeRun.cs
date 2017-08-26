@@ -1,5 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
 using UnityEngine;
 
 public class FirstTimeRun : MonoBehaviour

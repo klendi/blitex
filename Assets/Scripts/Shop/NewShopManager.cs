@@ -1,10 +1,24 @@
-﻿//using GoogleMobileAds.Api;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using GoogleMobileAds.Api;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
+/// <summary>
+/// The class that handle shop things
+/// </summary>
 public class NewShopManager : MonoBehaviour
 {
     public Transform ballsPanel;
@@ -12,14 +26,14 @@ public class NewShopManager : MonoBehaviour
     public Outline buyButtonColor;
     public Text buttonText, diamondsText, costText, NotEnoughDiamondsText;
     public VerticalScrollSnap scroll;
+    bool loadedVideo = false;
+    bool showedInterstitalAd = false;
+    bool thisTimeShowInterstital = false;
 
-    //const string interstitialAdId = "ca-app-pub-2457877020060990/9029321528";
-    //InterstitialAd interstitalAd = new InterstitialAd(interstitialAdId);
-
-    private int[] ballCosts = { 0, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
     public int activeBallIndex = 0;
     private int currentPage = 0;
     public int selectedBallIndex = 0;
+    public int[] ballCosts = { 0, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350 };
 
     private void Awake()
     {
@@ -28,7 +42,6 @@ public class NewShopManager : MonoBehaviour
             SaveManager.Instance.UnlockBall(0);     //if this is the first time we run the game and we want to have bought the default ball, and set it as bought
             SetBall(0);
         }
-        //ShowInterstitalAd();
 
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         notEnoughMoneyTab.SetActive(false);
@@ -36,6 +49,13 @@ public class NewShopManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += 50;
         OnNewPage();
         UpdateText();
+
+        if(Random.Range(0,100) <= 50)
+        {
+            //now this time we gonna show interstital ad
+            print("This time gonna show interstital, $$");
+            thisTimeShowInterstital = true;
+        }
     }
 
     private void Update()
@@ -43,10 +63,12 @@ public class NewShopManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
 
-        if (Time.timeSinceLevelLoad >= 30f)
+        if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && Random.Range(0, 100) <= 40 && thisTimeShowInterstital)
         {
-            //ShowInterstitalAd();
+            AdsManager.Instance.ShowInterstitalAd();
         }
+        else if (AdsManager.Instance.interstitalLoaded)
+            showedInterstitalAd = true;
     }
 
     public void OnNewPage()
@@ -63,50 +85,63 @@ public class NewShopManager : MonoBehaviour
     /* Video Ads stuff */
     public void ShowAdVideo()
     {
+        loadingTab.SetActive(true);
+        loadingTab.GetComponentInChildren<Text>().text = "Loading Video";
         if (Advertisement.IsReady())
         {
+            loadedVideo = true;
             Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleAdResult });
         }
     }
     private void HandleAdResult(ShowResult result)
     {
+        notEnoughMoneyTab.SetActive(false);
+
         switch (result)
         {
             case ShowResult.Failed:
-
-                loadingTab.SetActive(false);
-                notEnoughMoneyTab.SetActive(false);
+                print("GAVE THE MONEY TO THE PLAYER");
+                loadingTab.GetComponentInChildren<Text>().text = "Failed To Load Video";
+                StartCoroutine(WaitThenSetFalse());
+                loadedVideo = true;
                 break;
             case ShowResult.Skipped:
-
-                loadingTab.SetActive(false);
+                print("GAVE THE MONEY TO THE PLAYER");
+                loadingTab.GetComponentInChildren<Text>().text = "Video Skipped";
                 notEnoughMoneyTab.SetActive(false);
+                StartCoroutine(WaitThenSetFalse());
+                loadedVideo = true;
                 break;
             case ShowResult.Finished:
-
-                loadingTab.SetActive(false);
-                notEnoughMoneyTab.SetActive(false);
+                print("GAVE THE MONEY TO THE PLAYER");
+                loadingTab.GetComponentInChildren<Text>().text = "Succes";
+                SaveManager.Instance.data.diamonds += 10;
+                StartCoroutine(WaitThenSetFalse());
+                loadedVideo = true;
                 break;
 
             default:
                 break;
         }
     }
-    
-    /* End ads stuff */
 
-    /* Interstital AD stuff*/
-    //public void ShowInterstitalAd()
-    //{
-    //    //interstitalAd.OnAdLoaded += InterstitalAd_OnAdLoaded;
-    //}
-    //private void InterstitalAd_OnAdLoaded(object sender, System.EventArgs e)
-    //{
-    //    AdRequest request = new AdRequest.Builder().Build();
-    //    //interstitalAd.LoadAd(request);
-    //    print("Yay now the ad is loaded display it");
-    //}
-    /* End Interstital AD stuff*/
+    private IEnumerator WaitThenSetFalse()
+    {
+        yield return new WaitForSeconds(1f);
+        loadingTab.SetActive(false);
+    }
+    private IEnumerator WaitForCertainTimeThenfalse()
+    {
+        //if video its not ready for 4 sec then fail it
+        yield return new WaitForSeconds(4f);
+        if (!loadedVideo)
+        {
+            loadingTab.GetComponentInChildren<Text>().text = "Failed To Load Video";
+            yield return new WaitForSeconds(1.5f);
+            loadingTab.SetActive(true);
+        }
+    }
+    /* End Video ads stuff */
 
     public void OnHomeClick()
     {

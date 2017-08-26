@@ -1,7 +1,20 @@
-﻿using System.Collections;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames;
+using GoogleMobileAds.Api;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,7 +23,6 @@ public class LevelManager : MonoBehaviour
     public int diamonds = 0;
     int totalDiamonds = 0, totalSpecialDiamonds = 0;
     public int specialDiamonds = 0;
-    [Tooltip("If level is of snow theme then activate this")]
     public bool isSnowLevel = false;
     public bool isEndlessLevel = false;
     [HideInInspector]
@@ -45,6 +57,12 @@ public class LevelManager : MonoBehaviour
         gameOverTab.SetActive(false);       //set the game over tab false
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
+        FindObjectOfType<AudioManager>().Pause("MenuTheme");
+
+        if (!FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
+        {
+            FindObjectOfType<AudioManager>().PlaySound("LevelTheme");
+        }
         endless = FindObjectOfType<EndlessManager>();
         totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
         totalSpecialDiamonds = GameObject.FindGameObjectsWithTag("SuperDiamond").Length;
@@ -88,6 +106,20 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.sounds[0].source.volume = minVolume;
         yield return new WaitForSeconds(seconds);
         AudioManager.instance.sounds[0].source.volume = .7f;
+    }
+
+    public void ShowInterstitalAd()
+    {
+        print("Trying to load interstital ad");
+        string interstitialAdId = "ca-app-pub-2457877020060990/9029321528";
+        InterstitialAd interstitalAd = new InterstitialAd(interstitialAdId);
+
+        if (interstitalAd.IsLoaded())
+        {
+            AdRequest request = new AdRequest.Builder().Build();
+            interstitalAd.LoadAd(request);
+            print("Loaded Interstital Ad");
+        }
     }
 
     public void OnGameInit()
@@ -139,7 +171,11 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = 1;
         gameOver = true;
-        SceneManager.LoadScene("Main Menu");
+
+        if (isSnowLevel)
+            SceneManager.LoadScene("LevelSelectorSnow");
+        else
+            SceneManager.LoadScene("LevelSelector");
     }
     public void OnSoundClicked()
     {
@@ -172,40 +208,60 @@ public class LevelManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
 
-        PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_diamonds, diamonds);
-        PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_special_diamonds, specialDiamonds);
 
-        PlayServices.IncrementAchievement(GPGSIds.achievement_100_diamonds, diamonds);
-        PlayServices.IncrementAchievement(GPGSIds.achievement_1000_diamonds, diamonds);
-        PlayServices.IncrementAchievement(GPGSIds.achievement_10_000_diamonds, diamonds);
+        if (isEndlessLevel)
+        {
+            EndlessManager endless = FindObjectOfType<EndlessManager>();
+            PlayGamesPlatform.Instance.LoadScores(
+             GPGSIds.leaderboard_blitexs_endless,
+            LeaderboardStart.PlayerCentered,
+            1,
+            LeaderboardCollection.Public,
+            LeaderboardTimeSpan.AllTime,
+        (LeaderboardScoreData data) =>
+        {
+            if (data.Valid)
+            {
+                long total = data.PlayerScore.value + (long)endless.score;
+                PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_endless, total);
+            }
+        });
+        }
 
-        if (SaveManager.Instance.data.completedLevels == 0 && SaveManager.Instance.data.completedSnowLevels == Manager.Instance.totalNumSnowLevels)
+        if (SaveManager.Instance.data.completedLevels == 0 && SaveManager.Instance.data.completedSnowLevels == 27)
         {
             //first level that is played
-            print("First level played");
             PlayServices.UnlockAchievement(GPGSIds.achievement_first_level);
         }
         if (!isSnowLevel)
         {
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, false);
-
-            if (!SaveManager.Instance.hasPlayedLevel(Manager.Instance.sceneIndex, LevelType.NormalLevels))
-            {
-                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_normal_levels, 1);
-                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_normal_levels, 1);
-            }
         }
 
         else if (isSnowLevel)
         {
+            print("It is a snow level and now calling complete level");
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, true);
-
-            if (!SaveManager.Instance.hasPlayedLevel(Manager.Instance.sceneIndex, LevelType.SnowLevels))
-            {
-                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_snow_levels, 1);
-                PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_snow_levels, 1);
-            }
         }
+
+        PlayGamesPlatform.Instance.LoadScores(
+             GPGSIds.leaderboard_blitexs_diamonds,
+            LeaderboardStart.PlayerCentered,
+            1,
+            LeaderboardCollection.Public,
+            LeaderboardTimeSpan.AllTime,
+        (LeaderboardScoreData data) =>
+        {
+            if (data.Valid)
+            {
+                long total = data.PlayerScore.value + (long)diamonds;
+                PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_diamonds, total);
+            }
+        });
+
+        PlayServices.IncrementAchievement(GPGSIds.achievement_100_diamonds, diamonds);
+        PlayServices.IncrementAchievement(GPGSIds.achievement_1000_diamonds, diamonds);
+        PlayServices.IncrementAchievement(GPGSIds.achievement_10_000_diamonds, diamonds);
 
         StartCoroutine(WaitThenDestroy(1.5f));
     }
@@ -222,6 +278,10 @@ public class LevelManager : MonoBehaviour
             SaveManager.Instance.data.firstGameOver = true;
             SaveManager.Instance.Save();
         }
+
+        if (Manager.Instance.sceneIndex % 2 == 1)
+            ShowInterstitalAd();
+
         gameOver = true;
         uiTab.SetActive(false);
         gameOverTab.SetActive(true);
@@ -230,5 +290,25 @@ public class LevelManager : MonoBehaviour
         cameraController.Stop();
         //play the blowing particles
         player.gameObject.SetActive(false);
+    }
+
+    public void AddScoreToLeaderBoard(LevelType type)
+    {
+        if (type == LevelType.NormalLevels)
+        {
+            print("Adding snow score to leaderboard");
+            PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_normal_levels, 1);
+            PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_normal_levels, 1);
+        }
+        else if (type == LevelType.SnowLevels)
+        {
+            print("Adding snow score to leaderboard");
+            PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_snow_levels, 1);
+            PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_snow_levels, 1);
+        }
+        else if (type == LevelType.BlackAndWhite)
+        {
+            //TODO(Klendi): BW levels implement
+        }
     }
 }

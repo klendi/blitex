@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using UnityEngine;
 using UnityEngine.UI;
 
 public enum LevelType
@@ -20,6 +30,6 @@ public class LevelCompleted : MonoBehaviour
             tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex + 1);
 
         else if (levelType == LevelType.SnowLevels)
-            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex - Manager.Instance.totalNumSnowLevels);
+            tx.text = string.Format("YOU COMPLETED LEVEL {0}", Manager.Instance.sceneIndex - 26);
 	}
 }

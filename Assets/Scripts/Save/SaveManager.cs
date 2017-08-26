@@ -1,15 +1,24 @@
-﻿using UnityEngine;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       25/8/2017. 10:49
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; set; }
-    public SaveData data;
+    public SaveData data;   //this is the instace that we are saving all the time, this is where we make the changes
 
     private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        //ResetSave();
         Load();
     }
 
@@ -43,42 +52,12 @@ public class SaveManager : MonoBehaviour
         //check if the bit is set, so the ball is owned
         return (data.ballOwned & (1 << index)) != 0;
     }
-    public bool hasUnlockedLevel(int index)
-    {
-        //check if the bit is set, so the level is owned
-        return (data.completedLevels & (1 << index)) != 0;
-    }
-    public bool hasPlayedLevel(int index, LevelType type)
-    {
-        if (type == LevelType.NormalLevels && data.completedLevels == index)
-        {
-            //we are at the level that we havent played yet, but its unlocked
-            return false;
-        }
-        else if (type == LevelType.SnowLevels && data.completedSnowLevels == index + Manager.Instance.totalNumSnowLevels)
-        {
-            //we are at the level that we havent played yet, but its unlocked
-            return false;
-        }
-        else if (type == LevelType.BlackAndWhite && data.completedBwLevels == index + Manager.Instance.totalNumBWLevels)
-        {
-            //we are at the level that we havent played yet, but its unlocked
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-    public void UnlockLevel(int index)
-    {
-        //Toggle on the bit at selected index, so we can detect later
-        data.completedLevels |= 1 << index;
-    }
+
     public void UnlockBall(int index)
     {
         data.ballOwned |= 1 << index;
     }
+
     /// <summary>
     /// This completes the level at specific index
     /// </summary>
@@ -90,25 +69,33 @@ public class SaveManager : MonoBehaviour
         {
             if (data.completedLevels == index)
             {
+                FindObjectOfType<LevelManager>().AddScoreToLeaderBoard(LevelType.NormalLevels);
                 data.completedLevels++;
                 Save();
             }
         }
-        else if(isSnowLevel)
+        else if (isSnowLevel)
         {
             if (data.completedSnowLevels == index)
             {
+                FindObjectOfType<LevelManager>().AddScoreToLeaderBoard(LevelType.SnowLevels);
                 data.completedSnowLevels++;
                 Save();
             }
         }
     }
+
     public void ResetSave()
     {
         PlayerPrefs.DeleteKey("save");
     }
 
-
+    /// <summary>
+    /// Return true if player can buy the ball with selected cost
+    /// </summary>
+    /// <param name="index">the ball index</param>
+    /// <param name="cost">the cost of the ball</param>
+    /// <returns></returns>
     public bool BuyBall(int index, int cost)
     {
         //we can afford it, buy it bitch

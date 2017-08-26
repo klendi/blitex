@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Normal Theme/Easy/1.unity
     guid: 230ad2fa3069bd5479cf481f4f6edf97
   - enabled: 1
-    path: Assets/Scenes/Levels/Normal Theme/Easy/10.unity
-    guid: 7f7d66f4e183fd44abcc686128030449
-  - enabled: 1
     path: Assets/Scenes/Levels/Normal Theme/Easy/2.unity
     guid: c22a28d83c0a6464c9408c691b4397ed
   - enabled: 1
@@ -59,6 +56,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Normal Theme/Easy/9.unity
     guid: 4420487340883a74ea1ab98e0e958db7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Normal Theme/Easy/10.unity
+    guid: 7f7d66f4e183fd44abcc686128030449
   - enabled: 1
     path: Assets/Scenes/Levels/Normal Theme/fMedium/11.unity
     guid: fdece52f2030a66408398bb6b9809b24

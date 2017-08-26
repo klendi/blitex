@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       24/8/2017. 21:42
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
@@ -19,7 +29,6 @@ public class LevelSelectorManager : MonoBehaviour
     private void Start()
     {
         scroll = FindObjectOfType<UIVerticalScroller>();
-        scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
         endlessUnlockTab.SetActive(false);
         hasUnlockedNormalEndless = SaveManager.Instance.data.hasUnlockedNormalEndless;
         hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
@@ -37,9 +46,15 @@ public class LevelSelectorManager : MonoBehaviour
         }
 
         if (!isSnowSelector)
+        {
             InitLevel();
+            scroll.StartingIndex = SaveManager.Instance.data.completedLevels;
+        }
         else if (isSnowSelector)
+        {
             InitSnowLevel();
+            scroll.StartingIndex = SaveManager.Instance.data.completedSnowLevels - 27;
+        }
     }
 
     private void Update()
@@ -62,11 +77,13 @@ public class LevelSelectorManager : MonoBehaviour
     {
         SaveManager.Instance.data.completedLevels++;
         SaveManager.Instance.Save();
+        InitLevel();
     }
     public void CompleteLevelSnow()
     {
         SaveManager.Instance.data.completedSnowLevels++;
         SaveManager.Instance.Save();
+        InitSnowLevel();
     }
 
     private void InitLevel()
@@ -126,7 +143,7 @@ public class LevelSelectorManager : MonoBehaviour
 
         //For every children transform under our level panel, find the button and add onclick()
 
-        int i = Manager.Instance.totalNumSnowLevels;
+        int i = 27;
 
         foreach (Transform t in levelPanel)
         {
@@ -153,7 +170,7 @@ public class LevelSelectorManager : MonoBehaviour
                     else
                     {
                         //Level is already completed
-                        img.color = Color.green;
+                        img.color = new Color(0f, 1f, 202f / 255f);
                     }
                 }
                 else
@@ -186,6 +203,7 @@ public class LevelSelectorManager : MonoBehaviour
         if (SaveManager.Instance.data.specialDiamond >= 10 && !hasUnlockedNormalEndless)
         {
             print("Bough normal Endless");
+            PlayServices.UnlockAchievement(GPGSIds.achievement_unlocked_endless);
             SaveManager.Instance.data.specialDiamond -= 10;
             SaveManager.Instance.data.hasUnlockedNormalEndless = true;
             SaveManager.Instance.Save();
@@ -229,6 +247,7 @@ public class LevelSelectorManager : MonoBehaviour
         if (SaveManager.Instance.data.specialDiamond >= 10 && !hasUnlockedSnowEndless)
         {
             print("Bough Snow Endless");
+            PlayServices.UnlockAchievement(GPGSIds.achievement_unlocked_snow_endless);
             SaveManager.Instance.data.specialDiamond -= 10;
             SaveManager.Instance.data.hasUnlockedSnowEndless = true;
             SaveManager.Instance.Save();

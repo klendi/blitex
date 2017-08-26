@@ -1,12 +1,22 @@
-﻿public class SaveData
+﻿/*
+================================================================
+    Product:    Blitex
+    Developer:  Klendi Gocci - klendigocci@gmail.com
+    Date:       23/8/2017. 14:29
+================================================================
+   Copyright (c) Klendi Gocci.  All rights reserved.
+================================================================
+*/
+
+public class SaveData
 {
     public int diamonds = 0;
     public int specialDiamond = 0;
     public int ballOwned = 0;
     public int activeBall = 0;
     public int completedLevels = 0;
-    public int completedSnowLevels = 26;
-    public int completedBwLevels = 56;
+    public int completedSnowLevels = 27;   //this stay 27 ( as the first snow level )
+    public int completedBwLevels = 57;
     public float highscore = 0;
     public float normalHighscore = 0;
     public bool snowOn = true;
