@@ -31,7 +31,7 @@ public class SnowParticles : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         int i = Random.Range(0, startScales.Length);
         var part = particle.main;

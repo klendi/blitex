@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
     public bool isEndlessLevel = false;
     [HideInInspector]
     public bool paused = false, gameOver = false;
+    bool instanciated = false;
 
     [Header("Attachments")]
     PlayerController player;
@@ -57,11 +58,12 @@ public class LevelManager : MonoBehaviour
         gameOverTab.SetActive(false);       //set the game over tab false
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
-        FindObjectOfType<AudioManager>().Pause("MenuTheme");
+        Camera.main.gameObject.AddComponent<CameraShake>();
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("MenuTheme", 1f));
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
         {
-            FindObjectOfType<AudioManager>().PlaySound("LevelTheme");
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("LevelTheme", 1.5f));
         }
         endless = FindObjectOfType<EndlessManager>();
         totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
@@ -107,19 +109,36 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         AudioManager.instance.sounds[0].source.volume = .7f;
     }
-
-    public void ShowInterstitalAd()
+    private IEnumerator ContinueGameOver(float sec)
     {
-        print("Trying to load interstital ad");
-        string interstitialAdId = "ca-app-pub-2457877020060990/9029321528";
-        InterstitialAd interstitalAd = new InterstitialAd(interstitialAdId);
+        yield return new WaitForSeconds(sec);
 
-        if (interstitalAd.IsLoaded())
+        if (isEndlessLevel)
+            endless.OnGameOver();
+
+        if (!SaveManager.Instance.data.firstGameOver)
         {
-            AdRequest request = new AdRequest.Builder().Build();
-            interstitalAd.LoadAd(request);
-            print("Loaded Interstital Ad");
+            print("This is the first gameover");
+            //this is the first time we show gameover
+            PlayServices.UnlockAchievement(GPGSIds.achievement_first_gameover);
+            SaveManager.Instance.data.firstGameOver = true;
+            SaveManager.Instance.Save();
         }
+
+        if (Random.Range(0, 100) <= 45 && !AdsManager.Instance.interstitalLoaded)
+        {
+            print("Time to show some interstital ad at gameover");
+            AdsManager.Instance.ShowInterstitalAd();
+        }
+
+        gameOver = true;
+        uiTab.SetActive(false);
+        gameOverTab.SetActive(true);
+        AudioManager.instance.PlaySound("GameOverSound");
+        StartCoroutine(WaitThenUnplay(2.2f, .2f));
+        cameraController.Stop();
+        //play the blowing particles
+        //player.gameObject.SetActive(false);
     }
 
     public void OnGameInit()
@@ -267,29 +286,16 @@ public class LevelManager : MonoBehaviour
     }
     public void OnGameOver()
     {
-        if (isEndlessLevel)
-            endless.OnGameOver();
+        FindObjectOfType<CameraShake>().ShakeCamera();
+        player.gameObject.SetActive(false);
 
-        if (!SaveManager.Instance.data.firstGameOver)
+        if (!instanciated)
         {
-            print("This is the first gameover");
-            //this is the first time we show gameover
-            PlayServices.UnlockAchievement(GPGSIds.achievement_first_gameover);
-            SaveManager.Instance.data.firstGameOver = true;
-            SaveManager.Instance.Save();
+            Instantiate(Manager.Instance.hitVFX, player.transform.position, Quaternion.identity, transform);
+            instanciated = true;
         }
 
-        if (Manager.Instance.sceneIndex % 2 == 1)
-            ShowInterstitalAd();
-
-        gameOver = true;
-        uiTab.SetActive(false);
-        gameOverTab.SetActive(true);
-        AudioManager.instance.PlaySound("GameOverSound");
-        StartCoroutine(WaitThenUnplay(2.2f, .2f));
-        cameraController.Stop();
-        //play the blowing particles
-        player.gameObject.SetActive(false);
+        StartCoroutine(ContinueGameOver(1.2f));
     }
 
     public void AddScoreToLeaderBoard(LevelType type)

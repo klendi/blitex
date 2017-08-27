@@ -2846,12 +2846,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1972569515}
-    - target: {fileID: 114631523829926496, guid: 57efc2980f6769248b15446258d2e9f2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1972569515}
-    - target: {fileID: 114391376860613172, guid: 57efc2980f6769248b15446258d2e9f2,
+    - target: {fileID: 114112947895352086, guid: 57efc2980f6769248b15446258d2e9f2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2861,7 +2856,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1972569515}
-    - target: {fileID: 114927342541855206, guid: 57efc2980f6769248b15446258d2e9f2,
+    - target: {fileID: 114391376860613172, guid: 57efc2980f6769248b15446258d2e9f2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1972569515}
+    - target: {fileID: 114631523829926496, guid: 57efc2980f6769248b15446258d2e9f2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2871,7 +2871,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1972569515}
-    - target: {fileID: 114112947895352086, guid: 57efc2980f6769248b15446258d2e9f2,
+    - target: {fileID: 114927342541855206, guid: 57efc2980f6769248b15446258d2e9f2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2891,11 +2891,6 @@ Prefab:
       value: 
       objectReference: {fileID: 1972569515}
     - target: {fileID: 114421549992881144, guid: 57efc2980f6769248b15446258d2e9f2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1972569515}
-    - target: {fileID: 114248361660267186, guid: 57efc2980f6769248b15446258d2e9f2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

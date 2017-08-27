@@ -37,6 +37,9 @@ public class AdsManager : MonoBehaviour
         AdRequest request = new AdRequest.Builder().Build();
         bannerAd.LoadAd(request);
         bannerAd.Show();
+
+        request = new AdRequest.Builder().Build();
+        interstitalAd.LoadAd(request);
     }
 
     public void ShowInterstitalAd()

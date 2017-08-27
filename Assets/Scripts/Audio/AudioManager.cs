@@ -8,16 +8,13 @@
 ================================================================
 */
 
-using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-
-    public AudioMixerGroup mixerGroup;
-
     public Sound[] sounds;
 
     void Awake()
@@ -38,9 +35,60 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.loop = s.loop;
             s.source.priority = s.priority;
-
-            s.source.outputAudioMixerGroup = mixerGroup;
         }
+    }
+
+    public IEnumerator FadeOut(string sound, float FadeTime)
+    {
+
+        Sound s = Array.Find(sounds, item => item.name == sound);
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+        }
+
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+
+        float startVolume = s.volume;
+
+        while (s.source.volume > 0)
+        {
+            s.source.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        s.source.Stop();
+    }
+
+    public IEnumerator FadeIn(string sound, float FadeTime)
+    {
+
+        Sound s = Array.Find(sounds, item => item.name == sound);
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+        }
+
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+
+        float startVolume = 0.2f;
+
+        s.source.volume = 0;
+        s.source.Play();
+
+        while (s.source.volume < s.volume)
+        {
+            s.source.volume += startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        s.source.volume = 1f;
     }
 
     public void PlaySound(string sound)
@@ -52,27 +100,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        if (s.source.volume <= s.volume)
+        {
+            s.source.volume = 1;
+        }
+
         s.source.volume = s.volume;
         s.source.pitch = s.pitch;
 
         s.source.Play();
     }
-    public void PlaySound(string sound, float volume)
-    {
-        Sound s = Array.Find(sounds, item => item.name == sound);
-        if (s == null)
-        {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
-        }
-
-        s.source.volume = volume;
-        s.source.pitch = s.pitch;
-        s.source.priority = s.priority;
-
-        s.source.Play();
-    }
-
     public void Pause(string sound)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);
@@ -84,36 +121,6 @@ public class AudioManager : MonoBehaviour
 
         s.source.Pause();
     }
-
-    public void Unpause(string sound)
-    {
-        Sound s = Array.Find(sounds, item => item.name == sound);
-        if (s == null)
-        {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
-        }
-        s.source.volume = s.volume;
-        s.source.pitch = s.pitch;
-        s.source.priority = s.priority;
-
-        s.source.UnPause();
-    }
-    public void Unpause(string sound, float volume)
-    {
-        Sound s = Array.Find(sounds, item => item.name == sound);
-        if (s == null)
-        {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
-        }
-        s.source.volume = volume;
-        s.source.pitch = s.pitch;
-        s.source.priority = s.priority;
-
-        s.source.UnPause();
-    }
-
     public bool IsPlaying(string sound)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);

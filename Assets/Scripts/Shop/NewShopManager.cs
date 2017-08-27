@@ -46,11 +46,10 @@ public class NewShopManager : MonoBehaviour
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         notEnoughMoneyTab.SetActive(false);
         activeBallIndex = SaveManager.Instance.data.activeBall;
-        SaveManager.Instance.data.diamonds += 50;
         OnNewPage();
         UpdateText();
 
-        if(Random.Range(0,100) <= 50)
+        if (Random.Range(0, 100) <= 45)
         {
             //now this time we gonna show interstital ad
             print("This time gonna show interstital, $$");
@@ -119,7 +118,6 @@ public class NewShopManager : MonoBehaviour
                 StartCoroutine(WaitThenSetFalse());
                 loadedVideo = true;
                 break;
-
             default:
                 break;
         }

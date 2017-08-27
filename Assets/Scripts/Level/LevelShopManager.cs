@@ -15,10 +15,10 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// The class that handle main menu
-/// I know the name of class doesnt connect with it, i was drunk when wrote it
 /// </summary>
 public class LevelShopManager : MonoBehaviour
 {
+    //i know that the name of the class if weird to its function but nevermind it does it job
     public GameObject infoLabel;
     public GameObject infoLabelExit;
     public GameObject googlePlaygameTab;
@@ -26,7 +26,7 @@ public class LevelShopManager : MonoBehaviour
     public GameObject gameModeTab;
     public GameObject playButtonOriginal;
     public Animator playButtonAnimator;
-    public Button soundButton, soundButton2;
+    public Button soundButton, soundButton2;   //this is to keep track of that sound button
     public CanvasGroup cg;
     bool hasPlayed = false;
     bool shownInterstital = false;
@@ -40,11 +40,12 @@ public class LevelShopManager : MonoBehaviour
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
-        FindObjectOfType<AudioManager>().Pause("LevelTheme");
+
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", 1f));
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {
-            FindObjectOfType<AudioManager>().PlaySound("MenuTheme");
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1.5f));
         }
 
         if (!Manager.Instance.soundOn)
@@ -72,6 +73,7 @@ public class LevelShopManager : MonoBehaviour
 
         if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && Random.Range(0, 100) <= 40)
         {
+            print("Loaded and showed interstital AD");
             AdsManager.Instance.ShowInterstitalAd();
         }
         else if (AdsManager.Instance.interstitalLoaded)
@@ -145,7 +147,7 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnRatingClicked()
     {
-        AdsManager.Instance.ShowInterstitalAd();
+        Application.OpenURL("market://details?q=pname:com.robtopx.geometryjumplite");
     }
 
     public void OnInfoClicked()

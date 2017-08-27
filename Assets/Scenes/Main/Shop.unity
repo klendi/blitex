@@ -5720,7 +5720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -23.899994, y: 144.00006}
+  m_AnchoredPosition: {x: -23.900024, y: 144.00006}
   m_SizeDelta: {x: 153.34, y: 56}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1148903389
@@ -5854,7 +5854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25.079987, y: -2.080017}
+  m_AnchoredPosition: {x: 25.079956, y: -2.080017}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1157182212
@@ -6997,7 +6997,7 @@ MonoBehaviour:
   scroll: {fileID: 994421}
   activeBallIndex: 0
   selectedBallIndex: 0
-  ballCosts: 000000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000a0000000aa000000b4000000be000000c8000000d2000000dc000000e6000000f0000000fa000000040100000e010000180100002c01000036010000400100004a010000540100005e010000
+  ballCosts: 000000003200000064000000640000008200000096000000aa000000c8000000d2000000b4000000e6000000fa00000018010000f40100005e010000c201000090010000c80000005e010000f4010000640000005e0100004f01000090010000f40100002c0100000e0100005e010000f4010000
 --- !u!4 &1296484048
 Transform:
   m_ObjectHideFlags: 0
@@ -9313,7 +9313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.384003, y: -7}
+  m_AnchoredPosition: {x: -12.384033, y: -7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2079883207

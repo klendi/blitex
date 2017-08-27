@@ -534,6 +534,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 543321455}
   startingSpeed: 3.5
   startingRight: 1
+  bwMaterial: {fileID: 0}
+  isBwLevel: 0
 --- !u!4 &137908560
 Transform:
   m_ObjectHideFlags: 0

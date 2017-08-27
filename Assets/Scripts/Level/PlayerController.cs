@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Variables")]
     public float speed;
+    bool gameover = false;
     float screenHalfInWorldUnits;
 
     [HideInInspector]
@@ -93,8 +94,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy" && !gameOver)
         {
+            gameOver = true;
             level.OnGameOver();
         }
     }

@@ -34,6 +34,13 @@ public class LevelSelectorManager : MonoBehaviour
         hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
         isSnowOn = SaveManager.Instance.data.snowOn;
 
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", 1f));
+
+        if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
+        {
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1.5f));
+        }
+
         if (isSnowOn && isSnowSelector)
         {
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: ON";

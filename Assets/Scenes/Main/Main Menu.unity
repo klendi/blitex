@@ -685,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interstitalLoaded: 0
+  interstitalClosed: 0
 --- !u!4 &77424129
 Transform:
   m_ObjectHideFlags: 0
@@ -2440,7 +2441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4adcd3d924148e4d9ea93fd45b16388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
   sounds:
   - name: MenuTheme
     clip: {fileID: 8300000, guid: ad8ee7e0d9ee366428cb709f2694da2e, type: 3}
