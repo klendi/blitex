@@ -697,7 +697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &81234368
 GameObject:
@@ -884,7 +884,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122310815
 GameObject:
@@ -2444,41 +2444,49 @@ MonoBehaviour:
   sounds:
   - name: MenuTheme
     clip: {fileID: 8300000, guid: ad8ee7e0d9ee366428cb709f2694da2e, type: 3}
-    volume: 0.7
+    volume: 0.8
     pitch: 1
     loop: 1
-    priority: 128
+    priority: 186
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: GameOverSound
-    clip: {fileID: 8300000, guid: 189391b0052e47d42892dddc50256198, type: 3}
-    volume: 0.75
+    clip: {fileID: 8300000, guid: 23826bc0322f52c4d8936874b88976c4, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     priority: 200
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: SuccesSound
-    clip: {fileID: 8300000, guid: 87f68394b5b2b9b4aa82bebd6c90d41d, type: 3}
-    volume: 0.7
+    clip: {fileID: 8300000, guid: bc75eeed61bce27429b8780ba2cd96cb, type: 3}
+    volume: 1
     pitch: 0.85
     loop: 0
     priority: 200
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: DiamondCollect
-    clip: {fileID: 8300000, guid: 5f077bb30ea987141bb3758dd143d2e8, type: 3}
-    volume: 0.6
-    pitch: 0.83
+    clip: {fileID: 8300000, guid: e0e77b5f9bff4b9419e6353c0d59a01c, type: 3}
+    volume: 1
+    pitch: 1.5
     loop: 0
     priority: 200
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: LevelTheme
     clip: {fileID: 8300000, guid: 2d01362321da1444fb5a9932ed98ee3a, type: 3}
-    volume: 0.6
+    volume: 0.8
     pitch: 1
     loop: 1
+    priority: 103
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BlastSound
+    clip: {fileID: 8300000, guid: 400f00558a4df6548b548b56e13b84a7, type: 3}
+    volume: 1
+    pitch: 1.03
+    loop: 0
     priority: 200
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -3137,7 +3145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114713751}
-        m_MethodName: OnInterstitalAdShow
+        m_MethodName: OnRatingClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4921,7 +4929,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496402578
 GameObject:
@@ -4983,7 +4991,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1519909766
 GameObject:

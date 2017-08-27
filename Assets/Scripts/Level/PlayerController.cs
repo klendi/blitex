@@ -77,12 +77,14 @@ public class PlayerController : MonoBehaviour
     {
         if (col.tag == "Diamond")
         {
+            Instantiate(Manager.Instance.diamondHitFx, col.gameObject.transform.position, Quaternion.identity);
             col.gameObject.SetActive(false);
             level.diamonds++;
             AudioManager.instance.PlaySound("DiamondCollect");
         }
         else if (col.tag == "SuperDiamond")
         {
+            Instantiate(Manager.Instance.redDiamondHitFx, col.gameObject.transform.position, Quaternion.identity);
             col.gameObject.SetActive(false);
             level.specialDiamonds++;
             AudioManager.instance.PlaySound("DiamondCollect");

@@ -20,6 +20,8 @@ public class Manager : MonoBehaviour
     public Sprite[] soundSprites;
     public GameObject[] playerPrefabs;
     public GameObject hitVFX;
+    public GameObject diamondHitFx;
+    public GameObject redDiamondHitFx;
 
     private void Awake()
     {

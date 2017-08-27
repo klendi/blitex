@@ -291,6 +291,7 @@ public class LevelManager : MonoBehaviour
 
         if (!instanciated)
         {
+            FindObjectOfType<AudioManager>().PlaySound("BlastSound");
             Instantiate(Manager.Instance.hitVFX, player.transform.position, Quaternion.identity, transform);
             instanciated = true;
         }

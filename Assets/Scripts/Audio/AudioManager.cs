@@ -88,7 +88,7 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
 
-        s.source.volume = 1f;
+        s.source.volume = s.volume;
     }
 
     public void PlaySound(string sound)
@@ -119,7 +119,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.Pause();
+        s.source.Stop();
     }
     public bool IsPlaying(string sound)
     {

@@ -147,7 +147,9 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnRatingClicked()
     {
-        Application.OpenURL("market://details?q=pname:com.robtopx.geometryjumplite");
+        SaveManager.Instance.data.diamonds += 1000;
+        SaveManager.Instance.Save();
+        Application.OpenURL("market://details?id=com.robtopx.geometryjump");
     }
 
     public void OnInfoClicked()
