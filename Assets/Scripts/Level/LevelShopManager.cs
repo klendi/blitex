@@ -25,27 +25,43 @@ public class LevelShopManager : MonoBehaviour
     public GameObject googlePlaygameTabExit;
     public GameObject gameModeTab;
     public GameObject playButtonOriginal;
+    public GameObject rateUsTab;
     public Animator playButtonAnimator;
     public Button soundButton, soundButton2;   //this is to keep track of that sound button
     public CanvasGroup cg;
+
     bool hasPlayed = false;
     bool shownInterstital = false;
+    bool thisTimeShowInterstital = false;
     bool isAtInfoTab = false, isAtGameServices = false;
 
     private void Start()
     {
-        FindObjectOfType<AdsManager>().ShowInterstitalAd();
+        if (Random.Range(0, 100) < 50)
+        {
+            //now we gonna show interstital ad
+            print("Loaded and showed interstital AD on main menu");
+            thisTimeShowInterstital = true;
+            AdsManager.Instance.ShowInterstitalAd();
+        }
         cg.alpha = 0;
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
+        rateUsTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", 1f));
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", .6f));
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1.5f));
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1f));
+        }
+
+        if((SaveManager.Instance.data.completedLevels == 20 || SaveManager.Instance.data.completedSnowLevels == 14) && SaveManager.Instance.data.hasRatedGame)
+        {
+            print("Showing player to rate the game");
+            rateUsTab.SetActive(true);
         }
 
         if (!Manager.Instance.soundOn)
@@ -71,14 +87,15 @@ public class LevelShopManager : MonoBehaviour
             OnGameServiceExit();
         }
 
-        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && Random.Range(0, 100) <= 40)
+        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital)
         {
-            print("Loaded and showed interstital AD");
+            print("Loaded and showed interstital AD on main menu");
             AdsManager.Instance.ShowInterstitalAd();
         }
-        else if (AdsManager.Instance.interstitalLoaded)
+        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital)
         {
             shownInterstital = true;
+            thisTimeShowInterstital = false;
         }
     }
 
@@ -88,13 +105,13 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnAnimStart()
     {
-        if (!hasPlayed)
+        if (!hasPlayed && SaveManager.Instance.data.hasUnlockedSnowTheme)
         {
             playButtonAnimator.SetBool("hasPressed", true);
             StartCoroutine(WaitForAnimToEndThenPlay());
             hasPlayed = true;
         }
-        else if (hasPlayed)
+        else if (hasPlayed || !SaveManager.Instance.data.hasUnlockedSnowTheme)
         {
             SceneManager.LoadScene("LevelSelector");
         }
@@ -150,6 +167,16 @@ public class LevelShopManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += 1000;
         SaveManager.Instance.Save();
         Application.OpenURL("market://details?id=com.robtopx.geometryjump");
+    }
+    public void OnRatingTabClicked()
+    {
+        SaveManager.Instance.data.hasRatedGame = true;
+        SaveManager.Instance.Save();
+        Application.OpenURL("market://details?id=com.robtopx.geometryjump");
+    }
+    public void OnRatingTabExit()
+    {
+        rateUsTab.SetActive(false);
     }
 
     public void OnInfoClicked()

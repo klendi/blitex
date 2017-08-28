@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
     public GameObject startTab;
     public GameObject gameOverTab;
     public GameObject startTabExit;
+    public GameObject unlockedSnowTheme;
     public Sprite[] soundSprites;
     #endregion
 
@@ -93,8 +94,8 @@ public class LevelManager : MonoBehaviour
         else if (!entering)
         {
             yield return new WaitForSeconds(seconds);
-            startTab.SetActive(false);
             startTabExit.SetActive(true);
+            startTab.SetActive(false);
         }
     }
     private IEnumerator WaitThenDestroy(float seconds)
@@ -255,6 +256,15 @@ public class LevelManager : MonoBehaviour
         if (!isSnowLevel)
         {
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, false);
+
+            if (SaveManager.Instance.data.completedLevels >= 15 && !SaveManager.Instance.data.hasUnlockedSnowTheme)
+            {
+                //player has completed 15 levels so now he unlocks snow theme
+                print("Congrats u unlocked snow theme");
+                unlockedSnowTheme.SetActive(true);
+                SaveManager.Instance.data.hasUnlockedSnowTheme = true;
+                SaveManager.Instance.Save();
+            }
         }
 
         else if (isSnowLevel)
@@ -317,5 +327,9 @@ public class LevelManager : MonoBehaviour
         {
             //TODO(Klendi): BW levels implement
         }
+    }
+    public void OnUnlockedSnowExit()
+    {
+        unlockedSnowTheme.SetActive(false);
     }
 }

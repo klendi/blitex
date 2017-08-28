@@ -80,7 +80,7 @@ public class EndlessManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Endless");
+        SceneManager.LoadScene("Endless_snow");
     }
 
     public void RestartNormalLevel()

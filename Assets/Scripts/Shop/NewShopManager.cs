@@ -62,12 +62,16 @@ public class NewShopManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
 
-        if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && Random.Range(0, 100) <= 40 && thisTimeShowInterstital)
+        if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && thisTimeShowInterstital)
         {
             AdsManager.Instance.ShowInterstitalAd();
         }
         else if (AdsManager.Instance.interstitalLoaded)
+        {
             showedInterstitalAd = true;
+            thisTimeShowInterstital = false;
+        }
+
     }
 
     public void OnNewPage()
@@ -99,13 +103,12 @@ public class NewShopManager : MonoBehaviour
         switch (result)
         {
             case ShowResult.Failed:
-                print("GAVE THE MONEY TO THE PLAYER");
+                print("Failed, maybe internet");
                 loadingTab.GetComponentInChildren<Text>().text = "Failed To Load Video";
-                StartCoroutine(WaitThenSetFalse());
-                loadedVideo = true;
+                StartCoroutine(WaitForCertainTimeThenfalse());
                 break;
             case ShowResult.Skipped:
-                print("GAVE THE MONEY TO THE PLAYER");
+                print("Skiped the add");
                 loadingTab.GetComponentInChildren<Text>().text = "Video Skipped";
                 notEnoughMoneyTab.SetActive(false);
                 StartCoroutine(WaitThenSetFalse());
@@ -114,7 +117,7 @@ public class NewShopManager : MonoBehaviour
             case ShowResult.Finished:
                 print("GAVE THE MONEY TO THE PLAYER");
                 loadingTab.GetComponentInChildren<Text>().text = "Succes";
-                SaveManager.Instance.data.diamonds += 10;
+                SaveManager.Instance.data.diamonds += 5;
                 StartCoroutine(WaitThenSetFalse());
                 loadedVideo = true;
                 break;

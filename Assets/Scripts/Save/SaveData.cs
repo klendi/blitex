@@ -23,6 +23,8 @@ public class SaveData
     public bool firstTimeRunning = true;
     public bool firstGameOver = false;
     public bool firstTimeRunninglvl = true;
+    public bool hasUnlockedSnowTheme = false;
     public bool hasUnlockedNormalEndless = false;
     public bool hasUnlockedSnowEndless = false;
+    public bool hasRatedGame = false;
 }

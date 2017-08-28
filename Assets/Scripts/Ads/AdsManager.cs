@@ -60,7 +60,6 @@ public class AdsManager : MonoBehaviour
 
         interstitalAd.OnAdClosed += InterstitalAd_OnAdClosed;
     }
-
     private void InterstitalAd_OnAdClosed(object sender, System.EventArgs e)
     {
         print("Succes, the ad is closed now");

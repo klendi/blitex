@@ -17,6 +17,8 @@ public class Manager : MonoBehaviour
 
     public int sceneIndex = 0;
     public bool soundOn = false;
+
+    [Header("Resources")]
     public Sprite[] soundSprites;
     public GameObject[] playerPrefabs;
     public GameObject hitVFX;

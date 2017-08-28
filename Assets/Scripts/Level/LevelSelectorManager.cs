@@ -2,7 +2,7 @@
 ================================================================
     Product:    Blitex
     Developer:  Klendi Gocci - klendigocci@gmail.com
-    Date:       24/8/2017. 21:42
+    Date:       28/8/2017. 10:50
 ================================================================
    Copyright (c) Klendi Gocci.  All rights reserved.
 ================================================================
@@ -13,14 +13,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
+/// <summary>
+/// The class that handle level selectors
+/// </summary>
 public class LevelSelectorManager : MonoBehaviour
 {
     public Transform levelPanel;
     public GameObject endlessUnlockTab;
     public GameObject snowONOF;
-    bool hasUnlockedNormalEndless = false;
-    bool hasUnlockedSnowEndless = false;
-    bool isSnowOn = true;
+    private bool hasUnlockedNormalEndless = false;
+    private bool hasUnlockedSnowEndless = false;
+    private bool isSnowOn = true;
+    private bool shownInterstital;
+    private bool thisTimeShowInterstital = false;
     public bool isSnowSelector = false;
 
     UIVerticalScroller scroll;
@@ -28,6 +33,13 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void Start()
     {
+        if (Random.Range(0, 100) < 40)
+        {
+            //this time we gonna show ads
+            FindObjectOfType<AdsManager>().ShowInterstitalAd();
+            thisTimeShowInterstital = true;
+        }
+
         scroll = FindObjectOfType<UIVerticalScroller>();
         endlessUnlockTab.SetActive(false);
         hasUnlockedNormalEndless = SaveManager.Instance.data.hasUnlockedNormalEndless;
@@ -68,6 +80,17 @@ public class LevelSelectorManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
+
+        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital)
+        {
+            print("Loaded and showed interstital AD on level selector");
+            AdsManager.Instance.ShowInterstitalAd();
+        }
+        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital)
+        {
+            shownInterstital = true;
+            thisTimeShowInterstital = false;
+        }
     }
 
     public void OnHomeClick()
@@ -230,7 +253,7 @@ public class LevelSelectorManager : MonoBehaviour
 
     public void OnSnowVFXClicked()
     {
-        if(isSnowOn)
+        if (isSnowOn)
         {
             isSnowOn = false;
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: OFF";
@@ -238,7 +261,7 @@ public class LevelSelectorManager : MonoBehaviour
             SaveManager.Instance.Save();
             snow.gameObject.SetActive(false);
         }
-        else if(!isSnowOn)
+        else if (!isSnowOn)
         {
             isSnowOn = true;
             snowONOF.GetComponentInChildren<Text>().text = "SNOW: ON";
@@ -265,7 +288,7 @@ public class LevelSelectorManager : MonoBehaviour
         {
             SceneManager.LoadScene("Endless_snow");
         }
-        else if(SaveManager.Instance.data.specialDiamond < 10 && !hasUnlockedSnowEndless)
+        else if (SaveManager.Instance.data.specialDiamond < 10 && !hasUnlockedSnowEndless)
         {
             //not enough diamonds
             endlessUnlockTab.SetActive(true);
