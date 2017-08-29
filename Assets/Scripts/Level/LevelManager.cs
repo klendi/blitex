@@ -14,7 +14,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames;
-using GoogleMobileAds.Api;
 
 public class LevelManager : MonoBehaviour
 {
@@ -60,11 +59,11 @@ public class LevelManager : MonoBehaviour
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
         Camera.main.gameObject.AddComponent<CameraShake>();
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("MenuTheme", 1f));
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("MenuTheme", .5f));
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
         {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("LevelTheme", 1.5f));
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("LevelTheme", 1f));
         }
         endless = FindObjectOfType<EndlessManager>();
         totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
@@ -75,7 +74,6 @@ public class LevelManager : MonoBehaviour
         else
             soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
     }
-
     private void Update()
     {
         if (player.isReady && !gameOver && !paused)
@@ -138,8 +136,6 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.PlaySound("GameOverSound");
         StartCoroutine(WaitThenUnplay(2.2f, .2f));
         cameraController.Stop();
-        //play the blowing particles
-        //player.gameObject.SetActive(false);
     }
 
     public void OnGameInit()
@@ -261,6 +257,7 @@ public class LevelManager : MonoBehaviour
             {
                 //player has completed 15 levels so now he unlocks snow theme
                 print("Congrats u unlocked snow theme");
+                PlayServices.UnlockAchievement(GPGSIds.achievement_unlocked_snow_theme);
                 unlockedSnowTheme.SetActive(true);
                 SaveManager.Instance.data.hasUnlockedSnowTheme = true;
                 SaveManager.Instance.Save();
@@ -306,7 +303,7 @@ public class LevelManager : MonoBehaviour
             instanciated = true;
         }
 
-        StartCoroutine(ContinueGameOver(1.2f));
+        StartCoroutine(ContinueGameOver(1f));
     }
 
     public void AddScoreToLeaderBoard(LevelType type)

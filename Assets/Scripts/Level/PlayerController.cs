@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Variables")]
     public float speed;
-    bool gameover = false;
     float screenHalfInWorldUnits;
 
     [HideInInspector]

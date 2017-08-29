@@ -5,14 +5,14 @@ public class CameraShake : MonoBehaviour
 {
     // Transform of the camera to shake. Grabs the gameObject's transform
     // if null.
-    public Transform camTransform;
+    Transform camTransform;
 
     // How long the object should shake for.
-    public float shakeDuration = 1f;
+    public float shakeDuration = .5f;
 
     // Amplitude of the shake. A larger value shakes the camera harder.
-    public float shakeAmount = 0.2f;
-    public float decreaseFactor = .5f;
+    public float shakeAmount = 0.15f;
+    public float decreaseFactor = .1f;
 
     public bool shaked = false;
 

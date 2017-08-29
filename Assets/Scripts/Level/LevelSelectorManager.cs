@@ -46,11 +46,11 @@ public class LevelSelectorManager : MonoBehaviour
         hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
         isSnowOn = SaveManager.Instance.data.snowOn;
 
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", 1f));
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", .5f));
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1.5f));
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1f));
         }
 
         if (isSnowOn && isSnowSelector)
@@ -233,7 +233,7 @@ public class LevelSelectorManager : MonoBehaviour
         if (SaveManager.Instance.data.specialDiamond >= 10 && !hasUnlockedNormalEndless)
         {
             print("Bough normal Endless");
-            PlayServices.UnlockAchievement(GPGSIds.achievement_unlocked_endless);
+            PlayServices.UnlockAchievement(GPGSIds.achievement_unlock_endless);
             SaveManager.Instance.data.specialDiamond -= 10;
             SaveManager.Instance.data.hasUnlockedNormalEndless = true;
             SaveManager.Instance.Save();
@@ -277,7 +277,7 @@ public class LevelSelectorManager : MonoBehaviour
         if (SaveManager.Instance.data.specialDiamond >= 10 && !hasUnlockedSnowEndless)
         {
             print("Bough Snow Endless");
-            PlayServices.UnlockAchievement(GPGSIds.achievement_unlocked_snow_endless);
+            PlayServices.UnlockAchievement(GPGSIds.achievement_unlock_snow_endless);
             SaveManager.Instance.data.specialDiamond -= 10;
             SaveManager.Instance.data.hasUnlockedSnowEndless = true;
             SaveManager.Instance.Save();

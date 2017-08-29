@@ -12,13 +12,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.ComponentModel;
 
 /// <summary>
 /// The class that handle main menu
 /// </summary>
+//i know that the name of the class if weird to its function but nevermind it does it job
 public class LevelShopManager : MonoBehaviour
 {
-    //i know that the name of the class if weird to its function but nevermind it does it job
     public GameObject infoLabel;
     public GameObject infoLabelExit;
     public GameObject googlePlaygameTab;
@@ -51,7 +52,7 @@ public class LevelShopManager : MonoBehaviour
         rateUsTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", .6f));
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", .5f));
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {

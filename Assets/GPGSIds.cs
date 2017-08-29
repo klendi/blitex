@@ -31,15 +31,14 @@ public static class GPGSIds
         public const string leaderboard_blitexs_endless = "CgkIn82q6YsbEAIQAQ"; // <GPGSID>
         public const string achievement_10_000_diamonds = "CgkIn82q6YsbEAIQEw"; // <GPGSID>
         public const string achievement_first_level = "CgkIn82q6YsbEAIQAg"; // <GPGSID>
-        public const string achievement_unlocked_snow_endless = "CgkIn82q6YsbEAIQCQ"; // <GPGSID>
-        public const string leaderboard_succes__gameover_rate = "CgkIn82q6YsbEAIQEg"; // <GPGSID>
+        public const string achievement_unlocked_snow_theme = "CgkIn82q6YsbEAIQFA"; // <GPGSID>
         public const string achievement_first_gameover = "CgkIn82q6YsbEAIQAw"; // <GPGSID>
-        public const string achievement_unlocked_endless = "CgkIn82q6YsbEAIQCA"; // <GPGSID>
+        public const string achievement_unlock_endless = "CgkIn82q6YsbEAIQCA"; // <GPGSID>
+        public const string achievement_unlock_snow_endless = "CgkIn82q6YsbEAIQCQ"; // <GPGSID>
         public const string achievement_completed_10_normal_levels = "CgkIn82q6YsbEAIQDg"; // <GPGSID>
         public const string leaderboard_blitexs_diamonds = "CgkIn82q6YsbEAIQEA"; // <GPGSID>
         public const string achievement_completed_all_normal_levels = "CgkIn82q6YsbEAIQCg"; // <GPGSID>
         public const string achievement_completed_10_snow_levels = "CgkIn82q6YsbEAIQDw"; // <GPGSID>
-        public const string leaderboard_blitexs_special_diamonds = "CgkIn82q6YsbEAIQEQ"; // <GPGSID>
         public const string achievement_1000_diamonds = "CgkIn82q6YsbEAIQBg"; // <GPGSID>
 
 }

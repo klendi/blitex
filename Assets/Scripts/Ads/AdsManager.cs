@@ -4,7 +4,7 @@
     Developer:  Klendi Gocci - klendigocci@gmail.com
     Date:       26/8/2017. 11:58
 ================================================================
-   Copyright (c) Klendi Gocci.  All rights reserved.
+    Copyright (c) Klendi Gocci.  All rights reserved.
 ================================================================
 */
 
