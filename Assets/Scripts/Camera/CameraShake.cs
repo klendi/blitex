@@ -12,7 +12,7 @@ public class CameraShake : MonoBehaviour
 
     // Amplitude of the shake. A larger value shakes the camera harder.
     public float shakeAmount = 0.15f;
-    public float decreaseFactor = .1f;
+    public float decreaseFactor = .5f;
 
     public bool shaked = false;
 
@@ -20,10 +20,7 @@ public class CameraShake : MonoBehaviour
 
     void Awake()
     {
-        if (camTransform == null)
-        {
-            camTransform = transform;
-        }
+        camTransform = transform;
     }
 
     void Update()
