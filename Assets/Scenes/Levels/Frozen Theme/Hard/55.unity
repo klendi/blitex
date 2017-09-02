@@ -766,7 +766,7 @@ Prefab:
     - target: {fileID: 114734099377853866, guid: ecf53dc926dc31647880783574ca414a,
         type: 2}
       propertyPath: speed
-      value: 1.6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1585930123959050, guid: ecf53dc926dc31647880783574ca414a, type: 2}
       propertyPath: m_Name
@@ -920,7 +920,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4972843481615182, guid: 98dd050dd3e7cf7449d3df4eac97c54d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -16.91
+      value: -17.32
       objectReference: {fileID: 0}
     - target: {fileID: 4972843481615182, guid: 98dd050dd3e7cf7449d3df4eac97c54d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5480,6 +5480,7 @@ MonoBehaviour:
   startTab: {fileID: 842969817}
   gameOverTab: {fileID: 466978031}
   startTabExit: {fileID: 1367664275}
+  unlockedSnowTheme: {fileID: 0}
   soundSprites:
   - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}

@@ -2587,7 +2587,6 @@ GameObject:
   m_Component:
   - component: {fileID: 518761288}
   - component: {fileID: 518761289}
-  - component: {fileID: 518761287}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -2595,17 +2594,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &518761287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 518761286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39483a4e76b675546ac712a8a60b149a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &518761288
 Transform:
   m_ObjectHideFlags: 0
@@ -2633,52 +2621,46 @@ MonoBehaviour:
   sounds:
   - name: MenuTheme
     clip: {fileID: 8300000, guid: ad8ee7e0d9ee366428cb709f2694da2e, type: 3}
-    volume: 0.8
+    volume: 0
     pitch: 1
     loop: 1
     priority: 186
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
+    audioSource: {fileID: 0}
   - name: GameOverSound
     clip: {fileID: 8300000, guid: 23826bc0322f52c4d8936874b88976c4, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     priority: 200
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
+    audioSource: {fileID: 0}
   - name: SuccesSound
     clip: {fileID: 8300000, guid: bc75eeed61bce27429b8780ba2cd96cb, type: 3}
     volume: 1
     pitch: 0.85
     loop: 0
     priority: 200
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
+    audioSource: {fileID: 0}
   - name: DiamondCollect
     clip: {fileID: 8300000, guid: e0e77b5f9bff4b9419e6353c0d59a01c, type: 3}
     volume: 1
     pitch: 1.5
     loop: 0
     priority: 200
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
+    audioSource: {fileID: 0}
   - name: LevelTheme
     clip: {fileID: 8300000, guid: 2d01362321da1444fb5a9932ed98ee3a, type: 3}
-    volume: 0.8
+    volume: 0
     pitch: 1
     loop: 1
     priority: 103
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
+    audioSource: {fileID: 0}
   - name: BlastSound
     clip: {fileID: 8300000, guid: 400f00558a4df6548b548b56e13b84a7, type: 3}
     volume: 1
     pitch: 1.03
     loop: 0
     priority: 200
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
+    audioSource: {fileID: 0}
 --- !u!1 &525173239
 GameObject:
   m_ObjectHideFlags: 0

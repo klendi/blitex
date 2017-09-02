@@ -1254,7 +1254,7 @@ Prefab:
     - target: {fileID: 114576754125664282, guid: c6b243f9ce63b704e9364940be248dff,
         type: 2}
       propertyPath: speed
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6b243f9ce63b704e9364940be248dff, type: 2}
@@ -3777,7 +3777,7 @@ Prefab:
     - target: {fileID: 114576754125664282, guid: c6b243f9ce63b704e9364940be248dff,
         type: 2}
       propertyPath: speed
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1056208358410202, guid: c6b243f9ce63b704e9364940be248dff, type: 2}
       propertyPath: m_Name
@@ -5233,6 +5233,7 @@ MonoBehaviour:
   startTab: {fileID: 842969817}
   gameOverTab: {fileID: 466978031}
   startTabExit: {fileID: 1367664275}
+  unlockedSnowTheme: {fileID: 0}
   soundSprites:
   - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}

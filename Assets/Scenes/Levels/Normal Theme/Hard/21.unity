@@ -1462,7 +1462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &543238770
 Transform:
   m_ObjectHideFlags: 0
@@ -2365,7 +2365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &818504543
 Transform:
   m_ObjectHideFlags: 0
@@ -5818,6 +5818,7 @@ MonoBehaviour:
   startTab: {fileID: 842969817}
   gameOverTab: {fileID: 466978031}
   startTabExit: {fileID: 1367664275}
+  unlockedSnowTheme: {fileID: 0}
   soundSprites:
   - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}

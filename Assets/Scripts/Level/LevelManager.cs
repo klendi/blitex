@@ -59,12 +59,17 @@ public class LevelManager : MonoBehaviour
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
         Camera.main.gameObject.AddComponent<CameraShake>();
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("MenuTheme", .5f));
+
+        if (FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
+        {
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("MenuTheme", .25f));
+        }
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
         {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("LevelTheme", 1f));
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("LevelTheme", .5f));
         }
+
         endless = FindObjectOfType<EndlessManager>();
         totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
         totalSpecialDiamonds = GameObject.FindGameObjectsWithTag("SuperDiamond").Length;
@@ -104,9 +109,9 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator WaitThenUnplay(float seconds, float minVolume)
     {
-        AudioManager.instance.sounds[0].source.volume = minVolume;
+        AudioManager.instance.sounds[0].audioSource.volume = minVolume;
         yield return new WaitForSeconds(seconds);
-        AudioManager.instance.sounds[0].source.volume = .7f;
+        AudioManager.instance.sounds[0].audioSource.volume = .7f;
     }
     private IEnumerator ContinueGameOver(float sec)
     {

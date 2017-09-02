@@ -52,14 +52,17 @@ public class LevelShopManager : MonoBehaviour
         rateUsTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", .5f));
+        if (FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
+        {
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("LevelTheme", .25f));
+        }
 
         if (!FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", 1f));
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("MenuTheme", .5f));
         }
 
-        if((SaveManager.Instance.data.completedLevels == 20 || SaveManager.Instance.data.completedSnowLevels == 14) && SaveManager.Instance.data.hasRatedGame)
+        if ((SaveManager.Instance.data.completedLevels == 20 || SaveManager.Instance.data.completedSnowLevels == 14) && SaveManager.Instance.data.hasRatedGame)
         {
             print("Showing player to rate the game");
             rateUsTab.SetActive(true);

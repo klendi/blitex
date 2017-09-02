@@ -613,7 +613,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1207623116757604, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_Name
@@ -977,56 +977,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4160295295603474, guid: f73dc99a7a010894b83462e100cf48b7,
     type: 2}
   m_PrefabInternal: {fileID: 196035429}
---- !u!1001 &235194710
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1963049715}
-    m_Modifications:
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -1.9093218
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -19.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.0234375
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1207623116757604, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_Name
-      value: ice_Spike (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.52155
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &244396825
 Prefab:
   m_ObjectHideFlags: 0
@@ -2225,7 +2175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1207623116757604, guid: a8b3cf54c59ee2e44bc0f2371e54185d, type: 2}
       propertyPath: m_Name
@@ -4412,11 +4362,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1497341485008126, guid: 57efc2980f6769248b15446258d2e9f2,
     type: 2}
   m_PrefabInternal: {fileID: 1756445197}
---- !u!4 &1371091381 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4997295457084952, guid: a8b3cf54c59ee2e44bc0f2371e54185d,
-    type: 2}
-  m_PrefabInternal: {fileID: 235194710}
 --- !u!1 &1381216795 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1871184280550316, guid: 57efc2980f6769248b15446258d2e9f2,
@@ -5830,7 +5775,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2017665928}
-  - {fileID: 1371091381}
   - {fileID: 1483996408}
   - {fileID: 1714357348}
   m_Father: {fileID: 48527266}
@@ -5894,6 +5838,7 @@ MonoBehaviour:
   startTab: {fileID: 842969817}
   gameOverTab: {fileID: 466978031}
   startTabExit: {fileID: 1367664275}
+  unlockedSnowTheme: {fileID: 0}
   soundSprites:
   - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
   - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}

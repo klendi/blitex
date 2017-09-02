@@ -12,26 +12,25 @@ using UnityEngine.Audio;
 using UnityEngine;
 
 [System.Serializable]
-public class Sound {
+public class Sound
+{
 
-	public string name;
+    public string name;
 
-	public AudioClip clip;
+    public AudioClip clip;
 
-	[Range(0f, 1f)]
-	public float volume = .75f;
+    [Range(0f, 1f)]
+    public float volume = .75f;
 
-	[Range(.1f, 3f)]
-	public float pitch = 1f;
+    [Range(.1f, 3f)]
+    public float pitch = 1f;
 
-	public bool loop = false;
+    public bool loop = false;
 
     [Range(0, 256)]
     public int priority = 128;
 
-	public AudioMixerGroup mixerGroup;
-
-	[HideInInspector]
-	public AudioSource source;
+    [HideInInspector]
+    public AudioSource audioSource;
 
 }

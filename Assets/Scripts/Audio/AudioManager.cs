@@ -31,10 +31,10 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.loop = s.loop;
-            s.source.priority = s.priority;
+            s.audioSource = gameObject.AddComponent<AudioSource>();
+            s.audioSource.clip = s.clip;
+            s.audioSource.loop = s.loop;
+            s.audioSource.priority = s.priority;
         }
     }
 
@@ -48,19 +48,16 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
         }
 
-        s.source.volume = s.volume;
-        s.source.pitch = s.pitch;
-
         float startVolume = s.volume;
 
-        while (s.source.volume > 0)
+        while (s.audioSource.volume > 0)
         {
-            s.source.volume -= startVolume * Time.deltaTime / FadeTime;
+            s.audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
 
             yield return null;
         }
 
-        s.source.Stop();
+        s.audioSource.Stop();
     }
 
     public IEnumerator FadeIn(string sound, float FadeTime)
@@ -73,22 +70,21 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
         }
 
-        s.source.volume = s.volume;
-        s.source.pitch = s.pitch;
+        s.audioSource.pitch = s.pitch;
 
         float startVolume = 0.2f;
 
-        s.source.volume = 0;
-        s.source.Play();
+        s.audioSource.volume = 0;
+        s.audioSource.Play();
 
-        while (s.source.volume < s.volume)
+        while (s.audioSource.volume < s.volume)
         {
-            s.source.volume += startVolume * Time.deltaTime / FadeTime;
+            s.audioSource.volume += startVolume * Time.deltaTime / FadeTime;
 
             yield return null;
         }
 
-        s.source.volume = s.volume;
+        s.audioSource.volume = s.volume;
     }
 
     public void PlaySound(string sound)
@@ -100,15 +96,15 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        if (s.source.volume <= s.volume)
+        if (s.audioSource.volume <= s.volume)
         {
-            s.source.volume = 1;
+            s.audioSource.volume = 1;
         }
 
-        s.source.volume = s.volume;
-        s.source.pitch = s.pitch;
+        s.audioSource.volume = s.volume;
+        s.audioSource.pitch = s.pitch;
 
-        s.source.Play();
+        s.audioSource.Play();
     }
     public void Pause(string sound)
     {
@@ -119,7 +115,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.Stop();
+        s.audioSource.Stop();
     }
     public bool IsPlaying(string sound)
     {
@@ -129,7 +125,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
         }
 
-        return s.source.isPlaying;
+        return s.audioSource.isPlaying;
     }
 
 }
