@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: abf871a196b6aed41825c61b140fb0cb
-timeCreated: 1503922908
+timeCreated: 1504377052
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -211,10 +211,10 @@ TextureImporter:
       name: balls_7
       rect:
         serializedVersion: 2
-        x: 188
+        x: 190
         y: 357
-        width: 73
-        height: 72
+        width: 75
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: balls_14
       rect:
         serializedVersion: 2
-        x: 363
-        y: 267
-        width: 77
-        height: 76
+        x: 360
+        y: 264
+        width: 84
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

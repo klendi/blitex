@@ -19,6 +19,7 @@ using UnityEngine.UI.Extensions;
 public class LevelSelectorManager : MonoBehaviour
 {
     public Transform levelPanel;
+    public Text youNeedMoreDiamonds;
     public GameObject endlessUnlockTab;
     public GameObject snowONOF;
     private bool hasUnlockedNormalEndless = false;
@@ -251,6 +252,7 @@ public class LevelSelectorManager : MonoBehaviour
         {
             //not enough diamonds
             endlessUnlockTab.SetActive(true);
+            youNeedMoreDiamonds.text = "You have " + SaveManager.Instance.data.specialDiamond.ToString();
         }
     }
 
@@ -295,6 +297,7 @@ public class LevelSelectorManager : MonoBehaviour
         {
             //not enough diamonds
             endlessUnlockTab.SetActive(true);
+            youNeedMoreDiamonds.text = "You have " + SaveManager.Instance.data.specialDiamond.ToString();
         }
     }
 
