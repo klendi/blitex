@@ -144,10 +144,10 @@ PlayerSettings:
   resolutionScalingMode: 0
   applicationIdentifier:
     Android: com.klendigocci.blitexx
-    Standalone: unity.Sublex Games.Blitex
-    Tizen: com.sublexgames.blitex
-    iOS: com.sublexgames.blitex
-    tvOS: com.sublexgames.blitex
+    Standalone: unity.klendigocci.Blitex
+    Tizen: com.klendigocci.blitex
+    iOS: com.klendigocci.blitex
+    tvOS: com.klendigocci.blitex
   buildNumber:
     iOS: 0
   AndroidBundleVersionCode: 3
@@ -607,7 +607,7 @@ PlayerSettings:
   apiCompatibilityLevel: 2
   cloudProjectId: 4bcc1e39-2616-4a38-99b0-349f6421c9d7
   projectName: Blitex
-  organizationId: sublex-games
+  organizationId: klendi-gocci
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
