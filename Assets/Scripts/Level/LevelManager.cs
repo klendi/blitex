@@ -143,8 +143,6 @@ public class LevelManager : MonoBehaviour
         print("Game Started");
         anim.SetBool("isExiting", true);
         startTab.GetComponentInChildren<Image>().raycastTarget = false;
-        //remove the big play button after he is pressed
-        //StartCoroutine(LoadPlayButton(1.3f, false));
         pauseButton.enabled = true;    //enable the pause button
 
         player.isReady = true;  //give the player permission to move
@@ -160,7 +158,7 @@ public class LevelManager : MonoBehaviour
             player.paused = true;
             paused = true;
             pauseTab.SetActive(true);
-            player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            //player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
             cameraController.Stop();
             Time.timeScale = 0;                 //freeze the time
             if (isEndlessLevel)
@@ -173,7 +171,7 @@ public class LevelManager : MonoBehaviour
         {
             player.paused = false;
             pauseTab.SetActive(false);
-            player.rigid.constraints = RigidbodyConstraints2D.None;
+            //player.rigid.constraints = RigidbodyConstraints2D.None;
             cameraController.Play();
             Time.timeScale = 1;
 
