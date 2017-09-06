@@ -2,7 +2,7 @@
 ================================================================
     Product:    Blitex
     Developer:  Klendi Gocci - klendigocci@gmail.com
-    Date:       23/8/2017. 14:29
+    Date:       5/9/2017. 12:47
 ================================================================
    Copyright (c) Klendi Gocci.  All rights reserved.
 ================================================================
@@ -32,9 +32,9 @@ public class LevelManager : MonoBehaviour
     PlayerController player;
     CameraController cameraController;
     EndlessManager endless;
+    Animator anim;
     public Button pauseButton;
     public Button soundButton;
-    public Button startGameButton;
     public Text highScoreDiamonds, highScoreSpecialDiamonds;
     public Text diamondsText;
     public GameObject pauseTab;
@@ -42,9 +42,7 @@ public class LevelManager : MonoBehaviour
     public GameObject uiTab;
     public GameObject startTab;
     public GameObject gameOverTab;
-    public GameObject startTabExit;
     public GameObject unlockedSnowTheme;
-    public Sprite[] soundSprites;
     #endregion
 
 
@@ -52,13 +50,14 @@ public class LevelManager : MonoBehaviour
     {
         cameraController = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerController>();
-        StartCoroutine(Load(0.2f, true));    //load the big play button when the level loads, play that after 0.2 seconds
+        StartCoroutine(LoadPlayButton(0.2f));    //load the big play button when the level loads, play that after 0.2 seconds
         pauseTab.SetActive(false);           //set the pause tab false
         succesTab.SetActive(false);         //set the succes tab false
         gameOverTab.SetActive(false);       //set the game over tab false
         uiTab.SetActive(true);              //set the ui active
         pauseButton.enabled = false;
         Camera.main.gameObject.AddComponent<CameraShake>();
+        anim = startTab.GetComponentInChildren<Animator>();
 
         if (FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {
@@ -87,19 +86,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private IEnumerator Load(float seconds, bool entering)
+    /// <summary>
+    /// Loads the big button anim on start
+    /// </summary>
+    /// <param name="seconds">seconds that take</param>
+    /// <returns></returns>
+    private IEnumerator LoadPlayButton(float seconds)
     {
-        if (entering)
-        {
-            yield return new WaitForSeconds(seconds);
-            startTab.SetActive(true);
-        }
-        else if (!entering)
-        {
-            yield return new WaitForSeconds(seconds);
-            startTabExit.SetActive(true);
-            startTab.SetActive(false);
-        }
+        yield return new WaitForSeconds(seconds);
+        startTab.SetActive(true);
     }
     private IEnumerator WaitThenDestroy(float seconds)
     {
@@ -146,9 +141,10 @@ public class LevelManager : MonoBehaviour
     public void OnGameInit()
     {
         print("Game Started");
-        startGameButton.interactable = false;
+        anim.SetBool("isExiting", true);
+        startTab.GetComponentInChildren<Image>().raycastTarget = false;
         //remove the big play button after he is pressed
-        StartCoroutine(Load(0f, false));
+        //StartCoroutine(LoadPlayButton(1.3f, false));
         pauseButton.enabled = true;    //enable the pause button
 
         player.isReady = true;  //give the player permission to move
@@ -308,6 +304,7 @@ public class LevelManager : MonoBehaviour
             instanciated = true;
         }
 
+        //wait 1 sec untill the shake has done playing then continue with game over tab
         StartCoroutine(ContinueGameOver(1f));
     }
 

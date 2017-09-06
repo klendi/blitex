@@ -121,6 +121,7 @@ public class NewShopManager : MonoBehaviour
                 StartCoroutine(WaitThenSetFalse());
                 loadedVideo = true;
                 break;
+
             default:
                 break;
         }
@@ -134,12 +135,13 @@ public class NewShopManager : MonoBehaviour
     private IEnumerator WaitForCertainTimeThenfalse()
     {
         //if video its not ready for 4 sec then fail it
+        ShowAdVideo();
         yield return new WaitForSeconds(4f);
         if (!loadedVideo)
         {
             loadingTab.GetComponentInChildren<Text>().text = "Failed To Load Video";
-            yield return new WaitForSeconds(1.5f);
-            loadingTab.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            loadingTab.SetActive(false);
         }
     }
     /* End Video ads stuff */

@@ -2687,14 +2687,14 @@ RectTransform:
   m_GameObject: {fileID: 525173239}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.24573147, y: 0.24573147, z: 0.24573147}
+  m_LocalScale: {x: 0.25801805, y: 0.25801805, z: 0.25801805}
   m_Children: []
   m_Father: {fileID: 1607508996}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 156, y: -132}
+  m_AnchoredPosition: {x: 156, y: -153}
   m_SizeDelta: {x: 758.48, y: 478.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525173241
@@ -2729,7 +2729,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ice theme
+  m_Text: 'Snow Theme
+
+'
 --- !u!222 &525173242
 CanvasRenderer:
   m_ObjectHideFlags: 0
