@@ -1965,7 +1965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &543238770
 Transform:
   m_ObjectHideFlags: 0
@@ -2898,7 +2898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &818504543
 Transform:
   m_ObjectHideFlags: 0
@@ -3609,12 +3609,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4890372581260722, guid: a3c5b1b257bc6d249aa2ec516678b7d4,
     type: 2}
   m_PrefabInternal: {fileID: 1136833289}
---- !u!114 &1147778172 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114420911839297974, guid: fa65c4eef84548e4e9870a8a26401903,
-    type: 2}
-  m_PrefabInternal: {fileID: 1537856590}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1172997928 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114876470280404492, guid: fa65c4eef84548e4e9870a8a26401903,
@@ -4329,11 +4323,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1367664275 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1218359253883478, guid: fa65c4eef84548e4e9870a8a26401903,
-    type: 2}
-  m_PrefabInternal: {fileID: 1537856590}
 --- !u!1 &1379873836
 GameObject:
   m_ObjectHideFlags: 0
@@ -6990,7 +6979,6 @@ MonoBehaviour:
   gameOver: 0
   pauseButton: {fileID: 1600705739}
   soundButton: {fileID: 566691560}
-  startGameButton: {fileID: 1147778172}
   highScoreDiamonds: {fileID: 1537856591}
   highScoreSpecialDiamonds: {fileID: 1172997928}
   diamondsText: {fileID: 638745535}
@@ -6999,11 +6987,7 @@ MonoBehaviour:
   uiTab: {fileID: 698054093}
   startTab: {fileID: 842969817}
   gameOverTab: {fileID: 466978031}
-  startTabExit: {fileID: 1367664275}
   unlockedSnowTheme: {fileID: 0}
-  soundSprites:
-  - {fileID: 21300000, guid: 2f09dcfb2ea4c9a4781d1f51ed49d784, type: 3}
-  - {fileID: 21300000, guid: 091b5e2a552b4104a9ebf067cf68e1de, type: 3}
 --- !u!1001 &1973111420
 Prefab:
   m_ObjectHideFlags: 0
