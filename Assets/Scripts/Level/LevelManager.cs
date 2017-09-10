@@ -14,6 +14,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames;
+using UnityEngine.Advertisements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -125,10 +126,18 @@ public class LevelManager : MonoBehaviour
             SaveManager.Instance.Save();
         }
 
-        if (Random.Range(0, 100) <= 45 && !AdsManager.Instance.interstitalLoaded)
+        //TODO: fix this 45 value
+        if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded)
         {
-            print("Time to show some interstital ad at gameover");
-            AdsManager.Instance.ShowInterstitalAd();
+            if (Random.Range(0, 6) == 1)
+            {
+                Advertisement.Show("rewardedVideo");
+            }
+            else
+            {
+                print("Time to show some interstital ad at gameover");
+                AdsManager.Instance.ShowInterstitalAd();
+            }
         }
 
         gameOver = true;
@@ -224,6 +233,19 @@ public class LevelManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
 
+        //TODO: fix this 45 value
+        if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded)
+        {
+            if (Random.Range(0, 6) == 1)
+            {
+                Advertisement.Show("rewardedVideo");
+            }
+            else
+            {
+                print("Time to show some interstital ad at succes");
+                AdsManager.Instance.ShowInterstitalAd();
+            }
+        }
 
         if (isEndlessLevel)
         {
@@ -244,7 +266,7 @@ public class LevelManager : MonoBehaviour
         });
         }
 
-        if (SaveManager.Instance.data.completedLevels == 0 && SaveManager.Instance.data.completedSnowLevels == 27)
+        if (SaveManager.Instance.data.completedLevels == 0)
         {
             //first level that is played
             PlayServices.UnlockAchievement(GPGSIds.achievement_first_level);

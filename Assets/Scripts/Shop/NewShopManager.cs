@@ -49,11 +49,17 @@ public class NewShopManager : MonoBehaviour
         OnNewPage();
         UpdateText();
 
-        if (Random.Range(0, 100) <= 45)
+        if (Random.Range(0, 100) <= 35)
         {
-            //now this time we gonna show interstital ad
-            print("This time gonna show interstital, $$");
-            thisTimeShowInterstital = true;
+            if (Random.Range(0, 6) == 1)
+            {
+                Advertisement.Show("rewardedVideo");
+            }
+            else
+            {
+                print("This time gonna show interstital at the shop");
+                thisTimeShowInterstital = true;
+            }
         }
     }
 
@@ -64,6 +70,7 @@ public class NewShopManager : MonoBehaviour
 
         if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && thisTimeShowInterstital)
         {
+            print("This time show interstital ad on shop");
             AdsManager.Instance.ShowInterstitalAd();
         }
         else if (AdsManager.Instance.interstitalLoaded)

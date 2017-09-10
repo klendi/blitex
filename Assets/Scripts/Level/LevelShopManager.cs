@@ -35,10 +35,11 @@ public class LevelShopManager : MonoBehaviour
     bool shownInterstital = false;
     bool thisTimeShowInterstital = false;
     bool isAtInfoTab = false, isAtGameServices = false;
+    private bool showedInterstitalAd = false;
 
     private void Start()
     {
-        if (Random.Range(0, 100) < 50)
+        if (Random.Range(0, 100) < 35)
         {
             //now we gonna show interstital ad
             print("Loaded and showed interstital AD on main menu");
@@ -64,7 +65,6 @@ public class LevelShopManager : MonoBehaviour
 
         if ((SaveManager.Instance.data.completedLevels == 20 || SaveManager.Instance.data.completedSnowLevels == 14) && SaveManager.Instance.data.hasRatedGame)
         {
-            print("Showing player to rate the game");
             rateUsTab.SetActive(true);
         }
 
@@ -150,17 +150,7 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnFacebookClick()
     {
-        float startTime;
-        startTime = Time.timeSinceLevelLoad;
-
-        //open the fb app
-        Application.OpenURL("fb:///page/1984682608469987");
-
-        if (Time.timeSinceLevelLoad - startTime <= 3f)
-        {
-            //fail. Open chrome.
-            Application.OpenURL("http://www.facebook.com/sublexgames");
-        }
+        Application.OpenURL("http://www.facebook.com/klendigocci");
     }
     public void OnSoundClicked()
     {
@@ -168,15 +158,14 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnRatingClicked()
     {
-        SaveManager.Instance.data.diamonds += 1000;
         SaveManager.Instance.Save();
-        Application.OpenURL("market://details?id=com.robtopx.geometryjump");
+        Application.OpenURL("market://details?id=com.klendigocci.blitexx");
     }
     public void OnRatingTabClicked()
     {
         SaveManager.Instance.data.hasRatedGame = true;
         SaveManager.Instance.Save();
-        Application.OpenURL("market://details?id=com.robtopx.geometryjump");
+        Application.OpenURL("market://details?id=com.klendigocci.blitexx");
     }
     public void OnRatingTabExit()
     {

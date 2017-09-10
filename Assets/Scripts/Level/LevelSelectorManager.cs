@@ -34,10 +34,11 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void Start()
     {
-        if (Random.Range(0, 100) < 40)
+        //TODO: take a close look at this val
+        if (Random.Range(0, 100) < 35)
         {
             //this time we gonna show ads
-            FindObjectOfType<AdsManager>().ShowInterstitalAd();
+            AdsManager.Instance.ShowInterstitalAd();
             thisTimeShowInterstital = true;
         }
 
@@ -107,17 +108,26 @@ public class LevelSelectorManager : MonoBehaviour
         SceneManager.LoadScene("LevelSelectorSnow");
     }
 
-    public void CompleteLevel()
+    //wtf u were thinking klendi when u published game with testing buttons on -_-
+    public void ToNextLevelNormal()
     {
-        SaveManager.Instance.data.completedLevels++;
-        SaveManager.Instance.Save();
-        InitLevel();
+        //SaveManager.Instance.data.completedLevels++;
+        //SaveManager.Instance.Save();
+        //InitLevel();
+
+        //this button is gonna serve as the next level to be played
+        LoadLevel(SaveManager.Instance.data.completedLevels.ToString());
     }
-    public void CompleteLevelSnow()
+
+    //wtf u were thinking klendi when u published game with testing buttons on -_-
+    public void ToNextLevelSnow()
     {
-        SaveManager.Instance.data.completedSnowLevels++;
-        SaveManager.Instance.Save();
-        InitSnowLevel();
+        //SaveManager.Instance.data.completedSnowLevels++;
+        //SaveManager.Instance.Save();
+        //InitSnowLevel();
+
+        //this button is gonna serve as the next level to be played
+        LoadLevel(SaveManager.Instance.data.completedSnowLevels.ToString());
     }
 
     private void InitLevel()
