@@ -2,7 +2,7 @@
 ================================================================
     Product:    Blitex
     Developer:  Klendi Gocci - klendigocci@gmail.com
-    Date:       5/9/2017. 12:47
+    Date:       9/9/2017. 20:39
 ================================================================
    Copyright (c) Klendi Gocci.  All rights reserved.
 ================================================================
@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
     public GameObject uiTab;
     public GameObject startTab;
     public GameObject gameOverTab;
+    [Tooltip("this is the tab at the 15-th level, ignore it")]
     public GameObject unlockedSnowTheme;
     #endregion
 
