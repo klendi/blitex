@@ -10,6 +10,7 @@
 
 using GoogleMobileAds.Api;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class AdsManager : MonoBehaviour
         interstitalAd.LoadAd(request);
     }
 
+    /* Interstital Ad*/
     public void ShowInterstitalAd()
     {
         request = new AdRequest.Builder().Build();
@@ -66,4 +68,12 @@ public class AdsManager : MonoBehaviour
         interstitalLoaded = false;
         interstitalClosed = true;
     }
+    /* </Interstital Ad*/
+
+    public void ShowVideoAd()
+    {
+        Advertisement.Show("rewardedVideo");
+    }
+
+
 }

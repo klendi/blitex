@@ -53,11 +53,10 @@ public class NewShopManager : MonoBehaviour
         {
             if (Random.Range(0, 6) == 1)
             {
-                Advertisement.Show("rewardedVideo");
+                AdsManager.Instance.ShowVideoAd();
             }
             else
             {
-                print("This time gonna show interstital at the shop");
                 thisTimeShowInterstital = true;
             }
         }
