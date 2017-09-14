@@ -4659,7 +4659,7 @@ MonoBehaviour:
   speed: 3
   range: 0.5
   scaleType: 3
-  max: 0.47
+  max: 0.27
   min: -0.05
 --- !u!114 &1431783431
 MonoBehaviour:
@@ -4675,7 +4675,7 @@ MonoBehaviour:
   speed: 3
   range: 0.5
   scaleType: 3
-  max: 0.47
+  max: 0.27
   min: -0.05
 --- !u!114 &1431783432
 MonoBehaviour:
@@ -4691,7 +4691,7 @@ MonoBehaviour:
   speed: 3
   range: 0.5
   scaleType: 3
-  max: 0.47
+  max: 0.27
   min: -0.05
 --- !u!114 &1431783433
 MonoBehaviour:
@@ -4707,7 +4707,7 @@ MonoBehaviour:
   speed: 3
   range: 0.5
   scaleType: 3
-  max: 0.47
+  max: 0.27
   min: -0.05
 --- !u!1 &1455379943
 GameObject:
@@ -6016,7 +6016,7 @@ MonoBehaviour:
   speed: 2.48
   range: 0
   scaleType: 3
-  max: 0.3
+  max: 0.19
   min: -0.08
 --- !u!4 &1788388993
 Transform:
@@ -6820,7 +6820,7 @@ MonoBehaviour:
   speed: 2.48
   range: 0
   scaleType: 3
-  max: 0.3
+  max: 0.19
   min: -0.08
 --- !u!1001 &1959547505
 Prefab:

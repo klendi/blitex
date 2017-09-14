@@ -814,12 +814,12 @@ Prefab:
     - target: {fileID: 114167121237387234, guid: 58976474434f0d24b9abd491f9424a42,
         type: 2}
       propertyPath: speed
-      value: 1.49
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 114452419605233460, guid: 58976474434f0d24b9abd491f9424a42,
         type: 2}
       propertyPath: speed
-      value: 1.49
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 114167121237387234, guid: 58976474434f0d24b9abd491f9424a42,
         type: 2}
@@ -5768,10 +5768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad26e1f44767b14c8a22d616daec59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.07
+  speed: 3
   range: 0
   scaleType: 3
-  max: 0.25
+  max: 0.22
   min: -0.03
 --- !u!114 &2044429377
 MonoBehaviour:
@@ -5784,10 +5784,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad26e1f44767b14c8a22d616daec59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.07
+  speed: 3
   range: 0
   scaleType: 3
-  max: 0.25
+  max: 0.22
   min: -0.03
 --- !u!114 &2044429378
 MonoBehaviour:
@@ -5800,10 +5800,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad26e1f44767b14c8a22d616daec59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.07
+  speed: 3
   range: 0
   scaleType: 3
-  max: 0.25
+  max: 0.22
   min: -0.03
 --- !u!114 &2044429379
 MonoBehaviour:
@@ -5816,10 +5816,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad26e1f44767b14c8a22d616daec59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.07
+  speed: 3
   range: 0
   scaleType: 3
-  max: 0.25
+  max: 0.22
   min: -0.03
 --- !u!1001 &2065114834
 Prefab:
