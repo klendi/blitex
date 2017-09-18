@@ -110,22 +110,22 @@ public class LevelSelectorManager : MonoBehaviour
 
     public void ToNextLevelNormal()
     {
-        SaveManager.Instance.data.completedLevels++;
-        SaveManager.Instance.Save();
-        InitLevel();
+        // SaveManager.Instance.data.completedLevels++;
+        // SaveManager.Instance.Save();
+        // InitLevel();
 
         //this button is gonna serve as the next level to be played
-        //LoadLevel(SaveManager.Instance.data.completedLevels.ToString());
+        LoadLevel(SaveManager.Instance.data.completedLevels.ToString());
     }
 
     public void ToNextLevelSnow()
     {
-        SaveManager.Instance.data.completedSnowLevels++;
-        SaveManager.Instance.Save();
-        InitSnowLevel();
+        // SaveManager.Instance.data.completedSnowLevels++;
+        // SaveManager.Instance.Save();
+        // InitSnowLevel();
 
         //this button is gonna serve as the next level to be played
-        //LoadLevel(SaveManager.Instance.data.completedSnowLevels.ToString());
+        LoadLevel(SaveManager.Instance.data.completedSnowLevels.ToString());
     }
 
     private void InitLevel()
