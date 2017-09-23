@@ -17,6 +17,8 @@ public class Manager : MonoBehaviour
 
     public int sceneIndex = 0;
     public bool soundOn = false;
+    //TODO: This is version with ads enabled
+    public bool adsEnabled = true;
 
     [Header("Resources")]
     public Sprite[] soundSprites;

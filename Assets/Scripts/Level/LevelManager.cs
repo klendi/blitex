@@ -125,13 +125,12 @@ public class LevelManager : MonoBehaviour
             SaveManager.Instance.data.firstGameOver = true;
             SaveManager.Instance.Save();
         }
-
-        //TODO: fix this 45 value
         if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded)
         {
             if (Random.Range(0, 6) == 1)
             {
-                Advertisement.Show("rewardedVideo");
+                //Advertisement.Show("rewardedVideo");
+                AdsManager.Instance.ShowVideoAd();
             }
             else
             {
@@ -233,12 +232,12 @@ public class LevelManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
 
-        //TODO: fix this 45 value
-        if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded)
+        if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
             if (Random.Range(0, 6) == 1)
             {
-                Advertisement.Show("rewardedVideo");
+                //Advertisement.Show("rewardedVideo");
+                AdsManager.Instance.ShowVideoAd();
             }
             else
             {

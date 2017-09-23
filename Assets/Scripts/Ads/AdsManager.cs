@@ -23,7 +23,7 @@ public class AdsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance == null && Manager.Instance.adsEnabled)
             Instance = this;
         else
             Destroy(gameObject);

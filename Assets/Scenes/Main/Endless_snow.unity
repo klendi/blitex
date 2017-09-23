@@ -7228,7 +7228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e697701961387040bfc654c3b38db5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamond: {fileID: 1429003199308620, guid: 5f0ee4eecefe07549a3ab796e4515697, type: 2}
+  diamondPrefb: {fileID: 1429003199308620, guid: 5f0ee4eecefe07549a3ab796e4515697,
+    type: 2}
 --- !u!4 &1890262062
 Transform:
   m_ObjectHideFlags: 0

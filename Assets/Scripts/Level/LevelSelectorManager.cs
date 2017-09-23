@@ -35,7 +35,7 @@ public class LevelSelectorManager : MonoBehaviour
     private void Start()
     {
         //TODO: take a close look at this val
-        if (Random.Range(0, 100) < 35)
+        if (Random.Range(0, 100) < 35 && Manager.Instance.adsEnabled)
         {
             //this time we gonna show ads
             AdsManager.Instance.ShowInterstitalAd();
@@ -86,12 +86,12 @@ public class LevelSelectorManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
 
-        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital)
+        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital && Manager.Instance.adsEnabled)
         {
             print("Loaded and showed interstital AD on level selector");
             AdsManager.Instance.ShowInterstitalAd();
         }
-        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital)
+        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital && Manager.Instance.adsEnabled)
         {
             shownInterstital = true;
             thisTimeShowInterstital = false;

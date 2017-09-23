@@ -3219,7 +3219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e697701961387040bfc654c3b38db5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamond: {fileID: 1742861245867732, guid: 1cd912c728e78f943a59a739aae2d4e3, type: 2}
+  diamondPrefb: {fileID: 1742861245867732, guid: 1cd912c728e78f943a59a739aae2d4e3,
+    type: 2}
 --- !u!1 &902491299
 GameObject:
   m_ObjectHideFlags: 0

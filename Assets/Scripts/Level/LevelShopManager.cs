@@ -27,6 +27,7 @@ public class LevelShopManager : MonoBehaviour
     public GameObject gameModeTab;
     public GameObject playButtonOriginal;
     public GameObject rateUsTab;
+    public GameObject noAdsExplanation;
     public Animator playButtonAnimator;
     public Button soundButton, soundButton2;   //this is to keep track of that sound button
     public CanvasGroup cg;
@@ -39,7 +40,7 @@ public class LevelShopManager : MonoBehaviour
 
     private void Start()
     {
-        if (Random.Range(0, 100) < 35)
+        if (Random.Range(0, 100) < 35 && Manager.Instance.adsEnabled)
         {
             //now we gonna show interstital ad
             print("Loaded and showed interstital AD on main menu");
@@ -91,12 +92,12 @@ public class LevelShopManager : MonoBehaviour
             OnGameServiceExit();
         }
 
-        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital)
+        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital && Manager.Instance.adsEnabled)
         {
             print("Loaded and showed interstital AD on main menu");
             AdsManager.Instance.ShowInterstitalAd();
         }
-        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital)
+        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital && Manager.Instance.adsEnabled)
         {
             shownInterstital = true;
             thisTimeShowInterstital = false;
@@ -170,6 +171,19 @@ public class LevelShopManager : MonoBehaviour
     public void OnRatingTabExit()
     {
         rateUsTab.SetActive(false);
+    }
+    public void OnRemoveAds()
+    {
+        noAdsExplanation.SetActive(true);
+    }
+    public void GoToItchIo()
+    {
+        Application.OpenURL("https://klendigocci.itch.io/blitex-pro");
+        noAdsExplanation.SetActive(false);
+    }
+    public void CloseRemoveAds()
+    {
+        noAdsExplanation.SetActive(false);
     }
 
     public void OnInfoClicked()

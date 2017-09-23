@@ -8,7 +8,6 @@
 ================================================================
 */
 
-using GoogleMobileAds.Api;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -49,7 +48,7 @@ public class NewShopManager : MonoBehaviour
         OnNewPage();
         UpdateText();
 
-        if (Random.Range(0, 100) <= 35)
+        if (Random.Range(0, 100) <= 35 && Manager.Instance.adsEnabled)
         {
             if (Random.Range(0, 6) == 1)
             {
@@ -67,12 +66,12 @@ public class NewShopManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
 
-        if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && thisTimeShowInterstital)
+        if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && thisTimeShowInterstital && Manager.Instance.adsEnabled)
         {
             print("This time show interstital ad on shop");
             AdsManager.Instance.ShowInterstitalAd();
         }
-        else if (AdsManager.Instance.interstitalLoaded)
+        else if (AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
             showedInterstitalAd = true;
             thisTimeShowInterstital = false;
@@ -124,6 +123,7 @@ public class NewShopManager : MonoBehaviour
                 print("GAVE THE MONEY TO THE PLAYER");
                 loadingTab.GetComponentInChildren<Text>().text = "Succes";
                 SaveManager.Instance.data.diamonds += 5;
+                UpdateText();
                 StartCoroutine(WaitThenSetFalse());
                 loadedVideo = true;
                 break;
