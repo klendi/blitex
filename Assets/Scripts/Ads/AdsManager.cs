@@ -2,7 +2,7 @@
 ================================================================
     Product:    Blitex
     Developer:  Klendi Gocci - klendigocci@gmail.com
-    Date:       26/8/2017. 11:58
+    Date:       24/9/2017. 11:58
 ================================================================
     Copyright (c) Klendi Gocci.  All rights reserved.
 ================================================================
@@ -17,30 +17,40 @@ public class AdsManager : MonoBehaviour
     public static AdsManager Instance { get; set; }
     public bool interstitalLoaded = false;
     public bool interstitalClosed = false;
+
+    public int mainMenuAdsNum = 0;
+    public int levelSelectorAdsNum = 0;
+    public int gameOverAdsNum = 0;
+    public int succesAdNum = 0;
+    public int shopAdNum = 0;
+
     const string interstitialAdId = "ca-app-pub-2457877020060990/9029321528";
     InterstitialAd interstitalAd;
     AdRequest request;
 
     private void Awake()
     {
-        if (Instance == null && Manager.Instance.adsEnabled)
+        if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
 
-        interstitalAd = new InterstitialAd(interstitialAdId);
+        if (Manager.Instance.adsEnabled)
+        {
+            interstitalAd = new InterstitialAd(interstitialAdId);
 
-        //we show the banner ad at the start of main menu
-        string bannerADID = "ca-app-pub-2457877020060990/1885151063";
-        BannerView bannerAd = new BannerView(bannerADID, AdSize.SmartBanner, AdPosition.Bottom);
-        AdRequest request = new AdRequest.Builder().Build();
-        bannerAd.LoadAd(request);
-        bannerAd.Show();
+            //we show the banner ad at the start of main menu
+            string bannerADID = "ca-app-pub-2457877020060990/1885151063";
+            BannerView bannerAd = new BannerView(bannerADID, AdSize.SmartBanner, AdPosition.Bottom);
+            AdRequest request = new AdRequest.Builder().Build();
+            bannerAd.LoadAd(request);
+            bannerAd.Show();
 
-        request = new AdRequest.Builder().Build();
-        interstitalAd.LoadAd(request);
+            request = new AdRequest.Builder().Build();
+            interstitalAd.LoadAd(request);
+        }
     }
 
     /* Interstital Ad*/

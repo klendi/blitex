@@ -41,23 +41,29 @@ public class NewShopManager : MonoBehaviour
             SaveManager.Instance.UnlockBall(0);     //if this is the first time we run the game and we want to have bought the default ball, and set it as bought
             SetBall(0);
         }
-
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         notEnoughMoneyTab.SetActive(false);
         activeBallIndex = SaveManager.Instance.data.activeBall;
         OnNewPage();
         UpdateText();
 
-        if (Random.Range(0, 100) <= 35 && Manager.Instance.adsEnabled)
+        if (AdsManager.Instance.shopAdNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
             if (Random.Range(0, 6) == 1)
             {
+                //Advertisement.Show("rewardedVideo");
                 AdsManager.Instance.ShowVideoAd();
             }
             else
             {
-                thisTimeShowInterstital = true;
+                print("Time to show some interstital ad at succes");
+                AdsManager.Instance.ShowInterstitalAd();
             }
+            AdsManager.Instance.shopAdNum = 0;
+        }
+        else if (AdsManager.Instance.shopAdNum <= 3)
+        {
+            AdsManager.Instance.shopAdNum++;
         }
     }
 
@@ -90,15 +96,26 @@ public class NewShopManager : MonoBehaviour
         notEnoughMoneyTab.SetActive(false);
     }
 
-    /* Video Ads stuff */
     public void ShowAdVideo()
     {
+        StartCoroutine(ShowAdVideoC());
+    }
+    /* Video Ads stuff */
+    private IEnumerator ShowAdVideoC()
+    {
+        loadedVideo = false;
         loadingTab.SetActive(true);
         loadingTab.GetComponentInChildren<Text>().text = "Loading Video";
         if (Advertisement.IsReady())
         {
             loadedVideo = true;
             Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleAdResult });
+        }
+        else if(!Advertisement.IsReady() && !loadedVideo)
+        {
+            print("Video not ready yet, trying again in 2 seconds");
+            yield return new WaitForSeconds(2f);
+            StartCoroutine(ShowAdVideoC());
         }
     }
     private void HandleAdResult(ShowResult result)
@@ -121,7 +138,7 @@ public class NewShopManager : MonoBehaviour
                 break;
             case ShowResult.Finished:
                 print("GAVE THE MONEY TO THE PLAYER");
-                loadingTab.GetComponentInChildren<Text>().text = "Succes";
+                loadingTab.GetComponentInChildren<Text>().text = "Succes!";
                 SaveManager.Instance.data.diamonds += 5;
                 UpdateText();
                 StartCoroutine(WaitThenSetFalse());

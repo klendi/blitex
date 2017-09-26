@@ -125,7 +125,7 @@ public class LevelManager : MonoBehaviour
             SaveManager.Instance.data.firstGameOver = true;
             SaveManager.Instance.Save();
         }
-        if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded)
+        if (AdsManager.Instance.gameOverAdsNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
             if (Random.Range(0, 6) == 1)
             {
@@ -137,6 +137,11 @@ public class LevelManager : MonoBehaviour
                 print("Time to show some interstital ad at gameover");
                 AdsManager.Instance.ShowInterstitalAd();
             }
+            AdsManager.Instance.gameOverAdsNum = 0;
+        }
+        else if(AdsManager.Instance.gameOverAdsNum <= 3)
+        {
+            AdsManager.Instance.gameOverAdsNum++;
         }
 
         gameOver = true;
@@ -232,7 +237,7 @@ public class LevelManager : MonoBehaviour
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
 
-        if (Random.Range(0, 100) <= 35 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
+        if (AdsManager.Instance.succesAdNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
             if (Random.Range(0, 6) == 1)
             {
@@ -244,6 +249,12 @@ public class LevelManager : MonoBehaviour
                 print("Time to show some interstital ad at succes");
                 AdsManager.Instance.ShowInterstitalAd();
             }
+            AdsManager.Instance.succesAdNum = 0;
+        }
+
+        else if(AdsManager.Instance.succesAdNum <= 3)
+        {
+            AdsManager.Instance.succesAdNum++;
         }
 
         if (isEndlessLevel)

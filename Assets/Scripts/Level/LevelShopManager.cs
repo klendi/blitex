@@ -12,7 +12,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.ComponentModel;
 
 /// <summary>
 /// The class that handle main menu
@@ -40,19 +39,32 @@ public class LevelShopManager : MonoBehaviour
 
     private void Start()
     {
-        if (Random.Range(0, 100) < 35 && Manager.Instance.adsEnabled)
-        {
-            //now we gonna show interstital ad
-            print("Loaded and showed interstital AD on main menu");
-            thisTimeShowInterstital = true;
-            AdsManager.Instance.ShowInterstitalAd();
-        }
+
         cg.alpha = 0;
         infoLabel.SetActive(false);
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
         rateUsTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
+
+        if (AdsManager.Instance.mainMenuAdsNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
+        {
+            if (Random.Range(0, 6) == 1)
+            {
+                //Advertisement.Show("rewardedVideo");
+                AdsManager.Instance.ShowVideoAd();
+            }
+            else
+            {
+                print("Time to show some interstital ad at succes");
+                AdsManager.Instance.ShowInterstitalAd();
+            }
+            AdsManager.Instance.mainMenuAdsNum = 0;
+        }
+        else if (AdsManager.Instance.mainMenuAdsNum <= 3)
+        {
+            AdsManager.Instance.mainMenuAdsNum++;
+        }
 
         if (FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
         {
@@ -90,17 +102,6 @@ public class LevelShopManager : MonoBehaviour
         else if (isAtGameServices && Input.GetKeyDown(KeyCode.Escape))
         {
             OnGameServiceExit();
-        }
-
-        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital && Manager.Instance.adsEnabled)
-        {
-            print("Loaded and showed interstital AD on main menu");
-            AdsManager.Instance.ShowInterstitalAd();
-        }
-        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital && Manager.Instance.adsEnabled)
-        {
-            shownInterstital = true;
-            thisTimeShowInterstital = false;
         }
     }
 
@@ -174,16 +175,23 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnRemoveAds()
     {
-        noAdsExplanation.SetActive(true);
+        if (Manager.Instance.adsEnabled)
+            noAdsExplanation.SetActive(true);
     }
     public void GoToItchIo()
     {
-        Application.OpenURL("https://klendigocci.itch.io/blitex-pro");
-        noAdsExplanation.SetActive(false);
+        if (Manager.Instance.adsEnabled)
+        {
+            Application.OpenURL("https://klendigocci.itch.io/blitex-pro");
+            noAdsExplanation.SetActive(false);
+        }
     }
     public void CloseRemoveAds()
     {
-        noAdsExplanation.SetActive(false);
+        if (Manager.Instance.adsEnabled)
+        {
+            noAdsExplanation.SetActive(false);
+        }
     }
 
     public void OnInfoClicked()
@@ -195,6 +203,7 @@ public class LevelShopManager : MonoBehaviour
     public void OnInfoExitClicked()
     {
         StartCoroutine(ExitThenWait(.65f, infoLabel, infoLabelExit));
+        noAdsExplanation.SetActive(false);
         isAtInfoTab = false;
     }
 

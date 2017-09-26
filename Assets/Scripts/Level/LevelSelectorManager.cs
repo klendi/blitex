@@ -35,11 +35,16 @@ public class LevelSelectorManager : MonoBehaviour
     private void Start()
     {
         //TODO: take a close look at this val
-        if (Random.Range(0, 100) < 35 && Manager.Instance.adsEnabled)
+        if (AdsManager.Instance.levelSelectorAdsNum >= 3 && Manager.Instance.adsEnabled)
         {
             //this time we gonna show ads
             AdsManager.Instance.ShowInterstitalAd();
             thisTimeShowInterstital = true;
+            AdsManager.Instance.levelSelectorAdsNum = 0;
+        }
+        else if (AdsManager.Instance.levelSelectorAdsNum <= 3)
+        {
+            AdsManager.Instance.levelSelectorAdsNum++;
         }
 
         scroll = FindObjectOfType<UIVerticalScroller>();

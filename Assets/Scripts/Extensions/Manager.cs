@@ -17,8 +17,16 @@ public class Manager : MonoBehaviour
 
     public int sceneIndex = 0;
     public bool soundOn = false;
-    //TODO: This is version with ads enabled
-    public bool adsEnabled = true;
+    //TODO: This is version with ads disabled
+    [SerializeField]
+    bool ads_enabed = false;
+    public bool adsEnabled
+    {
+        get
+        {
+            return ads_enabed;
+        }
+    }
 
     [Header("Resources")]
     public Sprite[] soundSprites;

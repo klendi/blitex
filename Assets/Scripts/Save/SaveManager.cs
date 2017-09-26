@@ -13,7 +13,10 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; set; }
-    public SaveData data;   //this is the instace that we are saving all the time, this is where we make the changes
+    /// <summary>
+    /// This is the instace that we are saving all the time, this is where we make the changes
+    /// </summary>
+    public SaveData data;
 
     private void Awake()
     {
