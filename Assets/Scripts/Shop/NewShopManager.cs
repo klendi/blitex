@@ -49,14 +49,15 @@ public class NewShopManager : MonoBehaviour
 
         if (AdsManager.Instance.shopAdNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
-            if (Random.Range(0, 6) == 1)
+            if (Random.Range(0, 6) == 3)
             {
                 //Advertisement.Show("rewardedVideo");
+                print("Time to show some video ad at shop");
                 AdsManager.Instance.ShowVideoAd();
             }
             else
             {
-                print("Time to show some interstital ad at succes");
+                print("Time to show some interstital ad at shop");
                 AdsManager.Instance.ShowInterstitalAd();
             }
             AdsManager.Instance.shopAdNum = 0;
@@ -111,7 +112,7 @@ public class NewShopManager : MonoBehaviour
             loadedVideo = true;
             Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleAdResult });
         }
-        else if(!Advertisement.IsReady() && !loadedVideo)
+        else if (!Advertisement.IsReady() && !loadedVideo)
         {
             print("Video not ready yet, trying again in 2 seconds");
             yield return new WaitForSeconds(2f);

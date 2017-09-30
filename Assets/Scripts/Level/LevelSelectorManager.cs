@@ -34,18 +34,6 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void Start()
     {
-        //TODO: take a close look at this val
-        if (AdsManager.Instance.levelSelectorAdsNum >= 3 && Manager.Instance.adsEnabled)
-        {
-            //this time we gonna show ads
-            AdsManager.Instance.ShowInterstitalAd();
-            thisTimeShowInterstital = true;
-            AdsManager.Instance.levelSelectorAdsNum = 0;
-        }
-        else if (AdsManager.Instance.levelSelectorAdsNum <= 3)
-        {
-            AdsManager.Instance.levelSelectorAdsNum++;
-        }
 
         scroll = FindObjectOfType<UIVerticalScroller>();
         endlessUnlockTab.SetActive(false);
@@ -90,17 +78,6 @@ public class LevelSelectorManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
-
-        if (!AdsManager.Instance.interstitalLoaded && !shownInterstital && thisTimeShowInterstital && Manager.Instance.adsEnabled)
-        {
-            print("Loaded and showed interstital AD on level selector");
-            AdsManager.Instance.ShowInterstitalAd();
-        }
-        else if (AdsManager.Instance.interstitalLoaded && thisTimeShowInterstital && Manager.Instance.adsEnabled)
-        {
-            shownInterstital = true;
-            thisTimeShowInterstital = false;
-        }
     }
 
     public void OnHomeClick()

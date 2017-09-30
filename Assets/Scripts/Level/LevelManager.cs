@@ -249,7 +249,7 @@ public class LevelManager : MonoBehaviour
                 print("Time to show some interstital ad at succes");
                 AdsManager.Instance.ShowInterstitalAd();
             }
-            AdsManager.Instance.succesAdNum = 0;
+            AdsManager.Instance.succesAdNum = 1;
         }
 
         else if(AdsManager.Instance.succesAdNum <= 3)

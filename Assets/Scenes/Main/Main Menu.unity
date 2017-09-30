@@ -896,6 +896,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interstitalLoaded: 0
   interstitalClosed: 0
+  mainMenuAdsNum: 0
+  levelSelectorAdsNum: 0
+  gameOverAdsNum: 0
+  succesAdNum: 0
+  shopAdNum: 0
 --- !u!4 &77424129
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,8 +1199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff39488902d4ecf4d8df40bdb29ba450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoLabel: {fileID: 1485962091}
-  infoLabelExit: {fileID: 1418535983}
+  infoLabel: {fileID: 879078718}
+  infoLabelExit: {fileID: 1267913433}
   googlePlaygameTab: {fileID: 2072350773}
   googlePlaygameTabExit: {fileID: 6342968}
   gameModeTab: {fileID: 1607508995}
@@ -1203,8 +1208,8 @@ MonoBehaviour:
   rateUsTab: {fileID: 1388678792}
   noAdsExplanation: {fileID: 1214784673}
   playButtonAnimator: {fileID: 25060723}
-  soundButton: {fileID: 206105358}
-  soundButton2: {fileID: 719887379}
+  soundButton: {fileID: 1210195500}
+  soundButton2: {fileID: 1246471468}
   cg: {fileID: 879078721}
 --- !u!4 &114713752
 Transform:
@@ -4009,7 +4014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &437981493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10155,7 +10160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1319147749
 RectTransform:
   m_ObjectHideFlags: 0

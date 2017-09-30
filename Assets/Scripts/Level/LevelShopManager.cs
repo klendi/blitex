@@ -47,7 +47,7 @@ public class LevelShopManager : MonoBehaviour
         rateUsTab.SetActive(false);
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
 
-        if (AdsManager.Instance.mainMenuAdsNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
+        if (AdsManager.Instance.mainMenuAdsNum >= 6 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
         {
             if (Random.Range(0, 6) == 1)
             {
@@ -56,12 +56,12 @@ public class LevelShopManager : MonoBehaviour
             }
             else
             {
-                print("Time to show some interstital ad at succes");
+                print("Time to show some interstital ad at main menu");
                 AdsManager.Instance.ShowInterstitalAd();
             }
             AdsManager.Instance.mainMenuAdsNum = 0;
         }
-        else if (AdsManager.Instance.mainMenuAdsNum <= 3)
+        else if (AdsManager.Instance.mainMenuAdsNum <= 6)
         {
             AdsManager.Instance.mainMenuAdsNum++;
         }
@@ -92,7 +92,6 @@ public class LevelShopManager : MonoBehaviour
             soundButton2.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
         }
     }
-
     private void Update()
     {
         if (isAtInfoTab && Input.GetKeyDown(KeyCode.Escape))
@@ -152,7 +151,7 @@ public class LevelShopManager : MonoBehaviour
     }
     public void OnFacebookClick()
     {
-        Application.OpenURL("http://www.facebook.com/klendigocci");
+        Application.OpenURL("http://www.facebook.com/klendigoccidev");
     }
     public void OnSoundClicked()
     {
