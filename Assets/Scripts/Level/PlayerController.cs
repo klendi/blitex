@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-
         //If the player goes on the left too much then he spawn to other side
         if (transform.position.x < -screenHalfInWorldUnits)
         {

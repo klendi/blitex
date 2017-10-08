@@ -32,10 +32,7 @@ public class LevelShopManager : MonoBehaviour
     public CanvasGroup cg;
 
     bool hasPlayed = false;
-    bool shownInterstital = false;
-    bool thisTimeShowInterstital = false;
     bool isAtInfoTab = false, isAtGameServices = false;
-    private bool showedInterstitalAd = false;
 
     private void Start()
     {
@@ -45,26 +42,8 @@ public class LevelShopManager : MonoBehaviour
         infoLabelExit.SetActive(false);
         gameModeTab.SetActive(false);
         rateUsTab.SetActive(false);
+        AdsManager.Instance.canShowAd = true;
         playButtonOriginal.GetComponent<Button>().onClick.AddListener(() => OnAnimStart());
-
-        if (AdsManager.Instance.mainMenuAdsNum >= 6 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
-        {
-            if (Random.Range(0, 6) == 1)
-            {
-                //Advertisement.Show("rewardedVideo");
-                AdsManager.Instance.ShowVideoAd();
-            }
-            else
-            {
-                print("Time to show some interstital ad at main menu");
-                AdsManager.Instance.ShowInterstitalAd();
-            }
-            AdsManager.Instance.mainMenuAdsNum = 0;
-        }
-        else if (AdsManager.Instance.mainMenuAdsNum <= 6)
-        {
-            AdsManager.Instance.mainMenuAdsNum++;
-        }
 
         if (FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
         {

@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e289933e50407a64bbf78bd3d4ed59a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashPane: {fileID: 1098497946}
+  imageToFade: {fileID: 1098497946}
   time: 1
   sceneName: Main Menu
 --- !u!114 &1098497946

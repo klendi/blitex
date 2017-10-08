@@ -896,11 +896,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interstitalLoaded: 0
   interstitalClosed: 0
-  mainMenuAdsNum: 0
-  levelSelectorAdsNum: 0
-  gameOverAdsNum: 0
-  succesAdNum: 0
-  shopAdNum: 0
+  intervalOfShowingAds: 150
+  canShowAd: 0
+  needsToShowAd: 0
 --- !u!4 &77424129
 Transform:
   m_ObjectHideFlags: 0

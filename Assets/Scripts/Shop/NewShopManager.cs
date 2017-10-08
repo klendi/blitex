@@ -26,8 +26,6 @@ public class NewShopManager : MonoBehaviour
     public Text buttonText, diamondsText, costText, NotEnoughDiamondsText;
     public VerticalScrollSnap scroll;
     bool loadedVideo = false;
-    bool showedInterstitalAd = false;
-    bool thisTimeShowInterstital = false;
 
     public int activeBallIndex = 0;
     private int currentPage = 0;
@@ -41,49 +39,19 @@ public class NewShopManager : MonoBehaviour
             SaveManager.Instance.UnlockBall(0);     //if this is the first time we run the game and we want to have bought the default ball, and set it as bought
             SetBall(0);
         }
+        //we can trust this script, so make it a part of our sys
+        AdsManager.Instance.canShowAd = true;
         scroll.StartingScreen = SaveManager.Instance.data.activeBall;
         notEnoughMoneyTab.SetActive(false);
         activeBallIndex = SaveManager.Instance.data.activeBall;
         OnNewPage();
         UpdateText();
-
-        if (AdsManager.Instance.shopAdNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
-        {
-            if (Random.Range(0, 6) == 3)
-            {
-                //Advertisement.Show("rewardedVideo");
-                print("Time to show some video ad at shop");
-                AdsManager.Instance.ShowVideoAd();
-            }
-            else
-            {
-                print("Time to show some interstital ad at shop");
-                AdsManager.Instance.ShowInterstitalAd();
-            }
-            AdsManager.Instance.shopAdNum = 0;
-        }
-        else if (AdsManager.Instance.shopAdNum <= 3)
-        {
-            AdsManager.Instance.shopAdNum++;
-        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("Main Menu");
-
-        if (!AdsManager.Instance.interstitalLoaded && !showedInterstitalAd && thisTimeShowInterstital && Manager.Instance.adsEnabled)
-        {
-            print("This time show interstital ad on shop");
-            AdsManager.Instance.ShowInterstitalAd();
-        }
-        else if (AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
-        {
-            showedInterstitalAd = true;
-            thisTimeShowInterstital = false;
-        }
-
     }
 
     public void OnNewPage()

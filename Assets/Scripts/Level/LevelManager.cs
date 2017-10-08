@@ -60,6 +60,7 @@ public class LevelManager : MonoBehaviour
         pauseButton.enabled = false;
         Camera.main.gameObject.AddComponent<CameraShake>();
         anim = startTab.GetComponentInChildren<Animator>();
+        AdsManager.Instance.canShowAd = true;
 
         if (FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
         {
@@ -112,6 +113,8 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator ContinueGameOver(float sec)
     {
+        AdsManager.Instance.canShowAd = true;
+
         yield return new WaitForSeconds(sec);
 
         if (isEndlessLevel)
@@ -125,25 +128,6 @@ public class LevelManager : MonoBehaviour
             SaveManager.Instance.data.firstGameOver = true;
             SaveManager.Instance.Save();
         }
-        if (AdsManager.Instance.gameOverAdsNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
-        {
-            if (Random.Range(0, 6) == 1)
-            {
-                //Advertisement.Show("rewardedVideo");
-                AdsManager.Instance.ShowVideoAd();
-            }
-            else
-            {
-                print("Time to show some interstital ad at gameover");
-                AdsManager.Instance.ShowInterstitalAd();
-            }
-            AdsManager.Instance.gameOverAdsNum = 0;
-        }
-        else if(AdsManager.Instance.gameOverAdsNum <= 3)
-        {
-            AdsManager.Instance.gameOverAdsNum++;
-        }
-
         gameOver = true;
         uiTab.SetActive(false);
         gameOverTab.SetActive(true);
@@ -156,6 +140,7 @@ public class LevelManager : MonoBehaviour
     {
         print("Game Started");
         anim.SetBool("isExiting", true);
+        AdsManager.Instance.canShowAd = false;
         startTab.GetComponentInChildren<Image>().raycastTarget = false;
         pauseButton.enabled = true;    //enable the pause button
 
@@ -189,7 +174,8 @@ public class LevelManager : MonoBehaviour
             cameraController.Play();
             Time.timeScale = 1;
 
-            player.isGoingLeft = !player.isGoingLeft;   //this is for maintaining the player directions when resume the game
+            //this is for maintaining the player directions when resume the game
+            player.isGoingLeft = !player.isGoingLeft;
             player.isGoingRight = !player.isGoingRight;
 
             if (isEndlessLevel)
@@ -236,26 +222,7 @@ public class LevelManager : MonoBehaviour
         highScoreSpecialDiamonds.text = string.Format("{0} / {1}", specialDiamonds, totalSpecialDiamonds);
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
-
-        if (AdsManager.Instance.succesAdNum >= 3 && !AdsManager.Instance.interstitalLoaded && Manager.Instance.adsEnabled)
-        {
-            if (Random.Range(0, 6) == 1)
-            {
-                //Advertisement.Show("rewardedVideo");
-                AdsManager.Instance.ShowVideoAd();
-            }
-            else
-            {
-                print("Time to show some interstital ad at succes");
-                AdsManager.Instance.ShowInterstitalAd();
-            }
-            AdsManager.Instance.succesAdNum = 1;
-        }
-
-        else if(AdsManager.Instance.succesAdNum <= 3)
-        {
-            AdsManager.Instance.succesAdNum++;
-        }
+        AdsManager.Instance.canShowAd = true;
 
         if (isEndlessLevel)
         {

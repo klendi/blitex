@@ -103,6 +103,7 @@ public class EndlessManager : MonoBehaviour
             SaveManager.Instance.data.normalHighscore = Mathf.Round(highscore);
             SaveManager.Instance.Save();
         }
+        AdsManager.Instance.canShowAd = true;
 
         scoreIncreasing = false;
 

@@ -3352,7 +3352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f7fc36dc18e0a47a3fa9b5b8f46334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondThreshold: 25
+  diamondThreshold: 10
   isNormalEndless: 1
   constructionPoint: {fileID: 1850634735}
   thePoolingPlatforms:

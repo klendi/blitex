@@ -25,8 +25,6 @@ public class LevelSelectorManager : MonoBehaviour
     private bool hasUnlockedNormalEndless = false;
     private bool hasUnlockedSnowEndless = false;
     private bool isSnowOn = true;
-    private bool shownInterstital;
-    private bool thisTimeShowInterstital = false;
     public bool isSnowSelector = false;
 
     UIVerticalScroller scroll;
@@ -34,12 +32,12 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void Start()
     {
-
         scroll = FindObjectOfType<UIVerticalScroller>();
         endlessUnlockTab.SetActive(false);
         hasUnlockedNormalEndless = SaveManager.Instance.data.hasUnlockedNormalEndless;
         hasUnlockedSnowEndless = SaveManager.Instance.data.hasUnlockedSnowEndless;
         isSnowOn = SaveManager.Instance.data.snowOn;
+        AdsManager.Instance.canShowAd = true;
 
         if (FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
         {
