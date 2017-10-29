@@ -128,9 +128,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Frozen Theme/Easy/33.unity
     guid: 8546cb8f1560a8c439899033cc8b4c17
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels/Frozen Theme/Easy/34.unity
     guid: 06cee6d1b30a69a44852a35b4d2e96e6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Glow/34.unity
+    guid: 1091e25fbe186d245adbcc4604c891a4
   - enabled: 1
     path: Assets/Scenes/Levels/Frozen Theme/Easy/35.unity
     guid: d5d6e891420f5964893da0fec12996b8
