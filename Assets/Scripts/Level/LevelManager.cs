@@ -12,9 +12,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames;
-using UnityEngine.Advertisements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -50,8 +47,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        cameraController = FindObjectOfType<CameraController>();
-        player = FindObjectOfType<PlayerController>();
+        cameraController = FindFirstObjectByType<CameraController>();
+        player = FindFirstObjectByType<PlayerController>();
         StartCoroutine(LoadPlayButton(0.2f));    //load the big play button when the level loads, play that after 0.2 seconds
         pauseTab.SetActive(false);           //set the pause tab false
         succesTab.SetActive(false);         //set the succes tab false
@@ -60,26 +57,14 @@ public class LevelManager : MonoBehaviour
         pauseButton.enabled = false;
         Camera.main.gameObject.AddComponent<CameraShake>();
         anim = startTab.GetComponentInChildren<Animator>();
-        AdsManager.Instance.canShowAd = true;
 
-        if (FindObjectOfType<AudioManager>().IsPlaying("MenuTheme"))
-        {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("MenuTheme", .25f));
-        }
+        AudioManager.instance?.PlayLevelMusic();
 
-        if (!FindObjectOfType<AudioManager>().IsPlaying("LevelTheme"))
-        {
-            StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("LevelTheme", .5f));
-        }
-
-        endless = FindObjectOfType<EndlessManager>();
+        endless = FindFirstObjectByType<EndlessManager>();
         totalDiamonds = GameObject.FindGameObjectsWithTag("Diamond").Length;
         totalSpecialDiamonds = GameObject.FindGameObjectsWithTag("SuperDiamond").Length;
 
-        if (!Manager.Instance.soundOn)
-            soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[0];
-        else
-            soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[1];
+        soundButton.GetComponent<Image>().sprite = Manager.Instance.soundSprites[Manager.Instance.soundOn ? 1 : 0];
     }
     private void Update()
     {
@@ -113,7 +98,6 @@ public class LevelManager : MonoBehaviour
     }
     private IEnumerator ContinueGameOver(float sec)
     {
-        AdsManager.Instance.canShowAd = true;
 
         yield return new WaitForSeconds(sec);
 
@@ -140,7 +124,6 @@ public class LevelManager : MonoBehaviour
     {
         print("Game Started");
         anim.SetBool("isExiting", true);
-        AdsManager.Instance.canShowAd = false;
         startTab.GetComponentInChildren<Image>().raycastTarget = false;
         pauseButton.enabled = true;    //enable the pause button
 
@@ -157,7 +140,6 @@ public class LevelManager : MonoBehaviour
             player.paused = true;
             paused = true;
             pauseTab.SetActive(true);
-            //player.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
             cameraController.Stop();
             Time.timeScale = 0;                 //freeze the time
             if (isEndlessLevel)
@@ -170,7 +152,6 @@ public class LevelManager : MonoBehaviour
         {
             player.paused = false;
             pauseTab.SetActive(false);
-            //player.rigid.constraints = RigidbodyConstraints2D.None;
             cameraController.Play();
             Time.timeScale = 1;
 
@@ -188,9 +169,9 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
 
         if (isSnowLevel)
-            SceneManager.LoadScene("LevelSelectorSnow");
+            SceneManager.LoadScene(SceneNames.LevelSelectorSnow);
         else
-            SceneManager.LoadScene("LevelSelector");
+            SceneManager.LoadScene(SceneNames.LevelSelector);
     }
     public void OnSoundClicked()
     {
@@ -222,26 +203,6 @@ public class LevelManager : MonoBehaviour
         highScoreSpecialDiamonds.text = string.Format("{0} / {1}", specialDiamonds, totalSpecialDiamonds);
         SaveManager.Instance.data.diamonds += diamonds;
         SaveManager.Instance.data.specialDiamond += specialDiamonds;
-        AdsManager.Instance.canShowAd = true;
-
-        if (isEndlessLevel)
-        {
-            EndlessManager endless = FindObjectOfType<EndlessManager>();
-            PlayGamesPlatform.Instance.LoadScores(
-             GPGSIds.leaderboard_blitexs_endless,
-            LeaderboardStart.PlayerCentered,
-            1,
-            LeaderboardCollection.Public,
-            LeaderboardTimeSpan.AllTime,
-        (LeaderboardScoreData data) =>
-        {
-            if (data.Valid)
-            {
-                long total = data.PlayerScore.value + (long)endless.score;
-                PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_endless, total);
-            }
-        });
-        }
 
         if (SaveManager.Instance.data.completedLevels == 0)
         {
@@ -269,20 +230,6 @@ public class LevelManager : MonoBehaviour
             SaveManager.Instance.CompleteLevel(Manager.Instance.sceneIndex, true);
         }
 
-        PlayGamesPlatform.Instance.LoadScores(
-             GPGSIds.leaderboard_blitexs_diamonds,
-            LeaderboardStart.PlayerCentered,
-            1,
-            LeaderboardCollection.Public,
-            LeaderboardTimeSpan.AllTime,
-        (LeaderboardScoreData data) =>
-        {
-            if (data.Valid)
-            {
-                long total = data.PlayerScore.value + (long)diamonds;
-                PlayServices.AddScoreToLeaderBoard(GPGSIds.leaderboard_blitexs_diamonds, total);
-            }
-        });
 
         PlayServices.IncrementAchievement(GPGSIds.achievement_100_diamonds, diamonds);
         PlayServices.IncrementAchievement(GPGSIds.achievement_1000_diamonds, diamonds);
@@ -292,12 +239,12 @@ public class LevelManager : MonoBehaviour
     }
     public void OnGameOver()
     {
-        FindObjectOfType<CameraShake>().ShakeCamera();
+        FindFirstObjectByType<CameraShake>().ShakeCamera();
         player.gameObject.SetActive(false);
 
         if (!instanciated)
         {
-            FindObjectOfType<AudioManager>().PlaySound("BlastSound");
+            FindFirstObjectByType<AudioManager>().PlaySound("BlastSound");
             Instantiate(Manager.Instance.hitVFX, player.transform.position, Quaternion.identity, transform);
             instanciated = true;
         }
@@ -310,7 +257,7 @@ public class LevelManager : MonoBehaviour
     {
         if (type == LevelType.NormalLevels)
         {
-            print("Adding snow score to leaderboard");
+            print("Adding normal score to leaderboard");
             PlayServices.IncrementAchievement(GPGSIds.achievement_completed_10_normal_levels, 1);
             PlayServices.IncrementAchievement(GPGSIds.achievement_completed_all_normal_levels, 1);
         }

@@ -40,9 +40,9 @@ public class EndlessManager : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = FindObjectOfType<CameraController>();
-        player = FindObjectOfType<PlayerController>();
-        rigid = FindObjectOfType<Rigidbody2D>();
+        mainCamera = FindFirstObjectByType<CameraController>();
+        player = FindFirstObjectByType<PlayerController>();
+        rigid = FindFirstObjectByType<Rigidbody2D>();
         speedMilestoneCount = speedIncreaseMilestone;
 
         if (!isNormalLevel)
@@ -80,12 +80,12 @@ public class EndlessManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Endless_snow");
+        SceneManager.LoadScene(SceneNames.EndlessSnow);
     }
 
     public void RestartNormalLevel()
     {
-        SceneManager.LoadScene("Endless_normal");
+        SceneManager.LoadScene(SceneNames.EndlessNormal);
     }
 
     public void OnGameOver()
@@ -103,7 +103,6 @@ public class EndlessManager : MonoBehaviour
             SaveManager.Instance.data.normalHighscore = Mathf.Round(highscore);
             SaveManager.Instance.Save();
         }
-        AdsManager.Instance.canShowAd = true;
 
         scoreIncreasing = false;
 

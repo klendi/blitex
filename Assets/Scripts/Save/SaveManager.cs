@@ -72,7 +72,7 @@ public class SaveManager : MonoBehaviour
         {
             if (data.completedLevels == index)
             {
-                FindObjectOfType<LevelManager>().AddScoreToLeaderBoard(LevelType.NormalLevels);
+                FindFirstObjectByType<LevelManager>().AddScoreToLeaderBoard(LevelType.NormalLevels);
                 data.completedLevels++;
                 Save();
             }
@@ -81,7 +81,7 @@ public class SaveManager : MonoBehaviour
         {
             if (data.completedSnowLevels == index)
             {
-                FindObjectOfType<LevelManager>().AddScoreToLeaderBoard(LevelType.SnowLevels);
+                FindFirstObjectByType<LevelManager>().AddScoreToLeaderBoard(LevelType.SnowLevels);
                 data.completedSnowLevels++;
                 Save();
             }

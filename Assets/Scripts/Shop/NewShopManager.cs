@@ -10,10 +10,8 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UI.Extensions;
 
 /// <summary>
 /// The class that handle shop things
@@ -21,11 +19,12 @@ using UnityEngine.UI.Extensions;
 public class NewShopManager : MonoBehaviour
 {
     public Transform ballsPanel;
-    public GameObject notEnoughMoneyTab, loadingTab;
-    public Outline buyButtonColor;
+    public GameObject notEnoughMoneyTab;
+    static readonly Color BuyButtonBase = new Color(0.051f, 0.082f, 0.133f);
+
+    public Graphic buyButtonColor;   //the outline ring of the buy button, we tint it by state
     public Text buttonText, diamondsText, costText, NotEnoughDiamondsText;
-    public VerticalScrollSnap scroll;
-    bool loadedVideo = false;
+    public CenterSnapScroll scroll;
 
     public int activeBallIndex = 0;
     private int currentPage = 0;
@@ -40,23 +39,23 @@ public class NewShopManager : MonoBehaviour
             SetBall(0);
         }
         //we can trust this script, so make it a part of our sys
-        AdsManager.Instance.canShowAd = true;
-        scroll.StartingScreen = SaveManager.Instance.data.activeBall;
+        scroll.SnapTo(SaveManager.Instance.data.activeBall);
         notEnoughMoneyTab.SetActive(false);
         activeBallIndex = SaveManager.Instance.data.activeBall;
         OnNewPage();
+        scroll.IndexChanged += _ => OnNewPage();
         UpdateText();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene(SceneNames.MainMenu);
     }
 
     public void OnNewPage()
     {
-        currentPage = scroll.CurrentPage;
+        currentPage = scroll.CurrentIndex;
         OnBallSelect(currentPage);
     }
 
@@ -65,82 +64,9 @@ public class NewShopManager : MonoBehaviour
         notEnoughMoneyTab.SetActive(false);
     }
 
-    public void ShowAdVideo()
-    {
-        StartCoroutine(ShowAdVideoC());
-    }
-    /* Video Ads stuff */
-    private IEnumerator ShowAdVideoC()
-    {
-        loadedVideo = false;
-        loadingTab.SetActive(true);
-        loadingTab.GetComponentInChildren<Text>().text = "Loading Video";
-        if (Advertisement.IsReady())
-        {
-            loadedVideo = true;
-            Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleAdResult });
-        }
-        else if (!Advertisement.IsReady() && !loadedVideo)
-        {
-            print("Video not ready yet, trying again in 2 seconds");
-            yield return new WaitForSeconds(2f);
-            StartCoroutine(ShowAdVideoC());
-        }
-    }
-    private void HandleAdResult(ShowResult result)
-    {
-        notEnoughMoneyTab.SetActive(false);
-
-        switch (result)
-        {
-            case ShowResult.Failed:
-                print("Failed, maybe internet");
-                loadingTab.GetComponentInChildren<Text>().text = "Failed To Load Video";
-                StartCoroutine(WaitForCertainTimeThenfalse());
-                break;
-            case ShowResult.Skipped:
-                print("Skiped the add");
-                loadingTab.GetComponentInChildren<Text>().text = "Video Skipped";
-                notEnoughMoneyTab.SetActive(false);
-                StartCoroutine(WaitThenSetFalse());
-                loadedVideo = true;
-                break;
-            case ShowResult.Finished:
-                print("GAVE THE MONEY TO THE PLAYER");
-                loadingTab.GetComponentInChildren<Text>().text = "Succes!";
-                SaveManager.Instance.data.diamonds += 5;
-                UpdateText();
-                StartCoroutine(WaitThenSetFalse());
-                loadedVideo = true;
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    private IEnumerator WaitThenSetFalse()
-    {
-        yield return new WaitForSeconds(1f);
-        loadingTab.SetActive(false);
-    }
-    private IEnumerator WaitForCertainTimeThenfalse()
-    {
-        //if video its not ready for 4 sec then fail it
-        ShowAdVideo();
-        yield return new WaitForSeconds(4f);
-        if (!loadedVideo)
-        {
-            loadingTab.GetComponentInChildren<Text>().text = "Failed To Load Video";
-            yield return new WaitForSeconds(1f);
-            loadingTab.SetActive(false);
-        }
-    }
-    /* End Video ads stuff */
-
     public void OnHomeClick()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene(SceneNames.MainMenu);
     }
 
     public void OnBallSelect(int index)
@@ -155,12 +81,12 @@ public class NewShopManager : MonoBehaviour
             if (activeBallIndex == selectedBallIndex)
             {
                 buttonText.text = "Current";
-                buyButtonColor.effectColor = new Color(0f, 234f / 255f, 1f);
+                SetBuyColor(new Color(0f, 234f / 255f, 1f));
             }
             else
             {
                 buttonText.text = "Select";
-                buyButtonColor.effectColor = new Color(0f, 1f, 171f / 255f);
+                SetBuyColor(new Color(0f, 1f, 171f / 255f));
             }
         }
         else
@@ -169,13 +95,13 @@ public class NewShopManager : MonoBehaviour
             {
                 //he can afford it but he hasnt buyed yet, set the color to green
                 buttonText.text = "Buy";
-                buyButtonColor.effectColor = new Color(0f, 1f, 171f / 255f);
+                SetBuyColor(new Color(0f, 1f, 171f / 255f));
             }
             else if (SaveManager.Instance.data.diamonds < ballCosts[selectedBallIndex])
             {
                 //he cant afford it
                 buttonText.text = "Buy";
-                buyButtonColor.effectColor = new Color(1f, 0f, 90f / 255f);
+                SetBuyColor(new Color(1f, 0f, 90f / 255f));
             }
         }
 
@@ -192,7 +118,7 @@ public class NewShopManager : MonoBehaviour
         activeBallIndex = index;
         SaveManager.Instance.data.activeBall = activeBallIndex;
         buttonText.text = "Current";
-        buyButtonColor.effectColor = new Color(0f, 234f / 255f, 1f);
+        SetBuyColor(new Color(0f, 234f / 255f, 1f));
     }
 
     public void OnBallBuy()
@@ -219,5 +145,17 @@ public class NewShopManager : MonoBehaviour
             }
         }
         OnNewPage();
+    }
+
+    /// <summary>
+    /// Tints the buy button: the ring gets the state color and the fill a faint wash of it over the dark base
+    /// </summary>
+    void SetBuyColor(Color accent)
+    {
+        buyButtonColor.color = accent;
+
+        Graphic fill = buyButtonColor.transform.parent.GetComponent<Graphic>();
+        if (fill != null)
+            fill.color = Color.Lerp(BuyButtonBase, accent, .15f);
     }
 }

@@ -8,86 +8,19 @@
 ================================================================
 */
 
-using GooglePlayGames;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class PlayServices : MonoBehaviour
+/// <summary>
+/// Achievements and leaderboards. Google Play Games is gone (App Store only for now),
+/// so these are empty on purpose: this is where Game Center goes when we add it.
+/// </summary>
+public static class PlayServices
 {
-    public static PlayServices Instance { get; set; }
+    public static void UnlockAchievement(string id) { }
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            PlayGamesPlatform.DebugLogEnabled = true;
-            PlayGamesPlatform.Activate();
-            Debug.Log("Activated Services");
-            SignIn();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    public static void IncrementAchievement(string id, int stepsToIncrement) { }
 
-    public void SignIn()
-    {
-        Debug.Log("Trying to sign in");
+    public static void ShowAchievementsUI() { }
 
-        Social.localUser.Authenticate(succes =>
-        {
-            if (succes)
-            {
-                Debug.Log("Succes loggin the player");
-            }
-            else if (!succes)
-            {
-                Debug.Log("Error logging the player");
-            }
-        });
-    }
+    public static void AddScoreToLeaderBoard(string leaderBoardID, long score) { }
 
-    #region Achievements
-
-    public static void UnlockAchievement(string id)
-    {
-        Social.ReportProgress(id, 100, succes =>
-         {
-
-         });
-    }
-
-    public static void IncrementAchievement(string id, int stepsToIncrement)
-    {
-        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, succes =>
-         {
-
-         });
-    }
-
-    public static void ShowAchievementsUI()
-    {
-        Debug.Log("Show Achievement called");
-        Social.ShowAchievementsUI();
-    }
-    #endregion
-
-    #region LeaderBoard
-
-    public static void AddScoreToLeaderBoard(string leaderBoardID, long score)
-    {
-        Social.ReportScore(score, leaderBoardID, succes =>
-        {
-
-        });
-    }
-    public static void ShowLeaderBoardUI()
-    {
-        Debug.Log("Show LeaderBoard called");
-        Social.ShowLeaderboardUI();
-    }
-    #endregion
+    public static void ShowLeaderBoardUI() { }
 }

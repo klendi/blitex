@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        level = FindObjectOfType<LevelManager>();
+        level = FindFirstObjectByType<LevelManager>();
         rigid = GetComponent<Rigidbody2D>();
         float halfPlayerWidth = transform.localScale.x / 2f;
         screenHalfInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
@@ -61,13 +61,13 @@ public class PlayerController : MonoBehaviour
         //is moving to right ? then set the direction to right and don't stop
         if (isGoingRight && isReady && !paused)
         {
-            rigid.velocity = new Vector2(speed, rigid.velocity.y);
+            rigid.linearVelocity = new Vector2(speed, rigid.linearVelocity.y);
         }
 
         //is moving to left ? then set the direction to left and don't stop
         else if (isGoingLeft && isReady && !paused)
         {
-            rigid.velocity = new Vector2(-speed, rigid.velocity.y);
+            rigid.linearVelocity = new Vector2(-speed, rigid.linearVelocity.y);
         }
     }
 

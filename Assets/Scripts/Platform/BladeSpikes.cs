@@ -29,7 +29,7 @@ public class BladeSpikes : MonoBehaviour
 
     private void Awake()
     {
-        level = FindObjectOfType<LevelManager>();
+        level = FindFirstObjectByType<LevelManager>();
         rayOrigin = pointToRaycast.position;
         rotating.loopingMode = true;
     }

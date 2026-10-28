@@ -34,7 +34,7 @@ public class PlatformGenerator : MonoBehaviour
 
     private void Start()
     {
-        diamondGen = FindObjectOfType<DiamondGenerator>();
+        diamondGen = FindFirstObjectByType<DiamondGenerator>();
     }
 
 
